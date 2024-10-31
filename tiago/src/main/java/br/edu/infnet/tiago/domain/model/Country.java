@@ -4,10 +4,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
-import static jakarta.persistence.CascadeType.ALL;
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -26,6 +28,13 @@ public class Country {
 
     private String code;
 
-    @OneToMany(mappedBy = "country", cascade = ALL, fetch = LAZY)
+    @OneToMany(mappedBy = "country", fetch = LAZY)
     private List<Movie> movies;
+
+    @CreatedDate
+    @Column(updatable = false)
+    private OffsetDateTime created;
+
+    @LastModifiedDate
+    private OffsetDateTime modified;
 }

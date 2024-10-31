@@ -4,8 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -29,7 +30,9 @@ public class Movie {
 
     private int durationInMinutes;
 
-    private BigDecimal budgetInDollars;
+    private Double budgetInDollars;
+
+    private Float boxOfficeInDollars;
 
     private String synopsis;
 
@@ -54,4 +57,11 @@ public class Movie {
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private List<Actor> actors;
+
+    @CreatedDate
+    @Column(updatable = false)
+    private OffsetDateTime created;
+
+    @LastModifiedDate
+    private OffsetDateTime modified;
 }
