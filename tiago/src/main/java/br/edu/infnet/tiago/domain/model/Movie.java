@@ -5,8 +5,8 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -25,6 +25,9 @@ public class Movie {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
+    @Pattern(regexp = "^tt\\d{7,9}$", message = "Invalid IMDb ID format. It should start with 'tt' followed by 7 to 9 digits")
+    private String imdbId;
+
     @NotBlank(message = "Title is required")
     @Size(min = 5, max = 100, message = "Title must be between 5 and 100 characters")
     private String title;
@@ -36,16 +39,16 @@ public class Movie {
     private boolean released;
 
     @Min(value = 1, message = "Duration must be at least 1 minute")
-    private int durationInMinutes;
+    private int durationMinutes;
 
     @DecimalMin(value = "0.0", inclusive = false, message = "Budget must be greater than 0 dollars")
-    private Double budgetInDollars;
+    private Float budgetDollars;
 
     @DecimalMin(value = "0.0", message = "Box office earnings must be 0 dollars or more")
-    private double boxOfficeInDollars;
+    private Double boxOfficeDollars;
 
     @NotBlank(message = "Synopsis is required")
-    @Size(min = 10, max = 500, message = "Synopsis must be between 10 and 500 characters")
+    @Size(min = 10, max = 1000, message = "Synopsis must be between 10 and 1000 characters")
     private String synopsis;
 
     @NotNull(message = "Genre is required")
@@ -70,16 +73,15 @@ public class Movie {
 
     @NotEmpty(message = "At least one actor is required")
     @ManyToMany
-    @JoinTable(name = "movie_actor",
+    @JoinTable(name = "tb_movie_actors",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private List<Actor> actors;
 
-    @CreatedDate
-    @Column(updatable = false)
+    @CreationTimestamp
     private OffsetDateTime created;
 
-    @LastModifiedDate
+    @UpdateTimestamp
     private OffsetDateTime modified;
 
     @PostLoad

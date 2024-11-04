@@ -7,8 +7,8 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -38,10 +38,9 @@ public class Studio {
     @OneToMany(mappedBy = "studio")
     private List<Movie> movies;
 
-    @CreatedDate
-    @Column(updatable = false)
+    @CreationTimestamp
     private OffsetDateTime created;
 
-    @LastModifiedDate
+    @UpdateTimestamp
     private OffsetDateTime modified;
 }

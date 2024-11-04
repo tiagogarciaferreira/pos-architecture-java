@@ -6,9 +6,10 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -29,8 +30,9 @@ public abstract class Person {
     @Size(min = 3, max = 100, message = "Name must be between 3 and 100 characters")
     private String name;
 
+    @NotNull(message = "Date of Birth is required")
     @Past(message = "Date of birth must be in the past")
-    private OffsetDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @Transient
     private int age;
@@ -40,11 +42,10 @@ public abstract class Person {
     @JoinColumn(name = "country_id")
     private Country country;
 
-    @CreatedDate
-    @Column(updatable = false)
+    @CreationTimestamp
     private OffsetDateTime created;
 
-    @LastModifiedDate
+    @UpdateTimestamp
     private OffsetDateTime modified;
 
     @PostLoad
