@@ -61,7 +61,7 @@ public class CountryController {
     public ResponseEntity<CountryDTO> getById(@PathVariable Long countryId) {
         Country country = countryService.getById(countryId);
         CountryDTO countryDTO = CountryMapper.toDTO(country);
-        log.info("Actor '{}', was successfully retrieved", countryId);
+        log.info("Country '{}', was successfully retrieved", countryId);
         return new ResponseEntity<>(countryDTO, OK);
     }
 
