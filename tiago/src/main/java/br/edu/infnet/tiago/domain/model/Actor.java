@@ -15,7 +15,6 @@ import java.util.List;
 @Data
 @Table(name = "tb_actors")
 @Entity
-@PrimaryKeyJoinColumn(name = "id")
 public class Actor extends Person {
 
     @ElementCollection

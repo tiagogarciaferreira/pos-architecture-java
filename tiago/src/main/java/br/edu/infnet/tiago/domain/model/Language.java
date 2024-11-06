@@ -2,7 +2,6 @@ package br.edu.infnet.tiago.domain.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,24 +17,19 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "tb_studios")
+@Table(name = "tb_languages")
 @Entity
-public class Studio {
+public class Language {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Studio name is required")
-    @Size(min = 3, max = 50, message = "Studio name must be between 3 and 50 characters")
+    @NotBlank(message = "Language name is required")
+    @Size(min = 3, max = 50, message = "Language name must be between 3 and 50 characters")
     private String name;
 
-    @NotNull(message = "Country is required")
-    @ManyToOne
-    @JoinColumn(name = "country_id")
-    private Country country;
-
-    @OneToMany(mappedBy = "studio")
+    @ManyToMany(mappedBy = "languages")
     private List<Movie> movies;
 
     @CreationTimestamp

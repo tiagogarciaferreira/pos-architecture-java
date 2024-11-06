@@ -78,6 +78,20 @@ public class Movie {
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private List<Actor> actors;
 
+    @NotEmpty(message = "At least one language is required")
+    @ManyToMany
+    @JoinTable(name = "tb_movie_languages",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "language_id"))
+    private List<Language> languages;
+
+    @NotEmpty(message = "At least one language is required")
+    @ManyToMany
+    @JoinTable(name = "tb_movie_subtitles",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "language_id"))
+    private List<Language> subtitles;
+
     @CreationTimestamp
     private OffsetDateTime created;
 

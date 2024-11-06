@@ -13,13 +13,12 @@ import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
-import static jakarta.persistence.InheritanceType.JOINED;
 import static java.time.OffsetDateTime.now;
 import static java.time.temporal.ChronoUnit.YEARS;
 
 @Data
 @MappedSuperclass
-@Inheritance(strategy = JOINED)
+//@Inheritance(strategy = JOINED)
 public abstract class Person {
 
     @Id

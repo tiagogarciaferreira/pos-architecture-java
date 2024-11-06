@@ -1,7 +1,28 @@
+ALTER DATABASE db_movie_api SET timezone TO 'UTC';
+
+DROP TABLE IF EXISTS tb_movie_subtitles;
+DROP TABLE IF EXISTS tb_movie_languages;
+DROP TABLE IF EXISTS tb_movie_actors;
+DROP TABLE IF EXISTS tb_director_awards;
+DROP TABLE IF EXISTS tb_actor_awards;
+DROP TABLE IF EXISTS tb_movies;
+DROP TABLE IF EXISTS tb_studios;
+DROP TABLE IF EXISTS tb_directors;
+DROP TABLE IF EXISTS tb_actors;
+DROP TABLE IF EXISTS tb_languages;
+DROP TABLE IF EXISTS tb_countries;
+
 CREATE TABLE tb_countries (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL CHECK (LENGTH(name) >= 3 AND LENGTH(name) <= 50),
     code VARCHAR(3) NOT NULL UNIQUE CHECK (LENGTH(code) >= 2 AND LENGTH(code) <= 3),
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+CREATE TABLE tb_languages (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL CHECK (LENGTH(name) >= 3 AND LENGTH(name) <= 50),
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
@@ -49,10 +70,10 @@ CREATE TABLE tb_movies (
 
 CREATE TABLE tb_studios (
     id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL CHECK (LENGTH(name) >= 3 AND LENGTH(name) <= 100),
+    name VARCHAR(50) NOT NULL CHECK (LENGTH(name) >= 3 AND LENGTH(name) <= 50),
     country_id INT,
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+    modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     FOREIGN KEY (country_id) REFERENCES tb_countries(id)
 );
 
@@ -80,4 +101,20 @@ CREATE TABLE tb_movie_actors (
     PRIMARY KEY (movie_id, actor_id),
     FOREIGN KEY (movie_id) REFERENCES tb_movies(id) ON DELETE CASCADE,
     FOREIGN KEY (actor_id) REFERENCES tb_actors(id) ON DELETE CASCADE
+);
+
+CREATE TABLE tb_movie_languages (
+    movie_id INT NOT NULL,
+    language_id INT NOT NULL,
+    PRIMARY KEY (movie_id, language_id),
+    FOREIGN KEY (movie_id) REFERENCES tb_movies(id) ON DELETE CASCADE,
+    FOREIGN KEY (language_id) REFERENCES tb_languages(id) ON DELETE CASCADE
+);
+
+CREATE TABLE tb_movie_subtitles (
+    movie_id INT NOT NULL,
+    language_id INT NOT NULL,
+    PRIMARY KEY (movie_id, language_id),
+    FOREIGN KEY (movie_id) REFERENCES tb_movies(id) ON DELETE CASCADE,
+    FOREIGN KEY (language_id) REFERENCES tb_languages(id) ON DELETE CASCADE
 );

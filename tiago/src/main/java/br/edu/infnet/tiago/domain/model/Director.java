@@ -15,7 +15,6 @@ import java.util.List;
 @Data
 @Table(name = "tb_directors")
 @Entity
-@PrimaryKeyJoinColumn(name = "id")
 public class Director extends Person {
 
     @ElementCollection

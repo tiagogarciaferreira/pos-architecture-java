@@ -5,10 +5,16 @@ import br.edu.infnet.tiago.application.dto.GenreDTO;
 import br.edu.infnet.tiago.application.dto.GenreUpdateDTO;
 import br.edu.infnet.tiago.domain.model.Genre;
 
+import java.util.List;
+
 public class GenreMapper {
 
     public static GenreDTO toDTO(Genre genre) {
         return new GenreDTO();
+    }
+
+    public static List<GenreDTO> toDTO(List<Genre> genres) {
+        return genres.stream().map(GenreMapper::toDTO).toList();
     }
 
     public static Genre fromDTO(GenreDTO genreDTO) {
