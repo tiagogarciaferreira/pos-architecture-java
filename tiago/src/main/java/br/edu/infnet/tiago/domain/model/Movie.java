@@ -8,11 +8,12 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
-import static java.time.OffsetDateTime.now;
+import static java.time.LocalDate.now;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,7 +34,7 @@ public class Movie {
     private String title;
 
     @NotNull(message = "Release date is required")
-    private OffsetDateTime releaseDate;
+    private LocalDate releaseDate;
 
     @Transient
     private boolean released;

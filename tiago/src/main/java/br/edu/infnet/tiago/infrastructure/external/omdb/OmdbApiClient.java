@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "omdbApiClient", url = "https://www.omdbapi.com", configuration = OmdbApiRequestInterceptor.class)
+@FeignClient(name = "omdbApiClient", url = "${omdb.api.base.url}", configuration = OmdbApiRequestInterceptor.class)
 public interface OmdbApiClient {
 
     @GetMapping(value = "/")

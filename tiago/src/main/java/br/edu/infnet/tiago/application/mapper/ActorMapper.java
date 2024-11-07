@@ -10,6 +10,7 @@ import java.util.List;
 public class ActorMapper {
 
     public static ActorDTO toDTO(Actor actor) {
+        
         return new ActorDTO();
     }
 
