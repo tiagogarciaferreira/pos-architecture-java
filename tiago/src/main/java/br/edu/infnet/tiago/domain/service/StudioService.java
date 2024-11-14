@@ -3,12 +3,15 @@ package br.edu.infnet.tiago.domain.service;
 
 import br.edu.infnet.tiago.domain.model.Studio;
 import br.edu.infnet.tiago.domain.repository.StudioRepository;
+import br.edu.infnet.tiago.infrastructure.exception.custom.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import static java.lang.String.format;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +31,8 @@ public class StudioService {
 
     @Transactional(readOnly = true)
     public Studio getById(Long studioId) {
-        return studioRepository.findById(studioId).get();
+        return studioRepository.findById(studioId)
+                .orElseThrow(() -> new NotFoundException(format("Studio '%s' not found", studioId)));
     }
 
     @Transactional

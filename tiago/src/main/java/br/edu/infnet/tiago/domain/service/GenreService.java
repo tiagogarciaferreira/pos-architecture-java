@@ -3,12 +3,15 @@ package br.edu.infnet.tiago.domain.service;
 
 import br.edu.infnet.tiago.domain.model.Genre;
 import br.edu.infnet.tiago.domain.repository.GenreRepository;
+import br.edu.infnet.tiago.infrastructure.exception.custom.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import static java.lang.String.format;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +31,8 @@ public class GenreService {
 
     @Transactional(readOnly = true)
     public Genre getById(Long genreId) {
-        return genreRepository.findById(genreId).get();
+        return genreRepository.findById(genreId)
+                .orElseThrow(() -> new NotFoundException(format("Genre '%s' not found", genreId)));
     }
 
     @Transactional
