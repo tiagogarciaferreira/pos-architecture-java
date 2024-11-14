@@ -49,28 +49,28 @@ public class ActorController implements ActorAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<ActorDTO> getById(@PathVariable Long actorId) {
-        Actor actor = actorService.getById(actorId);
+    public ResponseEntity<ActorDTO> getById(@PathVariable Long id) {
+        Actor actor = actorService.getById(id);
         ActorDTO actorDTO = actorMapper.toDTO(actor);
-        log.info("Actor '{}', was successfully retrieved", actorId);
+        log.info("Actor '{}', was successfully retrieved", id);
         return new ResponseEntity<>(actorDTO, OK);
     }
 
     @Override
     @PutMapping("/{id}")
-    public ResponseEntity<ActorDTO> update(@PathVariable Long actorId, @RequestBody ActorUpdateDTO actorUpdateDTO) {
+    public ResponseEntity<ActorDTO> update(@PathVariable Long id, @RequestBody ActorUpdateDTO actorUpdateDTO) {
         Actor actor = actorMapper.fromDTO(actorUpdateDTO);
         actor = actorService.update(actor);
         ActorDTO actorDTO = actorMapper.toDTO(actor);
-        log.info("Actor '{}', was successfully updated", actorId);
+        log.info("Actor '{}', was successfully updated", id);
         return new ResponseEntity<>(actorDTO, OK);
     }
 
     @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long actorId) {
-        actorService.delete(actorId);
-        log.info("Actor '{}', was successfully removed", actorId);
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        actorService.delete(id);
+        log.info("Actor '{}', was successfully removed", id);
         return new ResponseEntity<>(NO_CONTENT);
     }
 

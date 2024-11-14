@@ -34,25 +34,25 @@ public interface ActorAPI {
                     @ApiResponse(responseCode = "200", description = "Actor retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ActorDTO.class))),
                     @ApiResponse(responseCode = "404", description = "Actor not found")
             })
-    ResponseEntity<ActorDTO> getById(@PathVariable Long actorId);
+    ResponseEntity<ActorDTO> getById(@PathVariable Long id);
 
     @Operation(summary = "Update actor", description = "Updates an existing actor's details.",
-            parameters = {@Parameter(name = "actorId", description = "ID of the actor to update", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the actor to update", required = true, schema = @Schema(type = "integer", example = "1"))},
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Details of the actor to be updated", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ActorUpdateDTO.class))),
             responses = {
                     @ApiResponse(responseCode = "200", description = "Actor updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ActorDTO.class))),
                     @ApiResponse(responseCode = "400", description = "Invalid input"),
                     @ApiResponse(responseCode = "404", description = "Actor not found")
             })
-    ResponseEntity<ActorDTO> update(@PathVariable Long actorId, @RequestBody ActorUpdateDTO actorUpdateDTO);
+    ResponseEntity<ActorDTO> update(@PathVariable Long id, @RequestBody ActorUpdateDTO actorUpdateDTO);
 
     @Operation(summary = "Delete actor", description = "Deletes a actor by its ID.",
-            parameters = {@Parameter(name = "actorId", description = "ID of the actor to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the actor to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
                     @ApiResponse(responseCode = "204", description = "Actor deleted successfully"),
                     @ApiResponse(responseCode = "404", description = "Actor not found")
             })
-    ResponseEntity<Void> delete(@PathVariable Long actorId);
+    ResponseEntity<Void> delete(@PathVariable Long id);
 
     @Operation(summary = "Search actors", description = "Search for actors based on the given filters and pagination options.",
             parameters = {

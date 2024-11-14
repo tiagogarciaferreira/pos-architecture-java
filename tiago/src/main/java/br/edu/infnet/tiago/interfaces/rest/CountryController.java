@@ -50,28 +50,28 @@ public class CountryController implements CountryAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<CountryDTO> getById(@PathVariable Long countryId) {
-        Country country = countryService.getById(countryId);
+    public ResponseEntity<CountryDTO> getById(@PathVariable Long id) {
+        Country country = countryService.getById(id);
         CountryDTO countryDTO = countryMapper.toDTO(country);
-        log.info("Country '{}', was successfully retrieved", countryId);
+        log.info("Country '{}', was successfully retrieved", id);
         return new ResponseEntity<>(countryDTO, OK);
     }
 
     @Override
     @PutMapping("/{id}")
-    public ResponseEntity<CountryDTO> update(@PathVariable Long countryId, @RequestBody CountryUpdateDTO countryUpdateDTO) {
+    public ResponseEntity<CountryDTO> update(@PathVariable Long id, @RequestBody CountryUpdateDTO countryUpdateDTO) {
         Country country = countryMapper.fromDTO(countryUpdateDTO);
         country = countryService.update(country);
         CountryDTO countryDTO = countryMapper.toDTO(country);
-        log.info("Country '{}', was successfully updated", countryId);
+        log.info("Country '{}', was successfully updated", id);
         return new ResponseEntity<>(countryDTO, OK);
     }
 
     @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long countryId) {
-        countryService.delete(countryId);
-        log.info("Country '{}', was successfully removed", countryId);
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        countryService.delete(id);
+        log.info("Country '{}', was successfully removed", id);
         return new ResponseEntity<>(NO_CONTENT);
     }
 

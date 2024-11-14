@@ -34,25 +34,25 @@ public interface LanguageAPI {
                     @ApiResponse(responseCode = "200", description = "Language retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LanguageDTO.class))),
                     @ApiResponse(responseCode = "404", description = "Language not found")
             })
-    ResponseEntity<LanguageDTO> getById(@PathVariable Long languageId);
+    ResponseEntity<LanguageDTO> getById(@PathVariable Long id);
 
     @Operation(summary = "Update language", description = "Updates an existing language's details.",
-            parameters = {@Parameter(name = "languageId", description = "ID of the language to update", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the language to update", required = true, schema = @Schema(type = "integer", example = "1"))},
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Details of the language to be updated", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LanguageUpdateDTO.class))),
             responses = {
                     @ApiResponse(responseCode = "200", description = "Language updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LanguageDTO.class))),
                     @ApiResponse(responseCode = "400", description = "Invalid input"),
                     @ApiResponse(responseCode = "404", description = "Language not found")
             })
-    ResponseEntity<LanguageDTO> update(@PathVariable Long languageId, @RequestBody LanguageUpdateDTO languageUpdateDTO);
+    ResponseEntity<LanguageDTO> update(@PathVariable Long id, @RequestBody LanguageUpdateDTO languageUpdateDTO);
 
     @Operation(summary = "Delete language", description = "Deletes a language by its ID.",
-            parameters = {@Parameter(name = "languageId", description = "ID of the language to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the language to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
                     @ApiResponse(responseCode = "204", description = "Language deleted successfully"),
                     @ApiResponse(responseCode = "404", description = "Language not found")
             })
-    ResponseEntity<Void> delete(@PathVariable Long languageId);
+    ResponseEntity<Void> delete(@PathVariable Long id);
 
     @Operation(summary = "Search languages", description = "Search for languages based on the given filters and pagination options.",
             parameters = {

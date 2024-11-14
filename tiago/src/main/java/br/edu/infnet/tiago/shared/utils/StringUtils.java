@@ -3,6 +3,7 @@ package br.edu.infnet.tiago.shared.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static br.edu.infnet.tiago.shared.constants.GlobalConstants.EMPTY;
 import static java.util.Objects.isNull;
 
 public class StringUtils {
@@ -11,6 +12,10 @@ public class StringUtils {
 
     public static boolean isNullOrEmpty(String str) {
         return isNull(str) || str.isBlank();
+    }
+
+    public static String nullToEmpty(String str) {
+        return isNullOrEmpty(str) ? EMPTY : str.trim();
     }
 
     public static boolean containsPackage(String text) {

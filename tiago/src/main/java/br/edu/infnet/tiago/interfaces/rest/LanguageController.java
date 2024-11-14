@@ -50,28 +50,28 @@ public class LanguageController implements LanguageAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<LanguageDTO> getById(@PathVariable Long languageId) {
-        Language language = languageService.getById(languageId);
+    public ResponseEntity<LanguageDTO> getById(@PathVariable Long id) {
+        Language language = languageService.getById(id);
         LanguageDTO languageDTO = languageMapper.toDTO(language);
-        log.info("Language '{}', was successfully retrieved", languageId);
+        log.info("Language '{}', was successfully retrieved", id);
         return new ResponseEntity<>(languageDTO, OK);
     }
 
     @Override
     @PutMapping("/{id}")
-    public ResponseEntity<LanguageDTO> update(@PathVariable Long languageId, @RequestBody LanguageUpdateDTO languageUpdateDTO) {
+    public ResponseEntity<LanguageDTO> update(@PathVariable Long id, @RequestBody LanguageUpdateDTO languageUpdateDTO) {
         Language language = languageMapper.fromDTO(languageUpdateDTO);
         language = languageService.update(language);
         LanguageDTO languageDTO = languageMapper.toDTO(language);
-        log.info("Language '{}', was successfully updated", languageId);
+        log.info("Language '{}', was successfully updated", id);
         return new ResponseEntity<>(languageDTO, OK);
     }
 
     @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long languageId) {
-        languageService.delete(languageId);
-        log.info("Language '{}', was successfully removed", languageId);
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        languageService.delete(id);
+        log.info("Language '{}', was successfully removed", id);
         return new ResponseEntity<>(NO_CONTENT);
     }
 

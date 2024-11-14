@@ -45,6 +45,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         Problem problem = new ProblemBuilder()
                 .withMessage(messageProvider.getErrorMessage(ex.getMessage(), ERROR_INVALID_INPUT))
+                .withType(messageProvider.getMessage(TYPE_BAD_REQUEST))
                 .withStatus(BAD_REQUEST)
                 .withRequest(request)
                 .withBindingResult(ex.getBindingResult())
@@ -61,6 +62,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         Throwable rootCause = NestedExceptionUtils.getRootCause(ex);
         ProblemBuilder problemBuilder = new ProblemBuilder()
                 .withMessage(ex.getMessage())
+                .withType(messageProvider.getMessage(TYPE_BAD_REQUEST))
                 .withStatus(BAD_REQUEST)
                 .withRequest(request);
         List<Violation> violations = new ArrayList<>();
@@ -101,6 +103,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                                                                          WebRequest request) {
         Problem problem = new ProblemBuilder()
                 .withMessage(messageProvider.getErrorMessage(ex.getMessage(), ERROR_METHOD_NOT_ALLOWED))
+                .withType(messageProvider.getMessage(TYPE_METHOD_NOT_ALLOWED))
                 .withStatus(METHOD_NOT_ALLOWED)
                 .withRequest(request)
                 .build();
@@ -114,6 +117,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         Problem problem = new ProblemBuilder()
                 .withMessage(messageProvider.getErrorMessage(ex.getMessage(), ERROR_UNSUPPORTED_MEDIA_TYPE))
+                .withType(messageProvider.getMessage(TYPE_UNSUPPORTED_MEDIA_TYPE))
                 .withStatus(UNSUPPORTED_MEDIA_TYPE)
                 .withRequest(request)
                 .build();
@@ -125,6 +129,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<?> handleNotFoundException(NotFoundException ex, WebRequest request) {
         Problem problem = new ProblemBuilder()
                 .withMessage(messageProvider.getErrorMessage(ex.getMessage(), ERROR_RESOURCE_NOT_FOUND))
+                .withType(messageProvider.getMessage(TYPE_NOT_FOUND))
                 .withStatus(NOT_FOUND)
                 .withRequest(request)
                 .build();
@@ -136,6 +141,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<?> handleConflictException(ConflictException ex, WebRequest request) {
         Problem problem = new ProblemBuilder()
                 .withMessage(messageProvider.getErrorMessage(ex.getMessage(), ERROR_CONFLICT_DETECTED))
+                .withType(messageProvider.getMessage(TYPE_CONFLICT))
                 .withStatus(CONFLICT)
                 .withRequest(request)
                 .build();
@@ -147,6 +153,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<?> handleInternalServerErrorException(Exception ex, WebRequest request) {
         Problem problem = new ProblemBuilder()
                 .withMessage(messageProvider.getErrorMessage(ex.getMessage(), ERROR_INTERNAL_SERVER_ERROR))
+                .withType(messageProvider.getMessage(TYPE_INTERNAL_SERVER_ERROR))
                 .withStatus(INTERNAL_SERVER_ERROR)
                 .withRequest(request).build();
         log.error("InternalServerErrorException '{}'", ex.getMessage());

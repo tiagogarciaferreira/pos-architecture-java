@@ -34,25 +34,25 @@ public interface CountryAPI {
                     @ApiResponse(responseCode = "200", description = "Country retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CountryDTO.class))),
                     @ApiResponse(responseCode = "404", description = "Country not found")
             })
-    ResponseEntity<CountryDTO> getById(@PathVariable Long countryId);
+    ResponseEntity<CountryDTO> getById(@PathVariable Long id);
 
     @Operation(summary = "Update country", description = "Updates an existing country's details.",
-            parameters = {@Parameter(name = "countryId", description = "ID of the country to update", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the country to update", required = true, schema = @Schema(type = "integer", example = "1"))},
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Details of the country to be updated", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CountryUpdateDTO.class))),
             responses = {
                     @ApiResponse(responseCode = "200", description = "Country updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CountryDTO.class))),
                     @ApiResponse(responseCode = "400", description = "Invalid input"),
                     @ApiResponse(responseCode = "404", description = "Country not found")
             })
-    ResponseEntity<CountryDTO> update(@PathVariable Long countryId, @RequestBody CountryUpdateDTO countryUpdateDTO);
+    ResponseEntity<CountryDTO> update(@PathVariable Long id, @RequestBody CountryUpdateDTO countryUpdateDTO);
 
     @Operation(summary = "Delete country", description = "Deletes a country by its ID.",
-            parameters = {@Parameter(name = "countryId", description = "ID of the country to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the country to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
                     @ApiResponse(responseCode = "204", description = "Country deleted successfully"),
                     @ApiResponse(responseCode = "404", description = "Country not found")
             })
-    ResponseEntity<Void> delete(@PathVariable Long countryId);
+    ResponseEntity<Void> delete(@PathVariable Long id);
 
     @Operation(summary = "Search countries", description = "Search for countries based on the given filters and pagination options.",
             parameters = {

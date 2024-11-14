@@ -50,28 +50,28 @@ public class StudioController implements StudioAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<StudioDTO> getById(@PathVariable Long studioId) {
-        Studio studio = studioService.getById(studioId);
+    public ResponseEntity<StudioDTO> getById(@PathVariable Long id) {
+        Studio studio = studioService.getById(id);
         StudioDTO studioDTO = studioMapper.toDTO(studio);
-        log.info("Studio '{}', was successfully retrieved", studioId);
+        log.info("Studio '{}', was successfully retrieved", id);
         return new ResponseEntity<>(studioDTO, OK);
     }
 
     @Override
     @PutMapping("/{id}")
-    public ResponseEntity<StudioDTO> update(@PathVariable Long studioId, @RequestBody StudioUpdateDTO studioUpdateDTO) {
+    public ResponseEntity<StudioDTO> update(@PathVariable Long id, @RequestBody StudioUpdateDTO studioUpdateDTO) {
         Studio studio = studioMapper.fromDTO(studioUpdateDTO);
         studio = studioService.update(studio);
         StudioDTO studioDTO = studioMapper.toDTO(studio);
-        log.info("Studio '{}', was successfully updated", studioId);
+        log.info("Studio '{}', was successfully updated", id);
         return new ResponseEntity<>(studioDTO, OK);
     }
 
     @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long studioId) {
-        studioService.delete(studioId);
-        log.info("Studio '{}', was successfully removed", studioId);
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        studioService.delete(id);
+        log.info("Studio '{}', was successfully removed", id);
         return new ResponseEntity<>(NO_CONTENT);
     }
 

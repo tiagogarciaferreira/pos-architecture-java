@@ -51,28 +51,28 @@ public class DirectorController implements DirectorAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<DirectorDTO> getById(@PathVariable Long directorId) {
-        Director director = directorService.getById(directorId);
+    public ResponseEntity<DirectorDTO> getById(@PathVariable Long id) {
+        Director director = directorService.getById(id);
         DirectorDTO directorDTO = directorMapper.toDTO(director);
-        log.info("Director '{}', was successfully retrieved", directorId);
+        log.info("Director '{}', was successfully retrieved", id);
         return new ResponseEntity<>(directorDTO, OK);
     }
 
     @Override
     @PutMapping("/{id}")
-    public ResponseEntity<DirectorDTO> update(@PathVariable Long directorId, @RequestBody DirectorUpdateDTO directorUpdateDTO) {
+    public ResponseEntity<DirectorDTO> update(@PathVariable Long id, @RequestBody DirectorUpdateDTO directorUpdateDTO) {
         Director director = directorMapper.fromDTO(directorUpdateDTO);
         director = directorService.update(director);
         DirectorDTO directorDTO = directorMapper.toDTO(director);
-        log.info("Director '{}', was successfully updated", directorId);
+        log.info("Director '{}', was successfully updated", id);
         return new ResponseEntity<>(directorDTO, OK);
     }
 
     @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long directorId) {
-        directorService.delete(directorId);
-        log.info("Director '{}', was successfully removed", directorId);
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        directorService.delete(id);
+        log.info("Director '{}', was successfully removed", id);
         return new ResponseEntity<>(NO_CONTENT);
     }
 

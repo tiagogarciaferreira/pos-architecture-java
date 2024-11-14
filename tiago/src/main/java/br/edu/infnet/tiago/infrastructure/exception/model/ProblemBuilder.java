@@ -13,6 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.ArrayList;
 import java.util.List;
 
+import static br.edu.infnet.tiago.shared.utils.StringUtils.nullToEmpty;
 import static java.util.Objects.isNull;
 
 @With
@@ -21,6 +22,8 @@ import static java.util.Objects.isNull;
 public class ProblemBuilder {
 
     private String message;
+
+    private String type;
 
     private HttpStatus status;
 
@@ -31,7 +34,8 @@ public class ProblemBuilder {
     public Problem build() {
         return new Problem()
                 .withTitle(status.getReasonPhrase())
-                .withDetail(message)
+                .withDetail(nullToEmpty(message))
+                .withType(nullToEmpty(type))
                 .withStatus(status.value())
                 .withInstance(((ServletWebRequest) request).getRequest().getRequestURI())
                 .withViolations(buildViolations(bindingResult));

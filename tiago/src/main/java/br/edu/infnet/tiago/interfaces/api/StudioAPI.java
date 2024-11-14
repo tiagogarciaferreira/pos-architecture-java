@@ -34,25 +34,25 @@ public interface StudioAPI {
                     @ApiResponse(responseCode = "200", description = "Studio retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudioDTO.class))),
                     @ApiResponse(responseCode = "404", description = "Studio not found")
             })
-    ResponseEntity<StudioDTO> getById(@PathVariable Long studioId);
+    ResponseEntity<StudioDTO> getById(@PathVariable Long id);
 
     @Operation(summary = "Update studio", description = "Updates an existing studio's details.",
-            parameters = {@Parameter(name = "studioId", description = "ID of the studio to update", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the studio to update", required = true, schema = @Schema(type = "integer", example = "1"))},
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Details of the studio to be updated", content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudioUpdateDTO.class))),
             responses = {
                     @ApiResponse(responseCode = "200", description = "Studio updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudioDTO.class))),
                     @ApiResponse(responseCode = "400", description = "Invalid input"),
                     @ApiResponse(responseCode = "404", description = "Studio not found")
             })
-    ResponseEntity<StudioDTO> update(@PathVariable Long studioId, @RequestBody StudioUpdateDTO studioUpdateDTO);
+    ResponseEntity<StudioDTO> update(@PathVariable Long id, @RequestBody StudioUpdateDTO studioUpdateDTO);
 
     @Operation(summary = "Delete studio", description = "Deletes a studio by its ID.",
-            parameters = {@Parameter(name = "studioId", description = "ID of the studio to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the studio to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
                     @ApiResponse(responseCode = "204", description = "Studio deleted successfully"),
                     @ApiResponse(responseCode = "404", description = "Studio not found")
             })
-    ResponseEntity<Void> delete(@PathVariable Long studioId);
+    ResponseEntity<Void> delete(@PathVariable Long id);
 
     @Operation(summary = "Search studios", description = "Search for studios based on the given filters and pagination options.",
             parameters = {

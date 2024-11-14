@@ -50,28 +50,28 @@ public class GenreController implements GenreAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<GenreDTO> getById(@PathVariable Long genreId) {
-        Genre genre = genreService.getById(genreId);
+    public ResponseEntity<GenreDTO> getById(@PathVariable Long id) {
+        Genre genre = genreService.getById(id);
         GenreDTO genreDTO = genreMapper.toDTO(genre);
-        log.info("Genre '{}', was successfully retrieved", genreId);
+        log.info("Genre '{}', was successfully retrieved", id);
         return new ResponseEntity<>(genreDTO, OK);
     }
 
     @Override
     @PutMapping("/{id}")
-    public ResponseEntity<GenreDTO> update(@PathVariable Long genreId, @RequestBody GenreUpdateDTO genreUpdateDTO) {
+    public ResponseEntity<GenreDTO> update(@PathVariable Long id, @RequestBody GenreUpdateDTO genreUpdateDTO) {
         Genre genre = genreMapper.fromDTO(genreUpdateDTO);
         genre = genreService.update(genre);
         GenreDTO genreDTO = genreMapper.toDTO(genre);
-        log.info("Genre '{}', was successfully updated", genreId);
+        log.info("Genre '{}', was successfully updated", id);
         return new ResponseEntity<>(genreDTO, OK);
     }
 
     @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long genreId) {
-        genreService.delete(genreId);
-        log.info("Genre '{}', was successfully removed", genreId);
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        genreService.delete(id);
+        log.info("Genre '{}', was successfully removed", id);
         return new ResponseEntity<>(NO_CONTENT);
     }
 

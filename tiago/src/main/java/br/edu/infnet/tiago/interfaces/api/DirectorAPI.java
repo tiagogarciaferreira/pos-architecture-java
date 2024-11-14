@@ -34,25 +34,25 @@ public interface DirectorAPI {
                     @ApiResponse(responseCode = "200", description = "Director retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = DirectorDTO.class))),
                     @ApiResponse(responseCode = "404", description = "Director not found")
             })
-    ResponseEntity<DirectorDTO> getById(@PathVariable Long directorId);
+    ResponseEntity<DirectorDTO> getById(@PathVariable Long id);
 
     @Operation(summary = "Update director", description = "Updates an existing director's details.",
-            parameters = {@Parameter(name = "directorId", description = "ID of the director to update", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the director to update", required = true, schema = @Schema(type = "integer", example = "1"))},
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Details of the director to be updated", content = @Content(mediaType = "application/json", schema = @Schema(implementation = DirectorUpdateDTO.class))),
             responses = {
                     @ApiResponse(responseCode = "200", description = "Director updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = DirectorDTO.class))),
                     @ApiResponse(responseCode = "400", description = "Invalid input"),
                     @ApiResponse(responseCode = "404", description = "Director not found")
             })
-    ResponseEntity<DirectorDTO> update(@PathVariable Long directorId, @RequestBody DirectorUpdateDTO directorUpdateDTO);
+    ResponseEntity<DirectorDTO> update(@PathVariable Long id, @RequestBody DirectorUpdateDTO directorUpdateDTO);
 
     @Operation(summary = "Delete director", description = "Deletes a director by its ID.",
-            parameters = {@Parameter(name = "directorId", description = "ID of the director to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the director to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
                     @ApiResponse(responseCode = "204", description = "Director deleted successfully"),
                     @ApiResponse(responseCode = "404", description = "Director not found")
             })
-    ResponseEntity<Void> delete(@PathVariable Long directorId);
+    ResponseEntity<Void> delete(@PathVariable Long id);
 
     @Operation(summary = "Search directors", description = "Search for directors based on the given filters and pagination options.",
             parameters = {

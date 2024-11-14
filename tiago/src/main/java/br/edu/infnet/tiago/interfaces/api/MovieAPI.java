@@ -34,25 +34,25 @@ public interface MovieAPI {
                     @ApiResponse(responseCode = "200", description = "Movie retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieDTO.class))),
                     @ApiResponse(responseCode = "404", description = "Movie not found")
             })
-    ResponseEntity<MovieDTO> getById(@PathVariable Long movieId);
+    ResponseEntity<MovieDTO> getById(@PathVariable Long id);
 
     @Operation(summary = "Update movie", description = "Updates an existing movie's details.",
-            parameters = {@Parameter(name = "movieId", description = "ID of the movie to update", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the movie to update", required = true, schema = @Schema(type = "integer", example = "1"))},
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Details of the movie to be updated", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieUpdateDTO.class))),
             responses = {
                     @ApiResponse(responseCode = "200", description = "Movie updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieDTO.class))),
                     @ApiResponse(responseCode = "400", description = "Invalid input"),
                     @ApiResponse(responseCode = "404", description = "Movie not found")
             })
-    ResponseEntity<MovieDTO> update(@PathVariable Long movieId, @RequestBody MovieUpdateDTO movieUpdateDTO);
+    ResponseEntity<MovieDTO> update(@PathVariable Long id, @RequestBody MovieUpdateDTO movieUpdateDTO);
 
     @Operation(summary = "Delete movie", description = "Deletes a movie by its ID.",
-            parameters = {@Parameter(name = "movieId", description = "ID of the movie to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the movie to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
                     @ApiResponse(responseCode = "204", description = "Movie deleted successfully"),
                     @ApiResponse(responseCode = "404", description = "Movie not found")
             })
-    ResponseEntity<Void> delete(@PathVariable Long movieId);
+    ResponseEntity<Void> delete(@PathVariable Long id);
 
     @Operation(summary = "Search movies", description = "Search for movies based on the given filters and pagination options.",
             parameters = {

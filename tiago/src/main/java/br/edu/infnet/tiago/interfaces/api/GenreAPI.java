@@ -37,22 +37,22 @@ public interface GenreAPI {
     ResponseEntity<GenreDTO> getById(@PathVariable("id") Long genreId);
 
     @Operation(summary = "Update genre", description = "Updates an existing genre's details.",
-            parameters = {@Parameter(name = "genreId", description = "ID of the genre to update", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the genre to update", required = true, schema = @Schema(type = "integer", example = "1"))},
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Details of the genre to be updated", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GenreUpdateDTO.class))),
             responses = {
                     @ApiResponse(responseCode = "200", description = "Genre updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GenreDTO.class))),
                     @ApiResponse(responseCode = "400", description = "Invalid input"),
                     @ApiResponse(responseCode = "404", description = "Genre not found")
             })
-    ResponseEntity<GenreDTO> update(@PathVariable Long genreId, @RequestBody GenreUpdateDTO genreUpdateDTO);
+    ResponseEntity<GenreDTO> update(@PathVariable Long id, @RequestBody GenreUpdateDTO genreUpdateDTO);
 
     @Operation(summary = "Delete genre", description = "Deletes a genre by its ID.",
-            parameters = {@Parameter(name = "genreId", description = "ID of the genre to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
+            parameters = {@Parameter(name = "id", description = "ID of the genre to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
                     @ApiResponse(responseCode = "204", description = "Genre deleted successfully"),
                     @ApiResponse(responseCode = "404", description = "Genre not found")
             })
-    ResponseEntity<Void> delete(@PathVariable Long genreId);
+    ResponseEntity<Void> delete(@PathVariable Long id);
 
     @Operation(summary = "Search genres", description = "Search for genres based on the given filters and pagination options.",
             parameters = {

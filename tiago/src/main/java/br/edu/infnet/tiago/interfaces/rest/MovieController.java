@@ -50,28 +50,28 @@ public class MovieController implements MovieAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<MovieDTO> getById(@PathVariable Long movieId) {
-        Movie movie = movieService.getById(movieId);
+    public ResponseEntity<MovieDTO> getById(@PathVariable Long id) {
+        Movie movie = movieService.getById(id);
         MovieDTO movieDTO = movieMapper.toDTO(movie);
-        log.info("Movie '{}', was successfully retrieved", movieId);
+        log.info("Movie '{}', was successfully retrieved", id);
         return new ResponseEntity<>(movieDTO, OK);
     }
 
     @Override
     @PutMapping("/{id}")
-    public ResponseEntity<MovieDTO> update(@PathVariable Long movieId, @RequestBody MovieUpdateDTO movieUpdateDTO) {
+    public ResponseEntity<MovieDTO> update(@PathVariable Long id, @RequestBody MovieUpdateDTO movieUpdateDTO) {
         Movie movie = movieMapper.fromDTO(movieUpdateDTO);
         movie = movieService.update(movie);
         MovieDTO movieDTO = movieMapper.toDTO(movie);
-        log.info("Movie '{}', was successfully updated", movieId);
+        log.info("Movie '{}', was successfully updated", id);
         return new ResponseEntity<>(movieDTO, OK);
     }
 
     @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long movieId) {
-        movieService.delete(movieId);
-        log.info("Movie '{}', was successfully removed", movieId);
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        movieService.delete(id);
+        log.info("Movie '{}', was successfully removed", id);
         return new ResponseEntity<>(NO_CONTENT);
     }
 
