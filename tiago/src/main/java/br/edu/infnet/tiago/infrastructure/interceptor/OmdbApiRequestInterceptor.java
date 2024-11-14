@@ -1,6 +1,6 @@
 package br.edu.infnet.tiago.infrastructure.interceptor;
 
-import br.edu.infnet.tiago.infrastructure.config.PropertyReader;
+import br.edu.infnet.tiago.shared.config.PropertyProvider;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import lombok.RequiredArgsConstructor;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class OmdbApiRequestInterceptor implements RequestInterceptor {
 
-    private final PropertyReader propertyReader;
+    private final PropertyProvider propertyProvider;
 
     @Override
     public void apply(RequestTemplate requestTemplate) {
-        requestTemplate.query("apikey", propertyReader.getOmdbApiKey());
+        requestTemplate.query("apikey", propertyProvider.getOmdbApiKey());
     }
 }

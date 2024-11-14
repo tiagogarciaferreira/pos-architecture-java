@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "a0d09357-2604-418c-99b3-eea941eb1c5b",
+		"name": "Actors",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17830552"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Name\",\r\n  \"dateOfBirth\": \"2024-11-13\",\r\n  \"countryId\": 1,\r\n  \"roles\": [\r\n    \"role\"\r\n  ],\r\n  \"awards\": [\r\n    \"award\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/v1/actors",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"v1",
+						"actors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Name\",\r\n  \"dateOfBirth\": \"2024-11-13\",\r\n  \"countryId\": 1,\r\n  \"roles\": [\r\n    \"role\"\r\n  ],\r\n  \"awards\": [\r\n    \"award\"\r\n  ],\r\n  \"version\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/v1/actors/12345",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"v1",
+						"actors",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/v1/actors/12345",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"v1",
+						"actors",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/v1/actors/12345",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"v1",
+						"actors",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/v1/actors?ids=&countryIds&name=&dateOfBirthFrom&dateOfBirthTo&page=0&size=10&sort=name,asc",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"v1",
+						"actors"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "",
+							"description": "List of country IDs -> Contains"
+						},
+						{
+							"key": "countryIds",
+							"value": null,
+							"description": "List of country IDs where the actor is from -> Contains"
+						},
+						{
+							"key": "name",
+							"value": "",
+							"description": "Name of the country -> Start with"
+						},
+						{
+							"key": "dateOfBirthFrom",
+							"value": null,
+							"description": "Actor's date of birth from (inclusive) -> GreaterThanOrEqual"
+						},
+						{
+							"key": "dateOfBirthTo",
+							"value": null,
+							"description": "Actor's date of birth to (inclusive) -> LessThanOrEqual"
+						},
+						{
+							"key": "page",
+							"value": "0",
+							"description": "Page number"
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"description": "Page size"
+						},
+						{
+							"key": "sort",
+							"value": "name,asc",
+							"description": "Ordering"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

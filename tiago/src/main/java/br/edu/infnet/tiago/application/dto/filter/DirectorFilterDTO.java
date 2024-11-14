@@ -16,6 +16,7 @@ public class DirectorFilterDTO {
     @Size(max = 100, message = "Director IDs must contain no more than 100 elements")
     private List<Long> ids;
 
+    @Size(max = 100, message = "Name must be at most 100 characters")
     private String name;
 
     @Size(max = 100, message = "Country IDs must contain no more than 100 elements")

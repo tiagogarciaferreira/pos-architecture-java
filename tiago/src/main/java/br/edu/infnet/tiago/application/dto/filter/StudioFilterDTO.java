@@ -15,5 +15,6 @@ public class StudioFilterDTO {
     @Size(max = 100, message = "Studio IDs must contain no more than 100 elements")
     private List<Long> ids;
 
+    @Size(max = 50, message = "Name must be at most 50 characters")
     private String name;
 }

@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "10733ec0-43a6-4a82-be07-91b5b9d8a593",
+		"name": "Studios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17830552"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Name\",\r\n  \"countryId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/v1/studios/12345",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"v1",
+						"studios",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Name\",\r\n  \"countryId\": 1,\r\n  \"version\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/v1/studios/12345",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"v1",
+						"studios",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/v1/studios/12345",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"v1",
+						"studios",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/v1/studios/12345",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"v1",
+						"studios",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/v1/studios?ids=1,2&name=&page=0&size=10&sort=name,asc",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"v1",
+						"studios"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "1,2",
+							"description": "List of studio IDs -> Contains"
+						},
+						{
+							"key": "name",
+							"value": "",
+							"description": "Name of the studio -> Start with"
+						},
+						{
+							"key": "page",
+							"value": "0",
+							"description": "Page number"
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"description": "Page size"
+						},
+						{
+							"key": "sort",
+							"value": "name,asc",
+							"description": "Ordering"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

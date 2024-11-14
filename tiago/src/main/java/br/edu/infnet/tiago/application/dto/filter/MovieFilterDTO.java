@@ -1,5 +1,7 @@
 package br.edu.infnet.tiago.application.dto.filter;
 
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +18,7 @@ public class MovieFilterDTO {
     @Size(max = 100, message = "Movie IDs must contain no more than 100 elements")
     private List<Long> ids;
 
+    @Size(max = 100, message = "Title must be at most 100 characters")
     private String title;
 
     @Size(max = 100, message = "Imdb IDs must contain no more than 100 elements")
@@ -25,17 +28,23 @@ public class MovieFilterDTO {
 
     private LocalDate releaseDateTo;
 
-    private int durationMinutesFrom;
+    @Min(value = 1, message = "Duration minutes must be at least 1 if provided")
+    private Integer durationMinutesFrom;
 
-    private int durationMinutesTo;
+    @Min(value = 1, message = "Duration minutes must be at least 1 if provided")
+    private Integer durationMinutesTo;
 
-    private float budgetDollarsFrom;
+    @DecimalMin(value = "1", message = "Budget dollars must be at least 1 if provided")
+    private Float budgetDollarsFrom;
 
-    private float budgetDollarsTo;
+    @DecimalMin(value = "1", message = "Budget dollars must be at least 1 if provided")
+    private Float budgetDollarsTo;
 
-    private double boxOfficeDollarsFrom;
+    @DecimalMin(value = "1", message = "Box office dollars must be at least 1 if provided")
+    private Double boxOfficeDollarsFrom;
 
-    private double boxOfficeDollarsTo;
+    @DecimalMin(value = "1", message = "Box office dollars must be at least 1 if provided")
+    private Double boxOfficeDollarsTo;
 
     @Size(max = 100, message = "Actor IDs must contain no more than 100 elements")
     private List<Long> actorIds;

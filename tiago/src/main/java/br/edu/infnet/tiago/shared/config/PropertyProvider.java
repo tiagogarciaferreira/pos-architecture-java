@@ -1,4 +1,4 @@
-package br.edu.infnet.tiago.infrastructure.config;
+package br.edu.infnet.tiago.shared.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class PropertyReader {
+public class PropertyProvider {
 
     private final Environment environment;
 
     public String getOmdbApiKey() {
-        return environment.getProperty("omdb.api.key", "9da844b2");
+        return environment.getProperty("omdb.api.key", "");
     }
 }

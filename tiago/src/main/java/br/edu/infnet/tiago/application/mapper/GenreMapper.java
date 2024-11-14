@@ -15,7 +15,7 @@ import static br.edu.infnet.tiago.shared.utils.ListUtils.defaultIfNull;
 @RequiredArgsConstructor
 public class GenreMapper {
 
-    private MapperFactory mapperFactory;
+    private final MapperFactory mapperFactory;
 
     public GenreDTO toDTO(Genre genre) {
         return mapperFactory.mapToNewInstance(genre, GenreDTO.class);
