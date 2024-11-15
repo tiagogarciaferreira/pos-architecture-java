@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.interfaces.rest;
 
 import br.edu.infnet.tiago.application.dto.GenreCreateDTO;
 import br.edu.infnet.tiago.application.dto.GenreDTO;
+import br.edu.infnet.tiago.application.dto.GenreFullDTO;
 import br.edu.infnet.tiago.application.dto.GenreUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.GenreFilterDTO;
 import br.edu.infnet.tiago.application.mapper.GenreMapper;
@@ -50,11 +51,11 @@ public class GenreController implements GenreAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<GenreDTO> getById(@PathVariable Long id) {
+    public ResponseEntity<GenreFullDTO> getById(@PathVariable Long id) {
         Genre genre = genreService.getById(id);
-        GenreDTO genreDTO = genreMapper.toDTO(genre);
+        GenreFullDTO genreFullDTO = genreMapper.toFullDTO(genre);
         log.info("Genre '{}', was successfully retrieved", id);
-        return new ResponseEntity<>(genreDTO, OK);
+        return new ResponseEntity<>(genreFullDTO, OK);
     }
 
     @Override

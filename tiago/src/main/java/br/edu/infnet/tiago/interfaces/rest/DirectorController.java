@@ -3,6 +3,7 @@ package br.edu.infnet.tiago.interfaces.rest;
 
 import br.edu.infnet.tiago.application.dto.DirectorCreateDTO;
 import br.edu.infnet.tiago.application.dto.DirectorDTO;
+import br.edu.infnet.tiago.application.dto.DirectorFullDTO;
 import br.edu.infnet.tiago.application.dto.DirectorUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.DirectorFilterDTO;
 import br.edu.infnet.tiago.application.mapper.DirectorMapper;
@@ -51,11 +52,11 @@ public class DirectorController implements DirectorAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<DirectorDTO> getById(@PathVariable Long id) {
+    public ResponseEntity<DirectorFullDTO> getById(@PathVariable Long id) {
         Director director = directorService.getById(id);
-        DirectorDTO directorDTO = directorMapper.toDTO(director);
+        DirectorFullDTO directorFullDTO = directorMapper.toFullDTO(director);
         log.info("Director '{}', was successfully retrieved", id);
-        return new ResponseEntity<>(directorDTO, OK);
+        return new ResponseEntity<>(directorFullDTO, OK);
     }
 
     @Override

@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.interfaces.rest;
 
 import br.edu.infnet.tiago.application.dto.LanguageCreateDTO;
 import br.edu.infnet.tiago.application.dto.LanguageDTO;
+import br.edu.infnet.tiago.application.dto.LanguageFullDTO;
 import br.edu.infnet.tiago.application.dto.LanguageUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.LanguageFilterDTO;
 import br.edu.infnet.tiago.application.mapper.LanguageMapper;
@@ -50,11 +51,11 @@ public class LanguageController implements LanguageAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<LanguageDTO> getById(@PathVariable Long id) {
+    public ResponseEntity<LanguageFullDTO> getById(@PathVariable Long id) {
         Language language = languageService.getById(id);
-        LanguageDTO languageDTO = languageMapper.toDTO(language);
+        LanguageFullDTO languageFullDTO = languageMapper.toFullDTO(language);
         log.info("Language '{}', was successfully retrieved", id);
-        return new ResponseEntity<>(languageDTO, OK);
+        return new ResponseEntity<>(languageFullDTO, OK);
     }
 
     @Override

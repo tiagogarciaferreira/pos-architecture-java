@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.interfaces.rest;
 
 import br.edu.infnet.tiago.application.dto.CountryCreateDTO;
 import br.edu.infnet.tiago.application.dto.CountryDTO;
+import br.edu.infnet.tiago.application.dto.CountryFullDTO;
 import br.edu.infnet.tiago.application.dto.CountryUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.CountryFilterDTO;
 import br.edu.infnet.tiago.application.mapper.CountryMapper;
@@ -50,11 +51,11 @@ public class CountryController implements CountryAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<CountryDTO> getById(@PathVariable Long id) {
+    public ResponseEntity<CountryFullDTO> getById(@PathVariable Long id) {
         Country country = countryService.getById(id);
-        CountryDTO countryDTO = countryMapper.toDTO(country);
+        CountryFullDTO countryFullDTO = countryMapper.toFullDTO(country);
         log.info("Country '{}', was successfully retrieved", id);
-        return new ResponseEntity<>(countryDTO, OK);
+        return new ResponseEntity<>(countryFullDTO, OK);
     }
 
     @Override

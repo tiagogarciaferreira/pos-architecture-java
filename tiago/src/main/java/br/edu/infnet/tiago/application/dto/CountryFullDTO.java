@@ -1,24 +1,23 @@
 package br.edu.infnet.tiago.application.dto;
 
-import br.edu.infnet.tiago.domain.model.Country;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ActorDTO {
+public class CountryFullDTO {
 
     private Long id;
 
     private String name;
 
-    private LocalDate dateOfBirth;
+    private String code;
 
-    private int age;
+    private OffsetDateTime created;
 
-    private Country country;
+    private OffsetDateTime modified;
 }

@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.interfaces.api;
 
 import br.edu.infnet.tiago.application.dto.MovieCreateDTO;
 import br.edu.infnet.tiago.application.dto.MovieDTO;
+import br.edu.infnet.tiago.application.dto.MovieFullDTO;
 import br.edu.infnet.tiago.application.dto.MovieUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.MovieFilterDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,10 +32,10 @@ public interface MovieAPI {
     @Operation(summary = "Get movie by ID", description = "Fetches a movie by its ID.",
             parameters = {@Parameter(name = "id", description = "ID of the movie", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Movie retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieDTO.class))),
+                    @ApiResponse(responseCode = "200", description = "Movie retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieFullDTO.class))),
                     @ApiResponse(responseCode = "404", description = "Movie not found")
             })
-    ResponseEntity<MovieDTO> getById(@PathVariable Long id);
+    ResponseEntity<MovieFullDTO> getById(@PathVariable Long id);
 
     @Operation(summary = "Update movie", description = "Updates an existing movie's details.",
             parameters = {@Parameter(name = "id", description = "ID of the movie to update", required = true, schema = @Schema(type = "integer", example = "1"))},

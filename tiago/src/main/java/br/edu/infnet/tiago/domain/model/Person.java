@@ -15,7 +15,6 @@ import static java.time.temporal.ChronoUnit.YEARS;
 
 @Data
 @MappedSuperclass
-//@Inheritance(strategy = JOINED)
 public abstract class Person {
 
     @Id

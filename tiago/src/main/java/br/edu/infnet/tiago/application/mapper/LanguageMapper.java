@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.application.mapper;
 
 import br.edu.infnet.tiago.application.dto.LanguageCreateDTO;
 import br.edu.infnet.tiago.application.dto.LanguageDTO;
+import br.edu.infnet.tiago.application.dto.LanguageFullDTO;
 import br.edu.infnet.tiago.application.dto.LanguageUpdateDTO;
 import br.edu.infnet.tiago.domain.model.Language;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,10 @@ public class LanguageMapper {
 
     public LanguageDTO toDTO(Language language) {
         return mapperFactory.mapToNewInstance(language, LanguageDTO.class);
+    }
+
+    public LanguageFullDTO toFullDTO(Language language) {
+        return mapperFactory.mapToNewInstance(language, LanguageFullDTO.class);
     }
 
     public List<LanguageDTO> toDTO(List<Language> languages) {

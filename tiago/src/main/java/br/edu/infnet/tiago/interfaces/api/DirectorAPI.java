@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.interfaces.api;
 
 import br.edu.infnet.tiago.application.dto.DirectorCreateDTO;
 import br.edu.infnet.tiago.application.dto.DirectorDTO;
+import br.edu.infnet.tiago.application.dto.DirectorFullDTO;
 import br.edu.infnet.tiago.application.dto.DirectorUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.DirectorFilterDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,10 +32,10 @@ public interface DirectorAPI {
     @Operation(summary = "Get director by ID", description = "Fetches a director by its ID.",
             parameters = {@Parameter(name = "id", description = "ID of the director", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Director retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = DirectorDTO.class))),
+                    @ApiResponse(responseCode = "200", description = "Director retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = DirectorFullDTO.class))),
                     @ApiResponse(responseCode = "404", description = "Director not found")
             })
-    ResponseEntity<DirectorDTO> getById(@PathVariable Long id);
+    ResponseEntity<DirectorFullDTO> getById(@PathVariable Long id);
 
     @Operation(summary = "Update director", description = "Updates an existing director's details.",
             parameters = {@Parameter(name = "id", description = "ID of the director to update", required = true, schema = @Schema(type = "integer", example = "1"))},

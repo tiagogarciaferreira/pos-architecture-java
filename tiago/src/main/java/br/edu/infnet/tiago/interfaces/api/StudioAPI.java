@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.interfaces.api;
 
 import br.edu.infnet.tiago.application.dto.StudioCreateDTO;
 import br.edu.infnet.tiago.application.dto.StudioDTO;
+import br.edu.infnet.tiago.application.dto.StudioFullDTO;
 import br.edu.infnet.tiago.application.dto.StudioUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.StudioFilterDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,10 +32,10 @@ public interface StudioAPI {
     @Operation(summary = "Get studio by ID", description = "Fetches a studio by its ID.",
             parameters = {@Parameter(name = "id", description = "ID of the studio", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Studio retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudioDTO.class))),
+                    @ApiResponse(responseCode = "200", description = "Studio retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudioFullDTO.class))),
                     @ApiResponse(responseCode = "404", description = "Studio not found")
             })
-    ResponseEntity<StudioDTO> getById(@PathVariable Long id);
+    ResponseEntity<StudioFullDTO> getById(@PathVariable Long id);
 
     @Operation(summary = "Update studio", description = "Updates an existing studio's details.",
             parameters = {@Parameter(name = "id", description = "ID of the studio to update", required = true, schema = @Schema(type = "integer", example = "1"))},

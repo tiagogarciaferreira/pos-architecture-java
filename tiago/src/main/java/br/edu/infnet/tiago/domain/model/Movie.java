@@ -35,6 +35,8 @@ public class Movie {
     @Size(min = 5, max = 100, message = "Title must be between 5 and 100 characters")
     private String title;
 
+    private String poster;
+
     @NotNull(message = "Release date is required")
     private LocalDate releaseDate;
 

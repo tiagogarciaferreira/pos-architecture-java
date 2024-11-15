@@ -51,7 +51,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .withBindingResult(ex.getBindingResult())
                 .build();
 
-        log.error("MethodArgumentNotValidException '{}'", ex.getMessage());
+        log.error("MethodArgumentNotValidException - {}", ex.getMessage());
         return handleExceptionInternal(ex, problem, headers, BAD_REQUEST, request);
     }
 
@@ -77,11 +77,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             problemBuilder = problemBuilder.withMessage(exception.getMessage());
         }
 
-
         Problem problem = problemBuilder.build().withViolations(violations);
         problem.setDetail(messageProvider.getErrorMessage(problem.getDetail(), ERROR_MALFORMED_REQUEST));
 
-        log.error("HttpMessageNotReadableException '{}'", ex.getMessage());
+        log.error("HttpMessageNotReadableException - {}", ex.getMessage());
         return handleExceptionInternal(ex, problem, headers, BAD_REQUEST, request);
     }
 
@@ -93,7 +92,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .withStatus(NOT_FOUND)
                 .withRequest(request)
                 .build();
-        log.error("NoHandlerFoundException '{}'", ex.getMessage());
+        log.error("NoHandlerFoundException - {}", ex.getMessage());
         return handleExceptionInternal(ex, problem, headers, NOT_FOUND, request);
     }
 
@@ -107,7 +106,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .withStatus(METHOD_NOT_ALLOWED)
                 .withRequest(request)
                 .build();
-        log.error("HttpRequestMethodNotSupportedException '{}'", ex.getMessage());
+        log.error("HttpRequestMethodNotSupportedException - {}", ex.getMessage());
         return handleExceptionInternal(ex, problem, headers, METHOD_NOT_ALLOWED, request);
     }
 
@@ -121,7 +120,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .withStatus(UNSUPPORTED_MEDIA_TYPE)
                 .withRequest(request)
                 .build();
-        log.error("HttpMediaTypeNotSupportedException '{}'", ex.getMessage());
+        log.error("HttpMediaTypeNotSupportedException - {}", ex.getMessage());
         return handleExceptionInternal(ex, problem, headers, UNSUPPORTED_MEDIA_TYPE, request);
     }
 
@@ -133,7 +132,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .withStatus(NOT_FOUND)
                 .withRequest(request)
                 .build();
-        log.error("NotFoundException '{}'", ex.getMessage());
+        log.error("NotFoundException - {}", ex.getMessage());
         return handleExceptionInternal(ex, problem, new HttpHeaders(), NOT_FOUND, request);
     }
 
@@ -145,7 +144,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .withStatus(CONFLICT)
                 .withRequest(request)
                 .build();
-        log.error("ConflictException '{}'", ex.getMessage());
+        log.error("ConflictException - {}", ex.getMessage());
         return handleExceptionInternal(ex, problem, new HttpHeaders(), CONFLICT, request);
     }
 
@@ -156,7 +155,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .withType(messageProvider.getMessage(TYPE_INTERNAL_SERVER_ERROR))
                 .withStatus(INTERNAL_SERVER_ERROR)
                 .withRequest(request).build();
-        log.error("InternalServerErrorException '{}'", ex.getMessage());
+        log.error("InternalServerErrorException - {}", ex.getMessage());
         return handleExceptionInternal(ex, problem, new HttpHeaders(), INTERNAL_SERVER_ERROR, request);
     }
 }

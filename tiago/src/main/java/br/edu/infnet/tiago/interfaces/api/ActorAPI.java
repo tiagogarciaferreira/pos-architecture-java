@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.interfaces.api;
 
 import br.edu.infnet.tiago.application.dto.ActorCreateDTO;
 import br.edu.infnet.tiago.application.dto.ActorDTO;
+import br.edu.infnet.tiago.application.dto.ActorFullDTO;
 import br.edu.infnet.tiago.application.dto.ActorUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.ActorFilterDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,10 +32,10 @@ public interface ActorAPI {
     @Operation(summary = "Get actor by ID", description = "Fetches a actor by its ID.",
             parameters = {@Parameter(name = "id", description = "ID of the actor", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Actor retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ActorDTO.class))),
+                    @ApiResponse(responseCode = "200", description = "Actor retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ActorFullDTO.class))),
                     @ApiResponse(responseCode = "404", description = "Actor not found")
             })
-    ResponseEntity<ActorDTO> getById(@PathVariable Long id);
+    ResponseEntity<ActorFullDTO> getById(@PathVariable Long id);
 
     @Operation(summary = "Update actor", description = "Updates an existing actor's details.",
             parameters = {@Parameter(name = "id", description = "ID of the actor to update", required = true, schema = @Schema(type = "integer", example = "1"))},

@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.interfaces.rest;
 
 import br.edu.infnet.tiago.application.dto.ActorCreateDTO;
 import br.edu.infnet.tiago.application.dto.ActorDTO;
+import br.edu.infnet.tiago.application.dto.ActorFullDTO;
 import br.edu.infnet.tiago.application.dto.ActorUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.ActorFilterDTO;
 import br.edu.infnet.tiago.application.mapper.ActorMapper;
@@ -49,11 +50,11 @@ public class ActorController implements ActorAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<ActorDTO> getById(@PathVariable Long id) {
+    public ResponseEntity<ActorFullDTO> getById(@PathVariable Long id) {
         Actor actor = actorService.getById(id);
-        ActorDTO actorDTO = actorMapper.toDTO(actor);
+        ActorFullDTO actorFullDTO = actorMapper.toFullDTO(actor);
         log.info("Actor '{}', was successfully retrieved", id);
-        return new ResponseEntity<>(actorDTO, OK);
+        return new ResponseEntity<>(actorFullDTO, OK);
     }
 
     @Override

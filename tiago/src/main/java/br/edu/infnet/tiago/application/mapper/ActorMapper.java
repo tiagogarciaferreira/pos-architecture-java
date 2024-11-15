@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.application.mapper;
 
 import br.edu.infnet.tiago.application.dto.ActorCreateDTO;
 import br.edu.infnet.tiago.application.dto.ActorDTO;
+import br.edu.infnet.tiago.application.dto.ActorFullDTO;
 import br.edu.infnet.tiago.application.dto.ActorUpdateDTO;
 import br.edu.infnet.tiago.domain.model.Actor;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,10 @@ public class ActorMapper {
 
     public ActorDTO toDTO(Actor actor) {
         return mapperFactory.mapToNewInstance(actor, ActorDTO.class);
+    }
+
+    public ActorFullDTO toFullDTO(Actor actor) {
+        return mapperFactory.mapToNewInstance(actor, ActorFullDTO.class);
     }
 
     public List<ActorDTO> toDTO(List<Actor> actors) {

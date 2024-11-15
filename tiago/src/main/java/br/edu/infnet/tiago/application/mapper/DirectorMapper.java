@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.application.mapper;
 
 import br.edu.infnet.tiago.application.dto.DirectorCreateDTO;
 import br.edu.infnet.tiago.application.dto.DirectorDTO;
+import br.edu.infnet.tiago.application.dto.DirectorFullDTO;
 import br.edu.infnet.tiago.application.dto.DirectorUpdateDTO;
 import br.edu.infnet.tiago.domain.model.Director;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,10 @@ public class DirectorMapper {
         return mapperFactory.mapToNewInstance(director, DirectorDTO.class);
     }
 
+    public DirectorFullDTO toFullDTO(Director director) {
+        return mapperFactory.mapToNewInstance(director, DirectorFullDTO.class);
+    }
+
     public List<DirectorDTO> toDTO(List<Director> directors) {
         return defaultIfNull(directors).stream().map(this::toDTO).toList();
     }
@@ -32,4 +37,5 @@ public class DirectorMapper {
     public Director fromDTO(DirectorUpdateDTO directorUpdateDTO) {
         return mapperFactory.mapToNewInstance(directorUpdateDTO, Director.class);
     }
+
 }

@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.application.mapper;
 
 import br.edu.infnet.tiago.application.dto.StudioCreateDTO;
 import br.edu.infnet.tiago.application.dto.StudioDTO;
+import br.edu.infnet.tiago.application.dto.StudioFullDTO;
 import br.edu.infnet.tiago.application.dto.StudioUpdateDTO;
 import br.edu.infnet.tiago.domain.model.Studio;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,10 @@ public class StudioMapper {
 
     public StudioDTO toDTO(Studio studio) {
         return mapperFactory.mapToNewInstance(studio, StudioDTO.class);
+    }
+
+    public StudioFullDTO toFullDTO(Studio studio) {
+        return mapperFactory.mapToNewInstance(studio, StudioFullDTO.class);
     }
 
     public List<StudioDTO> toDTO(List<Studio> studios) {

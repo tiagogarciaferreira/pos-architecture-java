@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.interfaces.api;
 
 import br.edu.infnet.tiago.application.dto.GenreCreateDTO;
 import br.edu.infnet.tiago.application.dto.GenreDTO;
+import br.edu.infnet.tiago.application.dto.GenreFullDTO;
 import br.edu.infnet.tiago.application.dto.GenreUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.GenreFilterDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,10 +32,10 @@ public interface GenreAPI {
     @Operation(summary = "Get genre by ID", description = "Fetches a genre by its ID.",
             parameters = {@Parameter(name = "id", description = "ID of the genre", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Genre retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GenreDTO.class))),
+                    @ApiResponse(responseCode = "200", description = "Genre retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GenreFullDTO.class))),
                     @ApiResponse(responseCode = "404", description = "Genre not found")
             })
-    ResponseEntity<GenreDTO> getById(@PathVariable("id") Long genreId);
+    ResponseEntity<GenreFullDTO> getById(@PathVariable("id") Long genreId);
 
     @Operation(summary = "Update genre", description = "Updates an existing genre's details.",
             parameters = {@Parameter(name = "id", description = "ID of the genre to update", required = true, schema = @Schema(type = "integer", example = "1"))},

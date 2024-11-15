@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.interfaces.api;
 
 import br.edu.infnet.tiago.application.dto.CountryCreateDTO;
 import br.edu.infnet.tiago.application.dto.CountryDTO;
+import br.edu.infnet.tiago.application.dto.CountryFullDTO;
 import br.edu.infnet.tiago.application.dto.CountryUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.CountryFilterDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,10 +32,10 @@ public interface CountryAPI {
     @Operation(summary = "Get country by ID", description = "Fetches a country by its ID.",
             parameters = {@Parameter(name = "id", description = "ID of the country", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Country retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CountryDTO.class))),
+                    @ApiResponse(responseCode = "200", description = "Country retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CountryFullDTO.class))),
                     @ApiResponse(responseCode = "404", description = "Country not found")
             })
-    ResponseEntity<CountryDTO> getById(@PathVariable Long id);
+    ResponseEntity<CountryFullDTO> getById(@PathVariable Long id);
 
     @Operation(summary = "Update country", description = "Updates an existing country's details.",
             parameters = {@Parameter(name = "id", description = "ID of the country to update", required = true, schema = @Schema(type = "integer", example = "1"))},

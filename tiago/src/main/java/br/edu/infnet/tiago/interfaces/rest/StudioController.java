@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.interfaces.rest;
 
 import br.edu.infnet.tiago.application.dto.StudioCreateDTO;
 import br.edu.infnet.tiago.application.dto.StudioDTO;
+import br.edu.infnet.tiago.application.dto.StudioFullDTO;
 import br.edu.infnet.tiago.application.dto.StudioUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.StudioFilterDTO;
 import br.edu.infnet.tiago.application.mapper.StudioMapper;
@@ -50,11 +51,11 @@ public class StudioController implements StudioAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<StudioDTO> getById(@PathVariable Long id) {
+    public ResponseEntity<StudioFullDTO> getById(@PathVariable Long id) {
         Studio studio = studioService.getById(id);
-        StudioDTO studioDTO = studioMapper.toDTO(studio);
+        StudioFullDTO studioFullDTO = studioMapper.toFullDTO(studio);
         log.info("Studio '{}', was successfully retrieved", id);
-        return new ResponseEntity<>(studioDTO, OK);
+        return new ResponseEntity<>(studioFullDTO, OK);
     }
 
     @Override

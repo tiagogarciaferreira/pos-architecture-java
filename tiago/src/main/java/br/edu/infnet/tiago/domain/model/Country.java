@@ -10,6 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -33,6 +34,9 @@ public class Country {
     @Size(min = 2, max = 3, message = "Country code must be 2 or 3 characters")
     @Pattern(regexp = "^[A-Z]{2,3}$", message = "Country code must be uppercase letters, 2 or 3 characters")
     private String code;
+
+    @ManyToMany(mappedBy = "country")
+    private List<Movie> movies;
 
     @CreationTimestamp
     private OffsetDateTime created;

@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.interfaces.rest;
 
 import br.edu.infnet.tiago.application.dto.MovieCreateDTO;
 import br.edu.infnet.tiago.application.dto.MovieDTO;
+import br.edu.infnet.tiago.application.dto.MovieFullDTO;
 import br.edu.infnet.tiago.application.dto.MovieUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.MovieFilterDTO;
 import br.edu.infnet.tiago.application.mapper.MovieMapper;
@@ -50,11 +51,11 @@ public class MovieController implements MovieAPI {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<MovieDTO> getById(@PathVariable Long id) {
+    public ResponseEntity<MovieFullDTO> getById(@PathVariable Long id) {
         Movie movie = movieService.getById(id);
-        MovieDTO movieDTO = movieMapper.toDTO(movie);
+        MovieFullDTO movieFullDTO = movieMapper.toFullDTO(movie);
         log.info("Movie '{}', was successfully retrieved", id);
-        return new ResponseEntity<>(movieDTO, OK);
+        return new ResponseEntity<>(movieFullDTO, OK);
     }
 
     @Override

@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.interfaces.api;
 
 import br.edu.infnet.tiago.application.dto.LanguageCreateDTO;
 import br.edu.infnet.tiago.application.dto.LanguageDTO;
+import br.edu.infnet.tiago.application.dto.LanguageFullDTO;
 import br.edu.infnet.tiago.application.dto.LanguageUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.LanguageFilterDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,10 +32,10 @@ public interface LanguageAPI {
     @Operation(summary = "Get language by ID", description = "Fetches a language by its ID.",
             parameters = {@Parameter(name = "id", description = "ID of the language", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Language retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LanguageDTO.class))),
+                    @ApiResponse(responseCode = "200", description = "Language retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LanguageFullDTO.class))),
                     @ApiResponse(responseCode = "404", description = "Language not found")
             })
-    ResponseEntity<LanguageDTO> getById(@PathVariable Long id);
+    ResponseEntity<LanguageFullDTO> getById(@PathVariable Long id);
 
     @Operation(summary = "Update language", description = "Updates an existing language's details.",
             parameters = {@Parameter(name = "id", description = "ID of the language to update", required = true, schema = @Schema(type = "integer", example = "1"))},

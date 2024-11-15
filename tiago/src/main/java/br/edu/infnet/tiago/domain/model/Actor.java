@@ -1,5 +1,6 @@
 package br.edu.infnet.tiago.domain.model;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+@Hidden
 @With
 @AllArgsConstructor
 @NoArgsConstructor

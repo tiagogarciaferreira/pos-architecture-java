@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.application.mapper;
 
 import br.edu.infnet.tiago.application.dto.CountryCreateDTO;
 import br.edu.infnet.tiago.application.dto.CountryDTO;
+import br.edu.infnet.tiago.application.dto.CountryFullDTO;
 import br.edu.infnet.tiago.application.dto.CountryUpdateDTO;
 import br.edu.infnet.tiago.domain.model.Country;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,10 @@ public class CountryMapper {
         return mapperFactory.mapToNewInstance(country, CountryDTO.class);
     }
 
+    public CountryFullDTO toFullDTO(Country country) {
+        return mapperFactory.mapToNewInstance(country, CountryFullDTO.class);
+    }
+
     public List<CountryDTO> toDTO(List<Country> countries) {
         return defaultIfNull(countries).stream().map(this::toDTO).toList();
     }
@@ -32,4 +37,5 @@ public class CountryMapper {
     public Country fromDTO(CountryUpdateDTO countryUpdateDTO) {
         return mapperFactory.mapToNewInstance(countryUpdateDTO, Country.class);
     }
+
 }
