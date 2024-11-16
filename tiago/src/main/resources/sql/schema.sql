@@ -92,6 +92,7 @@ CREATE TABLE tb_movies (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL CHECK (LENGTH(title) >= 1 AND LENGTH(title) <= 255),
     imdb_id VARCHAR(12) NOT NULL CHECK (LENGTH(imdb_id) >= 9 AND LENGTH(imdb_id) <= 11),
+    imdb_rating DECIMAL(15, 2) DEFAULT 0 CHECK (imdb_rating >= 0),
     release_date DATE NOT NULL,
     duration_minutes INT CHECK (duration_minutes >= 0),
     budget_dollars DECIMAL(15, 2) CHECK (budget_dollars >= 0),

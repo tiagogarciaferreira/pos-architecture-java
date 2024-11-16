@@ -31,6 +31,9 @@ public class Movie {
     @Pattern(regexp = "^tt\\d{7,9}$", message = "Invalid IMDb ID format. It should start with 'tt' followed by 7 to 9 digits")
     private String imdbId;
 
+    @DecimalMin(value = "0.0", message = "Imdb rating earnings must be 0 rating or more")
+    private Float imdbRating;
+
     @NotBlank(message = "Title is required")
     @Size(min = 5, max = 100, message = "Title must be between 5 and 100 characters")
     private String title;
