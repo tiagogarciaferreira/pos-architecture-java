@@ -1,6 +1,6 @@
 # Catalogo de Filmes API
 
-Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destinada ao gerenciamento de um catálogo de filmes. A API permite realizar operações CRUD (Criar, Ler, Atualizar e Deletar) para filmes, atores, gêneros, idiomas, países, diretores e estudios.
+Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destinada ao gerenciamento de um catálogo de filmes. A API permite realizar operações CRUD (Criar, Ler, Atualizar e Deletar) para filmes, atores, gêneros, idiomas, países, diretores e estúdios.
 
 ## Funcionalidades
 
@@ -55,19 +55,19 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 
 ## Tecnologias Utilizadas
 
-- **Java 17**
-- **IntelliJ IDEA**
-- **Spring Boot 3.3.4**
-- **Spring Data JPA**
-- **Docker Compose**
-- **Spring Security**
-- **Lombok**
-- **PostgreSQL**
-- **ModelMapper**
-- **Maven**
-- **Jakarta Bean Validation**
-- **OMDb API**
-- **Spring Doc**
+- **Java 17** ☕
+- **IntelliJ IDEA** 💻
+- **Spring Boot 3.3.4** 🌱
+- **Spring Data JPA** 🔄
+- **Docker Compose** 🐳
+- **Spring Security** 🔒
+- **Lombok** 📦
+- **PostgreSQL** 🗄️
+- **ModelMapper** 🔧
+- **Maven** 📦
+- **Jakarta Bean Validation** ✔️
+- **OMDb API** 🎬
+- **Spring Doc** 📜
 
 ## Estrutura de Pacotes
 
@@ -133,11 +133,11 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 
 ## Requisitos
 
-- **JDK 17 ou superior**
-- **Maven**
-- **Docker Compose**
-- **Srpong Boot 3.3.4 ou superior**
-- **Postman**
+- **JDK 17 ou superior** ☕
+- **Maven** 📦
+- **Docker Compose** 🐳
+- **Spring Boot 3.3.4 ou superior** 🌱
+- **Postman** 📥
 
 ## Importando Coleções Postman
 
@@ -149,11 +149,11 @@ As coleções exportadas do Postman estão armazenadas na pasta `pos-architectur
 
 ### Passo 2: Importando no Postman
 
-1. Abra o **Postman** em sua máquina.
-2. Clique em **Import** no canto superior esquerdo da interface do Postman.
-3. Selecione a opção **Upload Files**.
-4. Navegue até a pasta `pos-architecture-java/tiago/postman` e selecione o arquivo `.json` da coleção que deseja importar.
-5. Clique em **Open** e a coleção será carregada no seu Postman.
+1. Abra o **Postman** em sua máquina. 📥
+2. Clique em **Import** no canto superior esquerdo da interface do Postman. 📂
+3. Selecione a opção **Upload Files**. ⬆️
+4. Navegue até a pasta `pos-architecture-java/tiago/postman` e selecione o arquivo `.json` da coleção que deseja importar. 📂
+5. Clique em **Open** e a coleção será carregada no seu Postman. ✔️
 
 ## Como Executar
 
