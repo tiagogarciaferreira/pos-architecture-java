@@ -59,10 +59,12 @@ public class Movie {
     @Size(min = 10, max = 1000, message = "Synopsis must be between 10 and 1000 characters")
     private String synopsis;
 
-    @NotNull(message = "Genre is required")
-    @ManyToOne
-    @JoinColumn(name = "genre_id")
-    private Genre genre;
+    @NotEmpty(message = "At least one genre is required")
+    @ManyToMany
+    @JoinTable(name = "tb_movie_genres",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    private List<Genre> genres;
 
     @NotNull(message = "Director is required")
     @ManyToOne

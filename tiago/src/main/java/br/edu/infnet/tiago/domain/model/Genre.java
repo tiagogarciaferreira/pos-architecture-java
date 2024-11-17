@@ -31,7 +31,7 @@ public class Genre {
     @Size(min = 4, max = 50, message = "Genre name must be between 4 and 50 characters")
     private String name;
 
-    @OneToMany(mappedBy = "genre")
+    @OneToMany(mappedBy = "genres")
     private List<Movie> movies;
 
     @CreationTimestamp

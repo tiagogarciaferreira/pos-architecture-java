@@ -36,9 +36,10 @@ public class MovieCreateDTO {
     @Size(min = 10, max = 1000, message = "Synopsis must be between 10 and 1000 characters")
     private String synopsis;
 
-    @NotNull(message = "Genre ID cannot be null")
-    @Min(value = 1, message = "Genre ID must be greater than zero")
-    private Long genreId;
+    @NotNull(message = "Genre IDs cannot be null")
+    @NotEmpty(message = "Genre IDs cannot be empty")
+    @Size(min = 1, max = 10, message = "Genre IDs must contain between 1 and 10 elements")
+    private List<Long> genreIds;
 
     @NotNull(message = "Director ID cannot be null")
     @Min(value = 1, message = "Director ID must be greater than zero")

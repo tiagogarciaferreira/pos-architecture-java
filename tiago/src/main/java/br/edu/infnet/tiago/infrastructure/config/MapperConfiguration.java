@@ -12,6 +12,7 @@ import java.util.List;
 
 import static br.edu.infnet.tiago.shared.utils.ListUtils.defaultIfNull;
 
+@SuppressWarnings("unused")
 @Configuration
 public class MapperConfiguration {
 
@@ -20,7 +21,6 @@ public class MapperConfiguration {
 
         final ModelMapper modelMapper = new ModelMapper();
         Converter<Long, Country> countryIdToCountryConverter = context -> new Country().withId(context.getSource());
-        Converter<Long, Genre> countryIdToGenreConverter = context -> new Genre().withId(context.getSource());
         Converter<Long, Studio> countryIdToStudioConverter = context -> new Studio().withId(context.getSource());
 
         Converter<Long, Director> countryIdToDirectorConverter = context -> {
@@ -28,6 +28,12 @@ public class MapperConfiguration {
             director.setId(context.getSource());
             return director;
         };
+
+        Converter<List<Long>, List<Genre>> genreIdsToGenresConverter = context -> defaultIfNull(context.getSource())
+                .stream()
+                .distinct()
+                .map(genreId -> new Genre().withId(genreId))
+                .toList();
         Converter<List<Long>, List<Language>> languageIdsToLanguagesConverter = context -> defaultIfNull(context.getSource())
                 .stream()
                 .distinct()
@@ -36,7 +42,11 @@ public class MapperConfiguration {
         Converter<List<Long>, List<Actor>> actorIdsToActorsConverter = context -> defaultIfNull(context.getSource())
                 .stream()
                 .distinct()
-                .map(actorId -> new Actor().withId(actorId))
+                .map(actorId -> {
+                    Actor actor = new Actor();
+                    actor.setId(actorId);
+                    return actor;
+                })
                 .toList();
 
         modelMapper.typeMap(ActorCreateDTO.class, Actor.class).addMappings(mapper ->
@@ -56,7 +66,7 @@ public class MapperConfiguration {
             protected void configure() {
                 skip(destination.getId());
                 using(countryIdToCountryConverter).map(source.getCountryId(), destination.getCountry());
-                using(countryIdToGenreConverter).map(source.getGenreId(), destination.getGenre());
+                using(genreIdsToGenresConverter).map(source.getGenreIds(), destination.getGenres());
                 using(countryIdToDirectorConverter).map(source.getDirectorId(), destination.getDirector());
                 using(countryIdToStudioConverter).map(source.getStudioId(), destination.getStudio());
                 using(actorIdsToActorsConverter).map(source.getActorIds(), destination.getActors());
@@ -69,7 +79,7 @@ public class MapperConfiguration {
             protected void configure() {
                 skip(destination.getId());
                 using(countryIdToCountryConverter).map(source.getCountryId(), destination.getCountry());
-                using(countryIdToGenreConverter).map(source.getGenreId(), destination.getGenre());
+                using(genreIdsToGenresConverter).map(source.getGenreIds(), destination.getGenres());
                 using(countryIdToDirectorConverter).map(source.getDirectorId(), destination.getDirector());
                 using(countryIdToStudioConverter).map(source.getStudioId(), destination.getStudio());
                 using(actorIdsToActorsConverter).map(source.getActorIds(), destination.getActors());

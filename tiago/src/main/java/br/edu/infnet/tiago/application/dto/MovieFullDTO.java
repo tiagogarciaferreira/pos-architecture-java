@@ -1,6 +1,5 @@
 package br.edu.infnet.tiago.application.dto;
 
-import br.edu.infnet.tiago.domain.model.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,19 +35,19 @@ public class MovieFullDTO {
 
     private String synopsis;
 
-    private Genre genre;
+    private List<GenreDTO> genres;
 
-    private Director director;
+    private DirectorDTO director;
 
-    private Studio studio;
+    private StudioDTO studio;
 
-    private Country country;
+    private CountryDTO country;
 
-    private List<Actor> actors;
+    private List<ActorDTO> actors;
 
-    private List<Language> languages;
+    private List<LanguageDTO> languages;
 
-    private List<Language> subtitles;
+    private List<LanguageDTO> subtitles;
 
     private OffsetDateTime created;
 

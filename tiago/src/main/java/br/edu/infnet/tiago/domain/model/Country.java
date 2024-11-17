@@ -31,8 +31,8 @@ public class Country {
     private String name;
 
     @NotBlank(message = "Country code is required")
-    @Size(min = 2, max = 3, message = "Country code must be 2 or 3 characters")
-    @Pattern(regexp = "^[A-Z]{2,3}$", message = "Country code must be uppercase letters, 2 or 3 characters")
+    @Size(min = 3, max = 3, message = "Country code must be exactly 3 characters")
+    @Pattern(regexp = "^[A-Z]{3}$", message = "Country code must be uppercase letters, exactly 3 characters")
     private String code;
 
     @ManyToMany(mappedBy = "country")

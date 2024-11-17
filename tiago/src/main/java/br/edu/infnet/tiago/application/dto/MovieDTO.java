@@ -1,6 +1,5 @@
 package br.edu.infnet.tiago.application.dto;
 
-import br.edu.infnet.tiago.domain.model.Genre;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,6 +32,4 @@ public class MovieDTO {
     private Double boxOfficeDollars;
 
     private String synopsis;
-
-    private Genre genre;
 }

@@ -1,7 +1,5 @@
 package br.edu.infnet.tiago.application.dto;
 
-import br.edu.infnet.tiago.domain.model.Country;
-import br.edu.infnet.tiago.domain.model.Movie;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,9 +16,9 @@ public class StudioFullDTO {
 
     private String name;
 
-    private Country country;
+    private CountryDTO country;
 
-    private List<Movie> movies;
+    private List<MovieDTO> movies;
 
     private OffsetDateTime created;
 

@@ -1,6 +1,5 @@
 package br.edu.infnet.tiago.application.dto;
 
-import br.edu.infnet.tiago.domain.model.Country;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,5 +13,5 @@ public class StudioDTO {
 
     private String name;
 
-    private Country country;
+    private CountryDTO country;
 }
