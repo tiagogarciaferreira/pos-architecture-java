@@ -4,13 +4,54 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 
 ## Funcionalidades
 
-- **Filmes**: Cadastro, atualização, exclusão e consulta de filmes.
-- **Atores**: Cadastro, atualização, exclusão e consulta de atores.
-- **Gêneros**: Cadastro, atualização, exclusão e consulta de gêneros.
-- **Idiomas**: Cadastro, atualização, exclusão e consulta de ediomas.
-- **Países**: Cadastro, atualização, exclusão e consulta de países.
-- **Diretores**: Cadastro, atualização, exclusão e consulta de diretores.
-- **Estúdios**: Cadastro, atualização, exclusão e consulta de estúdios.
+### 📽️ **Filmes**
+- Cadastre novos filmes.
+- Atualize informações de filmes já existentes.
+- Exclua registros de filmes desnecessários.
+- Pesquise filmes por diferentes critérios.
+- Busque filmes pelo ID.
+
+### 🎭 **Atores**
+- Cadastre atores no sistema.
+- Atualize os dados dos atores registrados.
+- Exclua atores que não são mais relevantes.
+- Pesquise atores por diferentes critérios.
+- Busque atores pelo ID.
+
+### 🎥 **Gêneros**
+- Cadastre novos gêneros cinematográficos.
+- Atualize os gêneros existentes.
+- Exclua gêneros que não são mais necessários.
+- Pesquise gêneros disponíveis.
+- Busque gêneros pelo ID.
+
+### 🌐 **Idiomas**
+- Cadastre idiomas disponíveis para filmes.
+- Atualize informações sobre os idiomas registrados.
+- Exclua idiomas que não são mais usados.
+- Pesquise idiomas cadastrados.
+- Busque idiomas pelo ID.
+
+### 🗺️ **Países**
+- Cadastre novos países ao sistema.
+- Atualize as informações dos países cadastrados.
+- Remova países que não são mais necessários.
+- Pesquise países relacionados às produções.
+- Busque países pelo ID.
+
+### 🎬 **Diretores**
+- Cadastre diretores de filmes.
+- Atualize os dados dos diretores registrados.
+- Exclua registros de diretores.
+- Pesquise diretores cadastrados.
+- Busque diretores pelo ID.
+
+### 🏢 **Estúdios**
+- Cadastre estúdios cinematográficos.
+- Atualize as informações dos estúdios registrados.
+- Exclua estúdios do sistema.
+- Pesquise estúdios disponíveis.
+- Busque estúdios pelo ID.
 
 ## Tecnologias Utilizadas
 
