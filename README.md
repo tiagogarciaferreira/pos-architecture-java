@@ -71,11 +71,63 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 
 ## Estrutura de Pacotes
 
-- ![alt text](image-1.png)
+A estrutura de pacotes deste projeto foi organizada seguindo alguns princípios de **Domain-Driven Design (DDD)**, com o objetivo de promover uma aplicação modular, escalável e de fácil manutenção. Abaixo, uma explicação sucinta sobre cada pacote e sua função no sistema:
+
+## `application`🧑‍💻
+
+A camada de aplicação orquestra o fluxo entre os outros pacotes e contém os casos de uso da aplicação.
+
+- **`constants`**: Constantes globais da aplicação, como mensagens e códigos de status.
+- **`dto`**: Objetos de Transferência de Dados (DTOs) utilizados para comunicação entre camadas (ex: entre a API e a camada de aplicação).
+- **`mapper`**: Classes para conversão entre diferentes tipos de objetos (ex: de `Entity` para `DTO`).
+- **`utility`**: Funções utilitárias e helpers para tarefas gerais (ex: formatação de data, validações simples).
+
+---
+
+## `domain` 🏠
+
+A camada de domínio é o coração do sistema, onde as regras de negócio e as entidades principais são modeladas.
+
+- **`model`**: Entidades do domínio que representam os objetos de negócio principais.
+- **`repository`**: Interfaces para abstração do acesso aos dados, como repositórios JPA ou outras fontes de persistência.
+- **`service`**: Contém a lógica de negócios que orquestra as interações entre entidades e repositórios.
+- **`specification`**: Especificações de consulta reutilizáveis, permitindo a criação de filtros dinâmicos e flexíveis.
+
+---
+
+## `infrastructure` 🏗️
+
+Contém implementações e serviços de suporte que interagem com o mundo exterior ou com componentes transversais da aplicação.
+
+- **`config`**: Configurações gerais do Spring e inicializações de dependências.
+- **`constants`**: Constantes relacionadas à infraestrutura, como URLs de serviços externos e parâmetros de configuração.
+- **`exception`**: Classes para tratamento de exceções personalizadas e manipulação de erros.
+- **`external`**: Integrações com sistemas ou serviços externos (ex: integração com APIs externas como OMDB).
+- **`interceptor`**: Interceptadores para manipulação de requisições e respostas, como logging e autenticação.
+- **`security`**: Configuração de segurança, como autenticação, autorização e controle de acesso.
+
+---
+
+## `interfaces` 🌐
+
+Define como a aplicação se comunica com o mundo exterior, expondo suas APIs ou interfaces de comunicação.
+
+- **`api`**: Interfaces de serviços expostas, geralmente como REST ou outros protocolos.
+- **`rest`**: Implementações concretas de controladores REST, manipulando as requisições HTTP.
+
+---
+
+## `shared` 🔄
+
+Contém componentes compartilhados e reutilizáveis em várias partes do sistema.
+
+- **`config`**: Configurações globais que podem ser utilizadas em várias camadas do sistema.
+- **`constants`**: Constantes compartilhadas, como parâmetros globais ou configurações.
+- **`utils`**: Funções auxiliares reutilizáveis para operações comuns, como manipulação de strings ou coleções.
 
 ## Endpoints da API
 
-### Filmes
+### Filmes🎬
 
 - `GET /api/v1/movies`: Pesquisar filmes.
 - `POST /api/v1/movies`: Criar um novo filme.
@@ -83,7 +135,7 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 - `PUT /api/v1/movies/{id}`: Atualizar informações de um filme.
 - `DELETE /api/v1/movies/{id}`: Deletar um filme.
 
-### Atores
+### Atores 🎭
 
 - `GET /api/v1/actors`: Pesquisar atores.
 - `POST /api/v1/actors`: Criar um novo ator.
@@ -91,7 +143,7 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 - `PUT /api/v1/actors/{id}`: Atualizar informações de um ator.
 - `DELETE /api/v1/actors/{id}`: Deletar um ator.
 
-### Gêneros
+### Gêneros 🎥
 
 - `GET /api/v1/genres`: Pesquisar gêneros.
 - `POST /api/v1/genres`: Criar um novo gênero.
@@ -99,7 +151,7 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 - `PUT /api/v1/genres/{id}`: Atualizar informações de um gênero.
 - `DELETE /api/v1/genres/{id}`: Deletar um gênero.
 
-### Idiomas
+### Idiomas 🌐
 
 - `GET /api/v1/languages`: Pesquisar idiomas.
 - `POST /api/v1/languages`: Criar um novo idioma.
@@ -107,7 +159,7 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 - `PUT /api/v1/languages/{id}`: Atualizar informações de um idioma.
 - `DELETE /api/v1/languages/{id}`: Deletar um idioma.
 
-### Países
+### Países 🗺️
 
 - `GET /api/v1/countries`: Pesquisar países.
 - `POST /api/v1/countries`: Criar um novo país.
@@ -115,7 +167,7 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 - `PUT /api/v1/countries/{id}`: Atualizar informações de um país.
 - `DELETE /api/v1/countries/{id}`: Deletar um país.
 
-### Diretores
+### Diretores 🎬
 
 - `GET /api/v1/directors`: Pesquisar diretores.
 - `POST /api/v1/directors`: Criar um novo diretor.
@@ -123,7 +175,7 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 - `PUT /api/v1/directors/{id}`: Atualizar informações de um diretor.
 - `DELETE /api/v1/directors/{id}`: Deletar um diretor.
 
-### Estúdios
+### Estúdios 🏢
 
 - `GET /api/v1/studios`: Pesquisar estúdios.
 - `POST /api/v1/studios`: Criar um novo estúdio.
@@ -147,7 +199,7 @@ As coleções Postman exportadas para este projeto estão localizadas na pasta `
 
 As coleções exportadas do Postman estão armazenadas na pasta `pos-architecture-java/tiago/postman`. Dentro dessa pasta, você encontrará arquivos no formato `.json` que representam diferentes conjuntos de requisições para testar os endpoints da API.
 
-### Passo 2: Importando no Postman
+### Passo 2: Importando no Postman 
 
 1. Abra o **Postman** em sua máquina. 📥
 2. Clique em **Import** no canto superior esquerdo da interface do Postman. 📂
@@ -155,7 +207,7 @@ As coleções exportadas do Postman estão armazenadas na pasta `pos-architectur
 4. Navegue até a pasta `pos-architecture-java/tiago/postman` e selecione o arquivo `.json` da coleção que deseja importar. 📂
 5. Clique em **Open** e a coleção será carregada no seu Postman. ✔️
 
-## Como Executar
+## Como Executar 🚀
 
 Siga os passos abaixo para iniciar o projeto:
 
