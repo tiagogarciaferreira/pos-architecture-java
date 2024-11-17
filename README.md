@@ -137,6 +137,23 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 - **Maven**
 - **Docker Compose**
 - **Srpong Boot 3.3.4 ou superior**
+- **Postman**
+
+## Importando Coleções Postman
+
+As coleções Postman exportadas para este projeto estão localizadas na pasta `pos-architecture-java/tiago/postman`. Siga os passos abaixo para importar essas coleções no Postman:
+
+### Passo 1: Localizando a Pasta de Coleções
+
+As coleções exportadas do Postman estão armazenadas na pasta `pos-architecture-java/tiago/postman`. Dentro dessa pasta, você encontrará arquivos no formato `.json` que representam diferentes conjuntos de requisições para testar os endpoints da API.
+
+### Passo 2: Importando no Postman
+
+1. Abra o **Postman** em sua máquina.
+2. Clique em **Import** no canto superior esquerdo da interface do Postman.
+3. Selecione a opção **Upload Files**.
+4. Navegue até a pasta `pos-architecture-java/tiago/postman` e selecione o arquivo `.json` da coleção que deseja importar.
+5. Clique em **Open** e a coleção será carregada no seu Postman.
 
 ## Como Executar
 
