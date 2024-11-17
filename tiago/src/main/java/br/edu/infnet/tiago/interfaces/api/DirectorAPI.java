@@ -5,6 +5,7 @@ import br.edu.infnet.tiago.application.dto.DirectorDTO;
 import br.edu.infnet.tiago.application.dto.DirectorFullDTO;
 import br.edu.infnet.tiago.application.dto.DirectorUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.DirectorFilterDTO;
+import br.edu.infnet.tiago.infrastructure.exception.model.Problem;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -25,7 +26,7 @@ public interface DirectorAPI {
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Details of the director to be created", content = @Content(mediaType = "application/json", schema = @Schema(implementation = DirectorCreateDTO.class))),
             responses = {
                     @ApiResponse(responseCode = "201", description = "Director created successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = DirectorDTO.class))),
-                    @ApiResponse(responseCode = "400", description = "Invalid input")
+                    @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<DirectorDTO> create(@RequestBody DirectorCreateDTO directorCreateDTO);
 
@@ -33,7 +34,7 @@ public interface DirectorAPI {
             parameters = {@Parameter(name = "id", description = "ID of the director", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
                     @ApiResponse(responseCode = "200", description = "Director retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = DirectorFullDTO.class))),
-                    @ApiResponse(responseCode = "404", description = "Director not found")
+                    @ApiResponse(responseCode = "404", description = "Director not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<DirectorFullDTO> getById(@PathVariable Long id);
 
@@ -42,8 +43,8 @@ public interface DirectorAPI {
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Details of the director to be updated", content = @Content(mediaType = "application/json", schema = @Schema(implementation = DirectorUpdateDTO.class))),
             responses = {
                     @ApiResponse(responseCode = "200", description = "Director updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = DirectorDTO.class))),
-                    @ApiResponse(responseCode = "400", description = "Invalid input"),
-                    @ApiResponse(responseCode = "404", description = "Director not found")
+                    @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class))),
+                    @ApiResponse(responseCode = "404", description = "Director not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<DirectorDTO> update(@PathVariable Long id, @RequestBody DirectorUpdateDTO directorUpdateDTO);
 
@@ -51,7 +52,7 @@ public interface DirectorAPI {
             parameters = {@Parameter(name = "id", description = "ID of the director to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
                     @ApiResponse(responseCode = "204", description = "Director deleted successfully"),
-                    @ApiResponse(responseCode = "404", description = "Director not found")
+                    @ApiResponse(responseCode = "404", description = "Director not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<Void> delete(@PathVariable Long id);
 
@@ -64,7 +65,7 @@ public interface DirectorAPI {
             },
             responses = {
                     @ApiResponse(responseCode = "200", description = "Directors found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Page.class))),
-                    @ApiResponse(responseCode = "400", description = "Invalid input")
+                    @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<Page<DirectorDTO>> search(@ModelAttribute DirectorFilterDTO filter,
                                              @RequestParam(defaultValue = "0") @Min(0) int page,

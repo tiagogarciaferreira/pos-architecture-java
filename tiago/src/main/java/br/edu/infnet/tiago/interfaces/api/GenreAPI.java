@@ -5,6 +5,7 @@ import br.edu.infnet.tiago.application.dto.GenreDTO;
 import br.edu.infnet.tiago.application.dto.GenreFullDTO;
 import br.edu.infnet.tiago.application.dto.GenreUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.GenreFilterDTO;
+import br.edu.infnet.tiago.infrastructure.exception.model.Problem;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -25,7 +26,7 @@ public interface GenreAPI {
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Details of the genre to be created", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GenreCreateDTO.class))),
             responses = {
                     @ApiResponse(responseCode = "201", description = "Genre created successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GenreDTO.class))),
-                    @ApiResponse(responseCode = "400", description = "Invalid input")
+                    @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<GenreDTO> create(@RequestBody GenreCreateDTO genreCreateDTO);
 
@@ -33,7 +34,7 @@ public interface GenreAPI {
             parameters = {@Parameter(name = "id", description = "ID of the genre", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
                     @ApiResponse(responseCode = "200", description = "Genre retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GenreFullDTO.class))),
-                    @ApiResponse(responseCode = "404", description = "Genre not found")
+                    @ApiResponse(responseCode = "404", description = "Genre not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<GenreFullDTO> getById(@PathVariable("id") Long genreId);
 
@@ -42,8 +43,8 @@ public interface GenreAPI {
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Details of the genre to be updated", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GenreUpdateDTO.class))),
             responses = {
                     @ApiResponse(responseCode = "200", description = "Genre updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GenreDTO.class))),
-                    @ApiResponse(responseCode = "400", description = "Invalid input"),
-                    @ApiResponse(responseCode = "404", description = "Genre not found")
+                    @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class))),
+                    @ApiResponse(responseCode = "404", description = "Genre not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<GenreDTO> update(@PathVariable Long id, @RequestBody GenreUpdateDTO genreUpdateDTO);
 
@@ -51,7 +52,7 @@ public interface GenreAPI {
             parameters = {@Parameter(name = "id", description = "ID of the genre to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
                     @ApiResponse(responseCode = "204", description = "Genre deleted successfully"),
-                    @ApiResponse(responseCode = "404", description = "Genre not found")
+                    @ApiResponse(responseCode = "404", description = "Genre not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<Void> delete(@PathVariable Long id);
 
@@ -64,7 +65,7 @@ public interface GenreAPI {
             },
             responses = {
                     @ApiResponse(responseCode = "200", description = "Genres found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Page.class))),
-                    @ApiResponse(responseCode = "400", description = "Invalid input")
+                    @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<Page<GenreDTO>> search(@ModelAttribute GenreFilterDTO filter,
                                           @RequestParam(defaultValue = "0") @Min(0) int page,

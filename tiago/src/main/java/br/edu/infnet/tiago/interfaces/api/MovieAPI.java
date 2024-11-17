@@ -5,6 +5,7 @@ import br.edu.infnet.tiago.application.dto.MovieDTO;
 import br.edu.infnet.tiago.application.dto.MovieFullDTO;
 import br.edu.infnet.tiago.application.dto.MovieUpdateDTO;
 import br.edu.infnet.tiago.application.dto.filter.MovieFilterDTO;
+import br.edu.infnet.tiago.infrastructure.exception.model.Problem;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -25,7 +26,7 @@ public interface MovieAPI {
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Details of the movie to be created", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieCreateDTO.class))),
             responses = {
                     @ApiResponse(responseCode = "201", description = "Movie created successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieDTO.class))),
-                    @ApiResponse(responseCode = "400", description = "Invalid input")
+                    @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<MovieDTO> create(@RequestBody MovieCreateDTO movieCreateDTO);
 
@@ -33,7 +34,7 @@ public interface MovieAPI {
             parameters = {@Parameter(name = "id", description = "ID of the movie", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
                     @ApiResponse(responseCode = "200", description = "Movie retrieved successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieFullDTO.class))),
-                    @ApiResponse(responseCode = "404", description = "Movie not found")
+                    @ApiResponse(responseCode = "404", description = "Movie not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<MovieFullDTO> getById(@PathVariable Long id);
 
@@ -42,8 +43,8 @@ public interface MovieAPI {
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Details of the movie to be updated", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieUpdateDTO.class))),
             responses = {
                     @ApiResponse(responseCode = "200", description = "Movie updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieDTO.class))),
-                    @ApiResponse(responseCode = "400", description = "Invalid input"),
-                    @ApiResponse(responseCode = "404", description = "Movie not found")
+                    @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class))),
+                    @ApiResponse(responseCode = "404", description = "Movie not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<MovieDTO> update(@PathVariable Long id, @RequestBody MovieUpdateDTO movieUpdateDTO);
 
@@ -51,7 +52,7 @@ public interface MovieAPI {
             parameters = {@Parameter(name = "id", description = "ID of the movie to delete", required = true, schema = @Schema(type = "integer", example = "1"))},
             responses = {
                     @ApiResponse(responseCode = "204", description = "Movie deleted successfully"),
-                    @ApiResponse(responseCode = "404", description = "Movie not found")
+                    @ApiResponse(responseCode = "404", description = "Movie not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<Void> delete(@PathVariable Long id);
 
@@ -64,7 +65,7 @@ public interface MovieAPI {
             },
             responses = {
                     @ApiResponse(responseCode = "200", description = "Movies found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Page.class))),
-                    @ApiResponse(responseCode = "400", description = "Invalid input")
+                    @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
     ResponseEntity<Page<MovieDTO>> search(@ModelAttribute MovieFilterDTO filter,
                                           @RequestParam(defaultValue = "0") @Min(0) int page,
