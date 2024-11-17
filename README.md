@@ -225,10 +225,10 @@ docker-compose up -d
 ./mvnw spring-boot:run
 
 # Após iniciar, acesse a API no endereço:
-# https://localhost:8443/api
+[API](https://localhost:8443/api)
 
 # Acesse a documentação interativa da API (Swagger) no seguinte endereço:
-# https://localhost:8443/api/swagger-ui.html
+[API - Documentação interativa](https://localhost:8443/api/swagger-ui.html)
 
 # Para encerrar os serviços auxiliares
 docker-compose down
