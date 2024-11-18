@@ -10,19 +10,22 @@ import org.springframework.data.jpa.domain.Specification;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Objects.isNull;
+
 public class StudioSpecification {
 
     public static Specification<Studio> create(StudioFilterDTO filter) {
         return (root, query, builder) -> {
 
+            var studioFilterDTO = isNull(filter) ? new StudioFilterDTO() : filter;
             List<Predicate> predicates = new ArrayList<>();
-            filter.setIds(ListUtils.getValidValues(filter.getIds()));
+            studioFilterDTO.setIds(ListUtils.getValidValues(studioFilterDTO.getIds()));
 
-            if (!ListUtils.isNullOrEmpty(filter.getIds())) {
-                predicates.add(root.get("id").in(filter.getIds()));
+            if (!ListUtils.isNullOrEmpty(studioFilterDTO.getIds())) {
+                predicates.add(root.get("id").in(studioFilterDTO.getIds()));
             }
-            if (!StringUtils.isNullOrEmpty(filter.getName())) {
-                predicates.add(builder.like(builder.lower(root.get("name")), "%" + filter.getName().toLowerCase()));
+            if (!StringUtils.isNullOrEmpty(studioFilterDTO.getName())) {
+                predicates.add(builder.like(builder.lower(root.get("name")), "%" + studioFilterDTO.getName().toLowerCase()));
             }
             return builder.and(predicates.toArray(new Predicate[0]));
         };

@@ -17,24 +17,26 @@ public class DirectorSpecification {
     public static Specification<Director> create(DirectorFilterDTO filter) {
         return (root, query, builder) -> {
 
+            var directorFilterDTO = isNull(filter) ? new DirectorFilterDTO() : filter;
             List<Predicate> predicates = new ArrayList<>();
-            filter.setIds(ListUtils.getValidValues(filter.getIds()));
-            filter.setCountryIds(ListUtils.getValidValues(filter.getCountryIds()));
 
-            if (!ListUtils.isNullOrEmpty(filter.getIds())) {
-                predicates.add(root.get("id").in(filter.getIds()));
+            directorFilterDTO.setIds(ListUtils.getValidValues(directorFilterDTO.getIds()));
+            directorFilterDTO.setCountryIds(ListUtils.getValidValues(directorFilterDTO.getCountryIds()));
+
+            if (!ListUtils.isNullOrEmpty(directorFilterDTO.getIds())) {
+                predicates.add(root.get("id").in(directorFilterDTO.getIds()));
             }
-            if (!StringUtils.isNullOrEmpty(filter.getName())) {
-                predicates.add(builder.like(builder.lower(root.get("name")), "%" + filter.getName().toLowerCase()));
+            if (!StringUtils.isNullOrEmpty(directorFilterDTO.getName())) {
+                predicates.add(builder.like(builder.lower(root.get("name")), "%" + directorFilterDTO.getName().toLowerCase()));
             }
-            if (!ListUtils.isNullOrEmpty(filter.getCountryIds())) {
-                predicates.add(root.get("country").in(filter.getCountryIds()));
+            if (!ListUtils.isNullOrEmpty(directorFilterDTO.getCountryIds())) {
+                predicates.add(root.get("country").in(directorFilterDTO.getCountryIds()));
             }
-            if (!isNull(filter.getDateOfBirthFrom())) {
-                predicates.add(builder.greaterThanOrEqualTo(root.get("dateOfBirth"), filter.getDateOfBirthFrom()));
+            if (!isNull(directorFilterDTO.getDateOfBirthFrom())) {
+                predicates.add(builder.greaterThanOrEqualTo(root.get("dateOfBirth"), directorFilterDTO.getDateOfBirthFrom()));
             }
-            if (!isNull(filter.getDateOfBirthTo())) {
-                predicates.add(builder.lessThanOrEqualTo(root.get("dateOfBirth"), filter.getDateOfBirthTo()));
+            if (!isNull(directorFilterDTO.getDateOfBirthTo())) {
+                predicates.add(builder.lessThanOrEqualTo(root.get("dateOfBirth"), directorFilterDTO.getDateOfBirthTo()));
             }
             return builder.and(predicates.toArray(new Predicate[0]));
         };

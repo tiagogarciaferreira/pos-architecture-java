@@ -1,6 +1,7 @@
 ALTER DATABASE db_movie_api SET timezone TO 'UTC';
 
 DROP TABLE IF EXISTS tb_movie_genres;
+DROP TABLE IF EXISTS tb_user_roles;
 DROP TABLE IF EXISTS tb_movie_subtitles;
 DROP TABLE IF EXISTS tb_movie_languages;
 DROP TABLE IF EXISTS tb_movie_actors;
@@ -13,6 +14,7 @@ DROP TABLE IF EXISTS tb_genres;
 DROP TABLE IF EXISTS tb_directors;
 DROP TABLE IF EXISTS tb_actors;
 DROP TABLE IF EXISTS tb_languages;
+DROP TABLE IF EXISTS tb_users;
 DROP TABLE IF EXISTS tb_countries;
 
 CREATE TABLE tb_genres (
@@ -150,4 +152,27 @@ CREATE TABLE tb_movie_genres (
     PRIMARY KEY (movie_id, genre_id),
     FOREIGN KEY (movie_id) REFERENCES tb_movies(id) ON DELETE CASCADE,
     FOREIGN KEY (genre_id) REFERENCES tb_genres(id) ON DELETE CASCADE
+);
+
+CREATE TABLE tb_users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL CHECK (LENGTH(username) >= 3 AND LENGTH(username) <= 100),
+    username VARCHAR(100) NOT NULL UNIQUE CHECK (LENGTH(username) >= 3 AND LENGTH(username) <= 50),
+    password VARCHAR(100) NOT NULL CHECK (LENGTH(password) >= 20 AND LENGTH(password) <= 100),
+    active BOOLEAN NOT NULL,
+    date_of_birth DATE NOT NULL,
+    country_id INT NOT NULL CHECK (country_id >= 1),
+    version INT NOT NULL CHECK (version >= 1),
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (country_id) REFERENCES tb_countries(id)
+);
+
+CREATE TABLE tb_user_roles (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL CHECK (user_id >= 1),
+    role_name VARCHAR(50) NOT NULL CHECK (LENGTH(role_name) >= 4 AND LENGTH(role_name) <= 50),
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES tb_users(id) ON DELETE CASCADE
 );

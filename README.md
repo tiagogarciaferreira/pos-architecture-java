@@ -232,3 +232,12 @@ docker-compose up -d
 
 # Para encerrar os serviços auxiliares
 docker-compose down
+
+## 🧑‍💻 Usuários para Teste
+
+Aqui estão os usuários e credenciais de teste disponíveis para uso na API:
+
+| 👤 **Usuário**                 🔑 **Senha**                            🛡️ **Função**            📄 **Descrição**                             |
+|----------------|------------------------------------------------------|------------------------------------------------------------------|
+| `api_admin`    | `NfH3Fzdy@avX#Y#Zj44S#LCA8zeaRcDqIhyjz5KhfTFb@hyB4X` | `ADMIN`        | Usuário comum com permissões básicas.           |
+| `api_user`     | `d#c4j8XbZ@I2hr9RwgsAtZgpwVxRSfqE8xUYaMLf2bfKQnXE#j` | `USER`         | Usuário administrador com permissões completas. |

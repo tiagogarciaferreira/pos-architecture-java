@@ -67,7 +67,7 @@ public interface MovieAPI {
                     @ApiResponse(responseCode = "200", description = "Movies found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Page.class))),
                     @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
-    ResponseEntity<Page<MovieDTO>> search(@ModelAttribute MovieFilterDTO filter,
+    ResponseEntity<Page<MovieDTO>> search(@RequestParam(required = false) @ModelAttribute MovieFilterDTO filter,
                                           @RequestParam(defaultValue = "0") @Min(0) int page,
                                           @RequestParam(defaultValue = "10") @Min(10) @Max(100) int size,
                                           @RequestParam(defaultValue = "title,asc") String[] sort);

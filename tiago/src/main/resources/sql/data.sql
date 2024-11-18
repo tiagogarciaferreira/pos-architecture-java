@@ -1033,3 +1033,12 @@ INSERT INTO tb_movie_subtitles (movie_id, language_id) VALUES
 (59, 21),
 (59, 32),
 (59, 11);
+
+INSERT INTO tb_users (name, username, password, active, date_of_birth, country_id, version) VALUES
+ ('API Admin', 'api_admin', '$2a$10$vp3IxDOGVbvpKA5OXFnT4OUWoZYmrMAvCw3IE/qvAnpUiqNunCuGq', true, '1996-09-21', 8, 1),
+ ('API User', 'api_user', '$2a$10$awOMeIegOPkFPOOABO5qGO/xpFTaZW8Wdur9jtDbgwyJkGNcftz9y', true, '2000-09-21', 8, 1);
+
+INSERT INTO tb_user_roles (user_id, role_name)VALUES
+(1, 'ROLE_USER'),
+(1, 'ROLE_ADMIN'),
+(2, 'ROLE_USER');

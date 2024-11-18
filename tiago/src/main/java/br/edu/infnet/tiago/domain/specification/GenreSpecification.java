@@ -10,19 +10,22 @@ import org.springframework.data.jpa.domain.Specification;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Objects.isNull;
+
 public class GenreSpecification {
 
     public static Specification<Genre> create(GenreFilterDTO filter) {
         return (root, query, builder) -> {
 
+            var genreFilterDTO = isNull(filter) ? new GenreFilterDTO() : filter;
             List<Predicate> predicates = new ArrayList<>();
-            filter.setIds(ListUtils.getValidValues(filter.getIds()));
+            genreFilterDTO.setIds(ListUtils.getValidValues(genreFilterDTO.getIds()));
 
-            if (!ListUtils.isNullOrEmpty(filter.getIds())) {
-                predicates.add(root.get("id").in(filter.getIds()));
+            if (!ListUtils.isNullOrEmpty(genreFilterDTO.getIds())) {
+                predicates.add(root.get("id").in(genreFilterDTO.getIds()));
             }
-            if (!StringUtils.isNullOrEmpty(filter.getName())) {
-                predicates.add(builder.like(builder.lower(root.get("name")), "%" + filter.getName().toLowerCase()));
+            if (!StringUtils.isNullOrEmpty(genreFilterDTO.getName())) {
+                predicates.add(builder.like(builder.lower(root.get("name")), "%" + genreFilterDTO.getName().toLowerCase()));
             }
             return builder.and(predicates.toArray(new Predicate[0]));
         };

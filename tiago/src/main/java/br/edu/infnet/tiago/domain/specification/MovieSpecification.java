@@ -17,70 +17,72 @@ public class MovieSpecification {
     public static Specification<Movie> create(MovieFilterDTO filter) {
         return (root, query, builder) -> {
 
+            var movieFilterDTO = isNull(filter) ? new MovieFilterDTO() : filter;
             List<Predicate> predicates = new ArrayList<>();
-            filter.setIds(ListUtils.getValidValues(filter.getIds()));
-            filter.setImdbIds(ListUtils.toLowerCase(filter.getImdbIds()));
-            filter.setCountryIds(ListUtils.getValidValues(filter.getCountryIds()));
-            filter.setGenreIds(ListUtils.getValidValues(filter.getGenreIds()));
-            filter.setStudioIds(ListUtils.getValidValues(filter.getStudioIds()));
-            filter.setActorIds(ListUtils.getValidValues(filter.getActorIds()));
-            filter.setDirectorIds(ListUtils.getValidValues(filter.getDirectorIds()));
-            filter.setLanguageIds(ListUtils.getValidValues(filter.getLanguageIds()));
-            filter.setSubtitleIds(ListUtils.getValidValues(filter.getSubtitleIds()));
 
-            if (!ListUtils.isNullOrEmpty(filter.getIds())) {
-                predicates.add(root.get("id").in(filter.getIds()));
+            movieFilterDTO.setIds(ListUtils.getValidValues(movieFilterDTO.getIds()));
+            movieFilterDTO.setImdbIds(ListUtils.toLowerCase(movieFilterDTO.getImdbIds()));
+            movieFilterDTO.setCountryIds(ListUtils.getValidValues(movieFilterDTO.getCountryIds()));
+            movieFilterDTO.setGenreIds(ListUtils.getValidValues(movieFilterDTO.getGenreIds()));
+            movieFilterDTO.setStudioIds(ListUtils.getValidValues(movieFilterDTO.getStudioIds()));
+            movieFilterDTO.setActorIds(ListUtils.getValidValues(movieFilterDTO.getActorIds()));
+            movieFilterDTO.setDirectorIds(ListUtils.getValidValues(movieFilterDTO.getDirectorIds()));
+            movieFilterDTO.setLanguageIds(ListUtils.getValidValues(movieFilterDTO.getLanguageIds()));
+            movieFilterDTO.setSubtitleIds(ListUtils.getValidValues(movieFilterDTO.getSubtitleIds()));
+
+            if (!ListUtils.isNullOrEmpty(movieFilterDTO.getIds())) {
+                predicates.add(root.get("id").in(movieFilterDTO.getIds()));
             }
-            if (!StringUtils.isNullOrEmpty(filter.getTitle())) {
-                predicates.add(builder.like(builder.lower(root.get("title")), "%" + filter.getTitle().toLowerCase() + "%"));
+            if (!StringUtils.isNullOrEmpty(movieFilterDTO.getTitle())) {
+                predicates.add(builder.like(builder.lower(root.get("title")), "%" + movieFilterDTO.getTitle().toLowerCase() + "%"));
             }
-            if (!ListUtils.isNullOrEmpty(filter.getImdbIds())) {
-                predicates.add(builder.in(builder.lower(root.get("imdbId"))).in(filter.getImdbIds()));
+            if (!ListUtils.isNullOrEmpty(movieFilterDTO.getImdbIds())) {
+                predicates.add(builder.in(builder.lower(root.get("imdbId"))).in(movieFilterDTO.getImdbIds()));
             }
-            if (!isNull(filter.getReleaseDateFrom())) {
-                predicates.add(builder.greaterThanOrEqualTo(root.get("releaseDate"), filter.getReleaseDateFrom()));
+            if (!isNull(movieFilterDTO.getReleaseDateFrom())) {
+                predicates.add(builder.greaterThanOrEqualTo(root.get("releaseDate"), movieFilterDTO.getReleaseDateFrom()));
             }
-            if (!isNull(filter.getReleaseDateTo())) {
-                predicates.add(builder.lessThanOrEqualTo(root.get("releaseDate"), filter.getReleaseDateTo()));
+            if (!isNull(movieFilterDTO.getReleaseDateTo())) {
+                predicates.add(builder.lessThanOrEqualTo(root.get("releaseDate"), movieFilterDTO.getReleaseDateTo()));
             }
-            if (!ListUtils.isNullOrEmpty(filter.getCountryIds())) {
-                predicates.add(root.get("country").in(filter.getCountryIds()));
+            if (!ListUtils.isNullOrEmpty(movieFilterDTO.getCountryIds())) {
+                predicates.add(root.get("country").in(movieFilterDTO.getCountryIds()));
             }
-            if (!ListUtils.isNullOrEmpty(filter.getGenreIds())) {
-                predicates.add(root.get("genre").in(filter.getGenreIds()));
+            if (!ListUtils.isNullOrEmpty(movieFilterDTO.getGenreIds())) {
+                predicates.add(root.get("genre").in(movieFilterDTO.getGenreIds()));
             }
-            if (!ListUtils.isNullOrEmpty(filter.getStudioIds())) {
-                predicates.add(root.get("studio").in(filter.getStudioIds()));
+            if (!ListUtils.isNullOrEmpty(movieFilterDTO.getStudioIds())) {
+                predicates.add(root.get("studio").in(movieFilterDTO.getStudioIds()));
             }
-            if (!ListUtils.isNullOrEmpty(filter.getActorIds())) {
-                predicates.add(root.get("actor").in(filter.getActorIds()));
+            if (!ListUtils.isNullOrEmpty(movieFilterDTO.getActorIds())) {
+                predicates.add(root.get("actor").in(movieFilterDTO.getActorIds()));
             }
-            if (!ListUtils.isNullOrEmpty(filter.getDirectorIds())) {
-                predicates.add(root.get("director").in(filter.getDirectorIds()));
+            if (!ListUtils.isNullOrEmpty(movieFilterDTO.getDirectorIds())) {
+                predicates.add(root.get("director").in(movieFilterDTO.getDirectorIds()));
             }
-            if (!ListUtils.isNullOrEmpty(filter.getLanguageIds())) {
-                predicates.add(root.get("language").in(filter.getLanguageIds()));
+            if (!ListUtils.isNullOrEmpty(movieFilterDTO.getLanguageIds())) {
+                predicates.add(root.get("language").in(movieFilterDTO.getLanguageIds()));
             }
-            if (!ListUtils.isNullOrEmpty(filter.getSubtitleIds())) {
-                predicates.add(root.get("subtitle").in(filter.getSubtitleIds()));
+            if (!ListUtils.isNullOrEmpty(movieFilterDTO.getSubtitleIds())) {
+                predicates.add(root.get("subtitle").in(movieFilterDTO.getSubtitleIds()));
             }
-            if (filter.getDurationMinutesFrom() > 0) {
-                predicates.add(builder.greaterThanOrEqualTo(root.get("durationMinutes"), filter.getDurationMinutesFrom()));
+            if (movieFilterDTO.getDurationMinutesFrom() > 0) {
+                predicates.add(builder.greaterThanOrEqualTo(root.get("durationMinutes"), movieFilterDTO.getDurationMinutesFrom()));
             }
-            if (filter.getDurationMinutesTo() > 0) {
-                predicates.add(builder.lessThanOrEqualTo(root.get("durationMinutes"), filter.getDurationMinutesTo()));
+            if (movieFilterDTO.getDurationMinutesTo() > 0) {
+                predicates.add(builder.lessThanOrEqualTo(root.get("durationMinutes"), movieFilterDTO.getDurationMinutesTo()));
             }
-            if (filter.getBudgetDollarsFrom() > 0) {
-                predicates.add(builder.greaterThanOrEqualTo(root.get("budgetDollars"), filter.getBudgetDollarsFrom()));
+            if (movieFilterDTO.getBudgetDollarsFrom() > 0) {
+                predicates.add(builder.greaterThanOrEqualTo(root.get("budgetDollars"), movieFilterDTO.getBudgetDollarsFrom()));
             }
-            if (filter.getBudgetDollarsTo() > 0) {
-                predicates.add(builder.lessThanOrEqualTo(root.get("budgetDollars"), filter.getBudgetDollarsTo()));
+            if (movieFilterDTO.getBudgetDollarsTo() > 0) {
+                predicates.add(builder.lessThanOrEqualTo(root.get("budgetDollars"), movieFilterDTO.getBudgetDollarsTo()));
             }
-            if (filter.getBoxOfficeDollarsFrom() > 0) {
-                predicates.add(builder.greaterThanOrEqualTo(root.get("boxOfficeDollars"), filter.getBoxOfficeDollarsFrom()));
+            if (movieFilterDTO.getBoxOfficeDollarsFrom() > 0) {
+                predicates.add(builder.greaterThanOrEqualTo(root.get("boxOfficeDollars"), movieFilterDTO.getBoxOfficeDollarsFrom()));
             }
-            if (filter.getBoxOfficeDollarsTo() > 0) {
-                predicates.add(builder.lessThanOrEqualTo(root.get("boxOfficeDollars"), filter.getBoxOfficeDollarsTo()));
+            if (movieFilterDTO.getBoxOfficeDollarsTo() > 0) {
+                predicates.add(builder.lessThanOrEqualTo(root.get("boxOfficeDollars"), movieFilterDTO.getBoxOfficeDollarsTo()));
             }
             return builder.and(predicates.toArray(new Predicate[0]));
         };

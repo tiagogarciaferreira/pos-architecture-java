@@ -27,6 +27,7 @@ public abstract class Person {
 
     @NotNull(message = "Date of Birth is required")
     @Past(message = "Date of birth must be in the past")
+    @JoinColumn(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
     @Transient
