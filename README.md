@@ -237,6 +237,7 @@ Aqui estão os usuários e credenciais de teste disponíveis para uso na API:
 - **🔑 Senha:** `NfH3Fzdy@avX#Y#Zj44S#LCA8zeaRcDqIhyjz5KhfTFb@hyB4X`  
 - **🛡️ Função:** `ADMIN`  
 - **📄 Descrição:** Usuário com permissões completas, incluindo gerenciamento administrativo(Leiture e escrita).
+- **🟠 Esse é o usuário padrão já configurado no Postamn**
 
 ---
 
