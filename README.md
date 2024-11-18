@@ -224,20 +224,30 @@ docker-compose up -d
 # Execute a aplicação localmente usando Maven
 ./mvnw spring-boot:run
 
-# Após iniciar, acesse a API no endereço:
-[API](https://localhost:8443/api)
-
-# Acesse a documentação interativa da API (Swagger) no seguinte endereço:
-[API - Documentação interativa](https://localhost:8443/api/swagger-ui.html)
-
 # Para encerrar os serviços auxiliares
 docker-compose down
 
+```
 ## 🧑‍💻 Usuários para Teste
 
 Aqui estão os usuários e credenciais de teste disponíveis para uso na API:
 
-| 👤 **Usuário**                 🔑 **Senha**                            🛡️ **Função**            📄 **Descrição**                             |
-|----------------|------------------------------------------------------|------------------------------------------------------------------|
-| `api_admin`    | `NfH3Fzdy@avX#Y#Zj44S#LCA8zeaRcDqIhyjz5KhfTFb@hyB4X` | `ADMIN`        | Usuário comum com permissões básicas.           |
-| `api_user`     | `d#c4j8XbZ@I2hr9RwgsAtZgpwVxRSfqE8xUYaMLf2bfKQnXE#j` | `USER`         | Usuário administrador com permissões completas. |
+### Usuário Administrador
+- **👤 Usuário:** `api_admin`  
+- **🔑 Senha:** `NfH3Fzdy@avX#Y#Zj44S#LCA8zeaRcDqIhyjz5KhfTFb@hyB4X`  
+- **🛡️ Função:** `ADMIN`  
+- **📄 Descrição:** Usuário com permissões completas, incluindo gerenciamento administrativo(Leiture e escrita).
+
+---
+
+### Usuário Comum
+- **👤 Usuário:** `api_user`  
+- **🔑 Senha:** `d#c4j8XbZ@I2hr9RwgsAtZgpwVxRSfqE8xUYaMLf2bfKQnXE#j`  
+- **🛡️ Função:** `USER`  
+- **📄 Descrição:** Usuário comum com permissões básicas de acesso à API(Leitura).
+
+## Após iniciar, acesse a API no endereço:
+[API - Endereço](https://localhost:8443/api)
+
+## Acesse a documentação interativa da API (Swagger) no seguinte endereço:
+[API - Documentação interativa](https://localhost:8443/api/swagger-ui.html)
