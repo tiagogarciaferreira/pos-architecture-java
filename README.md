@@ -259,7 +259,7 @@ Aqui estão os usuários e credenciais de teste disponíveis para uso na API:
 [API - Documentação interativa](https://localhost:8443/api/swagger-ui.html)
 
 ## 🧑‍💻 Acessar o DBeaver
-[DBeaver](http://localhost:8978/) | [Tutorial para Configuração](https://blog.programster.org/deploy-cloudbeaver-using-docker)
+[DBeaver](http://localhost:8978/) | [Tutorial para Configuração](https://blog.programster.org/deploy-cloudbeaver-using-docker) (Começar do passo: `Web UI Setup`)
 
 ### Usuário
 - **👤 DBeaver Usuário:** `cbadmin`  
