@@ -9,6 +9,21 @@
 		{
 			"name": "Create",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -21,15 +36,15 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/v1/studios/12345",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/studios/12345",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"studios",
 						"12345"
 					]
@@ -40,6 +55,21 @@
 		{
 			"name": "Update",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
@@ -52,15 +82,15 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/v1/studios/12345",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/studios/12345",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"studios",
 						"12345"
 					]
@@ -71,18 +101,33 @@
 		{
 			"name": "Delete",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/v1/studios/12345",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/studios/12345",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"studios",
 						"12345"
 					]
@@ -93,18 +138,33 @@
 		{
 			"name": "Get by Id",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/v1/studios/12345",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/studios/12345",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"studios",
 						"12345"
 					]
@@ -115,30 +175,47 @@
 		{
 			"name": "Search",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/v1/studios?ids=1,2&name=&page=0&size=10&sort=name,asc",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/studios?page=0&size=10&sort=name,asc",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"studios"
 					],
 					"query": [
 						{
 							"key": "ids",
 							"value": "1,2",
-							"description": "List of studio IDs -> Contains"
+							"description": "List of studio IDs -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "name",
 							"value": "",
-							"description": "Name of the studio -> Start with"
+							"description": "Name of the studio -> Start with",
+							"disabled": true
 						},
 						{
 							"key": "page",

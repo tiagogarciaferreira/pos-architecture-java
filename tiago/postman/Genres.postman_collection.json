@@ -9,6 +9,21 @@
 		{
 			"name": "Create",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -21,14 +36,15 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/v1/genres",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/v1/genres",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
+						"{{api.version}}",
 						"v1",
 						"genres"
 					]
@@ -39,6 +55,21 @@
 		{
 			"name": "Update",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
@@ -51,15 +82,15 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/v1/genres/12345",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/genres/12345",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"genres",
 						"12345"
 					]
@@ -70,18 +101,33 @@
 		{
 			"name": "Delete",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/v1/genres/12345",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/genres/12345",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"genres",
 						"12345"
 					]
@@ -92,20 +138,35 @@
 		{
 			"name": "Get by Id",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/v1/genres/12345",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/genres/1",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"genres",
-						"12345"
+						"1"
 					]
 				}
 			},
@@ -117,18 +178,33 @@
 				"strictSSL": false
 			},
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/v1/genres?ids=1,2&name=&page=0&size=10&sort=name,asc",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/genres?ids=1,2&name=&page=0&size=10&sort=name,asc",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"genres"
 					],
 					"query": [

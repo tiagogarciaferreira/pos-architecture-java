@@ -9,6 +9,21 @@
 		{
 			"name": "Create",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -21,15 +36,15 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/v1/actors",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/actors",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"actors"
 					]
 				}
@@ -39,6 +54,21 @@
 		{
 			"name": "Update",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
@@ -51,15 +81,15 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/v1/actors/12345",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/actors/12345",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"actors",
 						"12345"
 					]
@@ -70,18 +100,33 @@
 		{
 			"name": "Delete",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/v1/actors/12345",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/actors/12345",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"actors",
 						"12345"
 					]
@@ -92,18 +137,33 @@
 		{
 			"name": "Get by Id",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/v1/actors/12345",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/actors/12345",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"actors",
 						"12345"
 					]
@@ -114,18 +174,33 @@
 		{
 			"name": "Search",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/v1/actors?ids=&countryIds&name=&dateOfBirthFrom&dateOfBirthTo&page=0&size=10&sort=name,asc",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/actors?ids=&countryIds&name=&dateOfBirthFrom&dateOfBirthTo&page=0&size=10&sort=name,asc",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"actors"
 					],
 					"query": [

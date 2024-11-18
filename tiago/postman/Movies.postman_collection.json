@@ -9,6 +9,21 @@
 		{
 			"name": "Create",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -21,15 +36,15 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/v1/movies",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/movies",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"movies"
 					]
 				}
@@ -39,6 +54,21 @@
 		{
 			"name": "Update",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
@@ -51,15 +81,15 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/v1/movies/12345",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/movies/12345",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"movies",
 						"12345"
 					]
@@ -70,18 +100,33 @@
 		{
 			"name": "Delete",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/v1/movies/12345",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/movies/12345",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"movies",
 						"12345"
 					]
@@ -92,10 +137,25 @@
 		{
 			"name": "Get by Id",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/v1/movies/12345",
+					"raw": "https://localhost:8443/api/v1/movies/12345{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -105,7 +165,11 @@
 						"api",
 						"v1",
 						"movies",
-						"12345"
+						"12345{{api.http}}:",
+						"",
+						"{{api.host}}:{{api.port}}",
+						"api",
+						"{{api.version}}"
 					]
 				}
 			},
@@ -114,18 +178,33 @@
 		{
 			"name": "Search",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api.pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api.user}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/v1/movies/12345?ids=1,2&title=&imdbIds=&releaseDateFrom=&releaseDateTo=&durationMinutesFrom=&durationMinutesTo=&budgetDollarsFrom=&budgetDollarsTo=&boxOfficeDollarsFrom=&boxOfficeDollarsTo=&actorIds=&studioIds=&directorIds=&genreIds=&countryIds=&languageIds=&subtitleIds=&page=0&size=10&sort=name,asc",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/movies/12345?ids=1,2&title=&imdbIds=&releaseDateFrom=&releaseDateTo=&durationMinutesFrom=&durationMinutesTo=&budgetDollarsFrom=&budgetDollarsTo=&boxOfficeDollarsFrom=&boxOfficeDollarsTo=&actorIds=&studioIds=&directorIds=&genreIds=&countryIds=&languageIds=&subtitleIds=&page=0&size=10&sort=title,asc",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"movies",
 						"12345"
 					],
@@ -232,7 +311,7 @@
 						},
 						{
 							"key": "sort",
-							"value": "name,asc",
+							"value": "title,asc",
 							"description": "Ordering"
 						}
 					]
