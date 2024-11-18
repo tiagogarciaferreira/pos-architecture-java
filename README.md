@@ -257,3 +257,23 @@ Aqui estão os usuários e credenciais de teste disponíveis para uso na API:
 
 ## Acesse a documentação interativa da API (Swagger) no seguinte endereço:
 [API - Documentação interativa](https://localhost:8443/api/swagger-ui.html)
+
+## 🧑‍💻 Acessar o DBeaver
+[DBeaver](http://localhost:8978/) | [Tutorial para Configuração](https://blog.programster.org/deploy-cloudbeaver-using-docker)
+
+### Usuário
+- **👤 DBeaver Usuário:** `cbadmin`  
+- **🔑 DBeaver Senha:** `g7GBZmTXS6qv2rV2RKPwnNU6sBDx4J`  
+- **🖥️ DBeaver Nome do Servidor:** `database`  
+- **🗄️ Postgres Banco de dados:** `db_movie_api`
+- **👤 Postgres Usuário:** `movie_api_user`  
+- **🔑 Postgres Senha:** `wwZFGVt3neZ6J9hmR29ur8admVGv` 
+
+## 📝 Passos:
+
+### Conectando DBeaver: 
+![Início](images/cloudbeaver-setup-1.png)
+### Login:
+![Início](images/cloudbeaver-login.png)
+### Conectando Postgres:
+![Início](images/create-connection.png)

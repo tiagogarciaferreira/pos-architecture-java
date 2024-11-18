@@ -7,21 +7,21 @@ networks:
 services:
 
   database:
-    image: postgres:latest
+    image: postgres:17.1
     container_name: database
     restart: always
     shm_size: 100mb
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: backend_movie_api_user
+      POSTGRES_USER: movie_api_user
       POSTGRES_PASSWORD: wwZFGVt3neZ6J9hmR29ur8admVGv
       POSTGRES_DB: db_movie_api
     networks:
       - backend-api
 
   cloudbeaver:
-    image: dbeaver/cloudbeaver:latest
+    image: dbeaver/cloudbeaver:24.2.5
     container_name: cloudbeaver
     depends_on:
       - database
