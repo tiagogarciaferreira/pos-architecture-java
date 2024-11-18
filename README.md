@@ -228,6 +228,11 @@ docker-compose up -d
 docker-compose down
 
 ```
+
+## 🔐 Autenticação da API
+
+A API utiliza **Autenticação Básica (Basic Authentication)** para garantir que apenas usuários autorizados possam acessar os recursos.
+
 ## 🧑‍💻 Usuários para Teste
 
 Aqui estão os usuários e credenciais de teste disponíveis para uso na API:
