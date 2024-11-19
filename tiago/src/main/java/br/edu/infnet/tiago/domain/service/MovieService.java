@@ -37,9 +37,25 @@ public class MovieService {
 
     @Transactional
     public Movie update(Long movieId, Movie movie) {
-        Movie movieFound = getById(movieId);
-        movie.setId(movie.getId());
-        return movieRepository.save(movie);
+        var existingMovie = getById(movieId)
+                .withImdbId(movie.getImdbId())
+                .withTitle(movie.getTitle())
+                .withSynopsis(movie.getSynopsis())
+                .withCountry(movie.getCountry())
+                .withActors(movie.getActors())
+                .withStudio(movie.getStudio())
+                .withDirector(movie.getDirector())
+                .withBoxOfficeDollars(movie.getBoxOfficeDollars())
+                .withBudgetDollars(movie.getBudgetDollars())
+                .withReleaseDate(movie.getReleaseDate())
+                .withDurationMinutes(movie.getDurationMinutes())
+                .withGenres(movie.getGenres())
+                .withImdbRating(movie.getImdbRating())
+                .withPoster(movie.getPoster())
+                .withLanguages(movie.getLanguages())
+                .withSubtitles(movie.getSubtitles())
+                .withVersion(movie.getVersion());
+        return movieRepository.save(existingMovie);
     }
 
     @Transactional

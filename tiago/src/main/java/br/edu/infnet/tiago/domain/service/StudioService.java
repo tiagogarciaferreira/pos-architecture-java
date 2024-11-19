@@ -37,9 +37,8 @@ public class StudioService {
 
     @Transactional
     public Studio update(Long studioId, Studio studio) {
-        Studio studioFound = getById(studioId);
-        studioFound.setId(studioId);
-        return studioRepository.save(studio);
+        var existingStudio = getById(studioId).withCountry(studio.getCountry()).withName(studio.getName()).withVersion(studio.getVersion());
+        return studioRepository.save(existingStudio);
     }
 
     @Transactional

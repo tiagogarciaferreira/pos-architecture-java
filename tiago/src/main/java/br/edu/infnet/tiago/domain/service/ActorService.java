@@ -4,6 +4,7 @@ package br.edu.infnet.tiago.domain.service;
 import br.edu.infnet.tiago.domain.model.Actor;
 import br.edu.infnet.tiago.domain.repository.ActorRepository;
 import br.edu.infnet.tiago.infrastructure.exception.custom.NotFoundException;
+import br.edu.infnet.tiago.shared.utils.ListUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,9 +38,14 @@ public class ActorService {
 
     @Transactional
     public Actor update(Long actorId, Actor actor) {
-        Actor actorFound = getById(actorId);
-        actor.setId(actorFound.getId());
-        return actorRepository.save(actor);
+        var existingActor = getById(actorId);
+        existingActor.setName(actor.getName());
+        existingActor.setCountry(actor.getCountry());
+        existingActor.setDateOfBirth(actor.getDateOfBirth());
+        existingActor.setAwards(ListUtils.getValidValues(actor.getAwards()));
+        existingActor.setRoles(ListUtils.getValidValues(actor.getRoles()));
+        existingActor.setVersion(actor.getVersion());
+        return actorRepository.save(existingActor);
     }
 
     @Transactional

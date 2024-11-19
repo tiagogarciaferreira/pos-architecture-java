@@ -37,9 +37,8 @@ public class GenreService {
 
     @Transactional
     public Genre update(Long genreId, Genre genre) {
-        Genre genreFound = getById(genreId);
-        genreFound.setId(genreId);
-        return genreRepository.save(genre);
+        var existingGenre = getById(genreId).withName(genre.getName()).withVersion(genre.getVersion());
+        return genreRepository.save(existingGenre);
     }
 
     @Transactional

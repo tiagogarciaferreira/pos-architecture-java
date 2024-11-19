@@ -37,9 +37,8 @@ public class LanguageService {
 
     @Transactional
     public Language update(Long languageId, Language language) {
-        Language languageFound = getById(languageId);
-        language.setId(languageFound.getId());
-        return languageRepository.save(language);
+        var existingLanguage = getById(languageId).withName(language.getName()).withVersion(language.getVersion());
+        return languageRepository.save(existingLanguage);
     }
 
     @Transactional

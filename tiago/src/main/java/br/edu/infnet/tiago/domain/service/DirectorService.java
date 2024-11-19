@@ -4,6 +4,7 @@ package br.edu.infnet.tiago.domain.service;
 import br.edu.infnet.tiago.domain.model.Director;
 import br.edu.infnet.tiago.domain.repository.DirectorRepository;
 import br.edu.infnet.tiago.infrastructure.exception.custom.NotFoundException;
+import br.edu.infnet.tiago.shared.utils.ListUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,9 +38,13 @@ public class DirectorService {
 
     @Transactional
     public Director update(Long directorId, Director director) {
-        Director directorFound = getById(directorId);
-        director.setId(directorFound.getId());
-        return directorRepository.save(director);
+        var existingDirector = getById(directorId);
+        existingDirector.setName(director.getName());
+        existingDirector.setCountry(director.getCountry());
+        existingDirector.setAwards(ListUtils.getValidValues(director.getAwards()));
+        existingDirector.setDateOfBirth(director.getDateOfBirth());
+        existingDirector.setVersion(director.getVersion());
+        return directorRepository.save(existingDirector);
     }
 
     @Transactional

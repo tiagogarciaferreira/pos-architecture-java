@@ -37,11 +37,8 @@ public class CountryService {
 
     @Transactional
     public Country update(Long countryId, Country country) {
-        Country countryFound = getById(countryId)
-                .withName(country.getName())
-                .withCode(country.getCode())
-                .withVersion(country.getVersion());
-        return countryRepository.save(countryFound);
+        var existingCountry = getById(countryId).withName(country.getName()).withCode(country.getCode()).withVersion(country.getVersion());
+        return countryRepository.save(existingCountry);
     }
 
     @Transactional
