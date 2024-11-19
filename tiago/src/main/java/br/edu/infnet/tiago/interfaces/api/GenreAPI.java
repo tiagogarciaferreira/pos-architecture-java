@@ -69,6 +69,6 @@ public interface GenreAPI {
             })
     ResponseEntity<Page<GenreDTO>> search(@ModelAttribute GenreFilterDTO filter,
                                           @RequestParam(defaultValue = "0") @Min(0) int page,
-                                          @RequestParam(defaultValue = "10") @Min(10) @Max(100) int size,
+                                          @RequestParam(defaultValue = "10") @Min(1) @Max(100) int size,
                                           @RequestParam(defaultValue = "name,asc") String[] sort);
 }
