@@ -196,7 +196,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/movies/12345?ids=1,2&title=&imdbIds=&releaseDateFrom=&releaseDateTo=&durationMinutesFrom=&durationMinutesTo=&budgetDollarsFrom=&budgetDollarsTo=&boxOfficeDollarsFrom=&boxOfficeDollarsTo=&actorIds=&studioIds=&directorIds=&genreIds=&countryIds=&languageIds=&subtitleIds=&page=0&size=10&sort=title,asc",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/movies?page=0&size=10&sort=title,asc",
 					"protocol": "{{api.http}}",
 					"host": [
 						"{{api.host}}"
@@ -205,99 +205,116 @@
 					"path": [
 						"api",
 						"{{api.version}}",
-						"movies",
-						"12345"
+						"movies"
 					],
 					"query": [
 						{
 							"key": "ids",
 							"value": "1,2",
-							"description": "List of movie IDs -> Contains"
+							"description": "List of movie IDs -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "title",
 							"value": "",
-							"description": "Title of the movie -> Contains"
+							"description": "Title of the movie -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "imdbIds",
 							"value": "",
-							"description": "Page number"
+							"description": "Page number",
+							"disabled": true
 						},
 						{
 							"key": "releaseDateFrom",
 							"value": "",
-							"description": "Page size"
+							"description": "Page size",
+							"disabled": true
 						},
 						{
 							"key": "releaseDateTo",
 							"value": "",
-							"description": "Ordering"
+							"description": "Ordering",
+							"disabled": true
 						},
 						{
 							"key": "durationMinutesFrom",
 							"value": "",
-							"description": "List of IMDb movie IDs -> Contains"
+							"description": "List of IMDb movie IDs -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "durationMinutesTo",
 							"value": "",
-							"description": "Release date of the movie from (inclusive) -> GreaterThanOrEqual"
+							"description": "Release date of the movie from (inclusive) -> GreaterThanOrEqual",
+							"disabled": true
 						},
 						{
 							"key": "budgetDollarsFrom",
 							"value": "",
-							"description": "Release date of the movie to (inclusive) -> LessThanOrEqual"
+							"description": "Release date of the movie to (inclusive) -> LessThanOrEqual",
+							"disabled": true
 						},
 						{
 							"key": "budgetDollarsTo",
 							"value": "",
-							"description": "Movie duration from (in minutes) -> GreaterThanOrEqual"
+							"description": "Movie duration from (in minutes) -> GreaterThanOrEqual",
+							"disabled": true
 						},
 						{
 							"key": "boxOfficeDollarsFrom",
 							"value": "",
-							"description": "Movie duration to (in minutes) -> LessThanOrEqual"
+							"description": "Movie duration to (in minutes) -> LessThanOrEqual",
+							"disabled": true
 						},
 						{
 							"key": "boxOfficeDollarsTo",
 							"value": "",
-							"description": "Movie budget from (in dollars) -> GreaterThanOrEqual"
+							"description": "Movie budget from (in dollars) -> GreaterThanOrEqual",
+							"disabled": true
 						},
 						{
 							"key": "actorIds",
 							"value": "",
-							"description": "Movie budget to (in dollars) -> LessThanOrEqual"
+							"description": "Movie budget to (in dollars) -> LessThanOrEqual",
+							"disabled": true
 						},
 						{
 							"key": "studioIds",
 							"value": "",
-							"description": "Movie box office from (in dollars) -> GreaterThanOrEqual"
+							"description": "Movie box office from (in dollars) -> GreaterThanOrEqual",
+							"disabled": true
 						},
 						{
 							"key": "directorIds",
 							"value": "",
-							"description": "Movie box office to (in dollars) -> LessThanOrEqual"
+							"description": "Movie box office to (in dollars) -> LessThanOrEqual",
+							"disabled": true
 						},
 						{
 							"key": "genreIds",
 							"value": "",
-							"description": "List of actor IDs associated with the movie -> Contains"
+							"description": "List of actor IDs associated with the movie -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "countryIds",
 							"value": "",
-							"description": "List of studio IDs associated with the movie -> Contains"
+							"description": "List of studio IDs associated with the movie -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "languageIds",
 							"value": "",
-							"description": "List of director IDs associated with the movie -> Contains"
+							"description": "List of director IDs associated with the movie -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "subtitleIds",
 							"value": "",
-							"description": "List of genre IDs associated with the movie -> Contains"
+							"description": "List of genre IDs associated with the movie -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "page",
