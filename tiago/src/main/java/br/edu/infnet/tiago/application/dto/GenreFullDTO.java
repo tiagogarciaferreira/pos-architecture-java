@@ -21,4 +21,6 @@ public class GenreFullDTO {
     private OffsetDateTime created;
 
     private OffsetDateTime modified;
+
+    private Integer version;
 }

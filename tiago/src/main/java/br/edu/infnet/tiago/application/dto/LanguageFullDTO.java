@@ -21,4 +21,6 @@ public class LanguageFullDTO {
     private OffsetDateTime created;
 
     private OffsetDateTime modified;
+
+    private Integer version;
 }

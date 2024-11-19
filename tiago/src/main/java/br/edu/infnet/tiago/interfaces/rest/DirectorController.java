@@ -63,7 +63,7 @@ public class DirectorController implements DirectorAPI {
     @PutMapping("/{id}")
     public ResponseEntity<DirectorDTO> update(@PathVariable Long id, @RequestBody DirectorUpdateDTO directorUpdateDTO) {
         Director director = directorMapper.fromDTO(directorUpdateDTO);
-        director = directorService.update(director);
+        director = directorService.update(id, director);
         DirectorDTO directorDTO = directorMapper.toDTO(director);
         log.info("Director '{}', was successfully updated", id);
         return new ResponseEntity<>(directorDTO, OK);

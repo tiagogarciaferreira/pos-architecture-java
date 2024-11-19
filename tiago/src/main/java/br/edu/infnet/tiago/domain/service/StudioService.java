@@ -36,7 +36,9 @@ public class StudioService {
     }
 
     @Transactional
-    public Studio update(Studio studio) {
+    public Studio update(Long studioId, Studio studio) {
+        Studio studioFound = getById(studioId);
+        studioFound.setId(studioId);
         return studioRepository.save(studio);
     }
 

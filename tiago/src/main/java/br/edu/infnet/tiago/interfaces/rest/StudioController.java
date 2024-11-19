@@ -62,7 +62,7 @@ public class StudioController implements StudioAPI {
     @PutMapping("/{id}")
     public ResponseEntity<StudioDTO> update(@PathVariable Long id, @RequestBody StudioUpdateDTO studioUpdateDTO) {
         Studio studio = studioMapper.fromDTO(studioUpdateDTO);
-        studio = studioService.update(studio);
+        studio = studioService.update(id, studio);
         StudioDTO studioDTO = studioMapper.toDTO(studio);
         log.info("Studio '{}', was successfully updated", id);
         return new ResponseEntity<>(studioDTO, OK);

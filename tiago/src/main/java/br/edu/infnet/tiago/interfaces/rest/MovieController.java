@@ -62,7 +62,7 @@ public class MovieController implements MovieAPI {
     @PutMapping("/{id}")
     public ResponseEntity<MovieDTO> update(@PathVariable Long id, @RequestBody MovieUpdateDTO movieUpdateDTO) {
         Movie movie = movieMapper.fromDTO(movieUpdateDTO);
-        movie = movieService.update(movie);
+        movie = movieService.update(id, movie);
         MovieDTO movieDTO = movieMapper.toDTO(movie);
         log.info("Movie '{}', was successfully updated", id);
         return new ResponseEntity<>(movieDTO, OK);

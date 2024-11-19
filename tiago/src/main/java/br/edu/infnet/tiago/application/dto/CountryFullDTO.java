@@ -20,4 +20,6 @@ public class CountryFullDTO {
     private OffsetDateTime created;
 
     private OffsetDateTime modified;
+
+    private Integer version;
 }

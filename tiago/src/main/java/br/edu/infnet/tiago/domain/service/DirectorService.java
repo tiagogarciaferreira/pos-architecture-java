@@ -36,7 +36,9 @@ public class DirectorService {
     }
 
     @Transactional
-    public Director update(Director director) {
+    public Director update(Long directorId, Director director) {
+        Director directorFound = getById(directorId);
+        director.setId(directorFound.getId());
         return directorRepository.save(director);
     }
 

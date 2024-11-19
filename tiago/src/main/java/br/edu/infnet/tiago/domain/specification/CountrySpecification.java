@@ -19,7 +19,6 @@ public class CountrySpecification {
 
             var countryFilterDTO = isNull(filter) ? new CountryFilterDTO() : filter;
             List<Predicate> predicates = new ArrayList<>();
-
             countryFilterDTO.setIds(ListUtils.getValidValues(countryFilterDTO.getIds()));
             countryFilterDTO.setCodes(ListUtils.toLowerCase(countryFilterDTO.getCodes()));
 
@@ -27,10 +26,10 @@ public class CountrySpecification {
                 predicates.add(root.get("id").in(countryFilterDTO.getIds()));
             }
             if (!StringUtils.isNullOrEmpty(countryFilterDTO.getName())) {
-                predicates.add(builder.like(builder.lower(root.get("name")), "%" + countryFilterDTO.getName().toLowerCase()));
+                predicates.add(builder.like(builder.lower(root.get("name")), countryFilterDTO.getName().toLowerCase() + "%"));
             }
             if (!ListUtils.isNullOrEmpty(countryFilterDTO.getCodes())) {
-                predicates.add(builder.in(builder.lower(root.get("code"))).in(countryFilterDTO.getCodes()));
+                predicates.add(builder.lower(root.get("code")).in(countryFilterDTO.getCodes()));
             }
             return builder.and(predicates.toArray(new Predicate[0]));
         };

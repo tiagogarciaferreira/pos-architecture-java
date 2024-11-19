@@ -67,7 +67,7 @@ public interface LanguageAPI {
                     @ApiResponse(responseCode = "200", description = "Languages found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Page.class))),
                     @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
-    ResponseEntity<Page<LanguageDTO>> search(@RequestParam(required = false) @ModelAttribute LanguageFilterDTO filter,
+    ResponseEntity<Page<LanguageDTO>> search(@ModelAttribute LanguageFilterDTO filter,
                                              @RequestParam(defaultValue = "0") @Min(0) int page,
                                              @RequestParam(defaultValue = "10") @Min(10) @Max(100) int size,
                                              @RequestParam(defaultValue = "name,asc") String[] sort);

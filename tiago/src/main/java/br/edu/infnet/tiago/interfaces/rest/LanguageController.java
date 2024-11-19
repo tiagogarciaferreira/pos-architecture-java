@@ -62,7 +62,7 @@ public class LanguageController implements LanguageAPI {
     @PutMapping("/{id}")
     public ResponseEntity<LanguageDTO> update(@PathVariable Long id, @RequestBody LanguageUpdateDTO languageUpdateDTO) {
         Language language = languageMapper.fromDTO(languageUpdateDTO);
-        language = languageService.update(language);
+        language = languageService.update(id, language);
         LanguageDTO languageDTO = languageMapper.toDTO(language);
         log.info("Language '{}', was successfully updated", id);
         return new ResponseEntity<>(languageDTO, OK);

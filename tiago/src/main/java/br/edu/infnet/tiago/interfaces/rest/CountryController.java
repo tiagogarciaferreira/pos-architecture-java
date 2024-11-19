@@ -62,7 +62,7 @@ public class CountryController implements CountryAPI {
     @PutMapping("/{id}")
     public ResponseEntity<CountryDTO> update(@PathVariable Long id, @RequestBody CountryUpdateDTO countryUpdateDTO) {
         Country country = countryMapper.fromDTO(countryUpdateDTO);
-        country = countryService.update(country);
+        country = countryService.update(id, country);
         CountryDTO countryDTO = countryMapper.toDTO(country);
         log.info("Country '{}', was successfully updated", id);
         return new ResponseEntity<>(countryDTO, OK);

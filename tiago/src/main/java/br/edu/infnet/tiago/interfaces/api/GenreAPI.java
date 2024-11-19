@@ -67,7 +67,7 @@ public interface GenreAPI {
                     @ApiResponse(responseCode = "200", description = "Genres found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Page.class))),
                     @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
             })
-    ResponseEntity<Page<GenreDTO>> search(@RequestParam(required = false) @ModelAttribute GenreFilterDTO filter,
+    ResponseEntity<Page<GenreDTO>> search(@ModelAttribute GenreFilterDTO filter,
                                           @RequestParam(defaultValue = "0") @Min(0) int page,
                                           @RequestParam(defaultValue = "10") @Min(10) @Max(100) int size,
                                           @RequestParam(defaultValue = "name,asc") String[] sort);

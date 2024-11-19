@@ -36,7 +36,9 @@ public class ActorService {
     }
 
     @Transactional
-    public Actor update(Actor actor) {
+    public Actor update(Long actorId, Actor actor) {
+        Actor actorFound = getById(actorId);
+        actor.setId(actorFound.getId());
         return actorRepository.save(actor);
     }
 

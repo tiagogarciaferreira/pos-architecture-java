@@ -62,7 +62,7 @@ public class GenreController implements GenreAPI {
     @PutMapping("/{id}")
     public ResponseEntity<GenreDTO> update(@PathVariable Long id, @RequestBody GenreUpdateDTO genreUpdateDTO) {
         Genre genre = genreMapper.fromDTO(genreUpdateDTO);
-        genre = genreService.update(genre);
+        genre = genreService.update(id, genre);
         GenreDTO genreDTO = genreMapper.toDTO(genre);
         log.info("Genre '{}', was successfully updated", id);
         return new ResponseEntity<>(genreDTO, OK);

@@ -61,7 +61,7 @@ public class ActorController implements ActorAPI {
     @PutMapping("/{id}")
     public ResponseEntity<ActorDTO> update(@PathVariable Long id, @RequestBody ActorUpdateDTO actorUpdateDTO) {
         Actor actor = actorMapper.fromDTO(actorUpdateDTO);
-        actor = actorService.update(actor);
+        actor = actorService.update(id, actor);
         ActorDTO actorDTO = actorMapper.toDTO(actor);
         log.info("Actor '{}', was successfully updated", id);
         return new ResponseEntity<>(actorDTO, OK);

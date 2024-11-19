@@ -36,7 +36,9 @@ public class MovieService {
     }
 
     @Transactional
-    public Movie update(Movie movie) {
+    public Movie update(Long movieId, Movie movie) {
+        Movie movieFound = getById(movieId);
+        movie.setId(movie.getId());
         return movieRepository.save(movie);
     }
 

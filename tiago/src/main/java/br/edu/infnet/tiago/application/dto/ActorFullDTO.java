@@ -32,4 +32,6 @@ public class ActorFullDTO {
     private OffsetDateTime created;
 
     private OffsetDateTime modified;
+
+    private Integer version;
 }
