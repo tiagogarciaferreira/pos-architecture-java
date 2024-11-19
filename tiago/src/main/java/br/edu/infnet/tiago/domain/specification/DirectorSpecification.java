@@ -27,7 +27,7 @@ public class DirectorSpecification {
                 predicates.add(root.get("id").in(directorFilterDTO.getIds()));
             }
             if (!StringUtils.isNullOrEmpty(directorFilterDTO.getName())) {
-                predicates.add(builder.like(builder.lower(root.get("name")), "%" + directorFilterDTO.getName().toLowerCase()));
+                predicates.add(builder.like(builder.lower(root.get("name")), directorFilterDTO.getName().toLowerCase() + "%"));
             }
             if (!ListUtils.isNullOrEmpty(directorFilterDTO.getCountryIds())) {
                 predicates.add(root.get("country").in(directorFilterDTO.getCountryIds()));

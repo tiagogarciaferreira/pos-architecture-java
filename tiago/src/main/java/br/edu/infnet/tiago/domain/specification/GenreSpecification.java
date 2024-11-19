@@ -25,7 +25,7 @@ public class GenreSpecification {
                 predicates.add(root.get("id").in(genreFilterDTO.getIds()));
             }
             if (!StringUtils.isNullOrEmpty(genreFilterDTO.getName())) {
-                predicates.add(builder.like(builder.lower(root.get("name")), "%" + genreFilterDTO.getName().toLowerCase()));
+                predicates.add(builder.like(builder.lower(root.get("name")), genreFilterDTO.getName().toLowerCase() + "%"));
             }
             return builder.and(predicates.toArray(new Predicate[0]));
         };

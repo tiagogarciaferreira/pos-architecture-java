@@ -25,7 +25,7 @@ public class StudioSpecification {
                 predicates.add(root.get("id").in(studioFilterDTO.getIds()));
             }
             if (!StringUtils.isNullOrEmpty(studioFilterDTO.getName())) {
-                predicates.add(builder.like(builder.lower(root.get("name")), "%" + studioFilterDTO.getName().toLowerCase()));
+                predicates.add(builder.like(builder.lower(root.get("name")), studioFilterDTO.getName().toLowerCase() + "%"));
             }
             return builder.and(predicates.toArray(new Predicate[0]));
         };

@@ -25,7 +25,7 @@ public class LanguageSpecification {
                 predicates.add(root.get("id").in(languageFilterDTO.getIds()));
             }
             if (!StringUtils.isNullOrEmpty(languageFilterDTO.getName())) {
-                predicates.add(builder.like(builder.lower(root.get("name")), "%" + languageFilterDTO.getName().toLowerCase()));
+                predicates.add(builder.like(builder.lower(root.get("name")), languageFilterDTO.getName().toLowerCase() + "%"));
             }
             return builder.and(predicates.toArray(new Predicate[0]));
         };

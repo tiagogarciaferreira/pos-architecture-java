@@ -27,7 +27,7 @@ public class ActorSpecification {
                 predicates.add(root.get("id").in(actorFilterDTO.getIds()));
             }
             if (!StringUtils.isNullOrEmpty(actorFilterDTO.getName())) {
-                predicates.add(builder.like(builder.lower(root.get("name")), "%" + actorFilterDTO.getName().toLowerCase()));
+                predicates.add(builder.like(builder.lower(root.get("name")), actorFilterDTO.getName().toLowerCase() + "%"));
             }
             if (!ListUtils.isNullOrEmpty(actorFilterDTO.getCountryIds())) {
                 predicates.add(root.get("country").in(actorFilterDTO.getCountryIds()));
