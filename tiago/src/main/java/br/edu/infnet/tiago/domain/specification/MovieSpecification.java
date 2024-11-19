@@ -66,22 +66,22 @@ public class MovieSpecification {
             if (!ListUtils.isNullOrEmpty(movieFilterDTO.getSubtitleIds())) {
                 predicates.add(root.get("subtitle").in(movieFilterDTO.getSubtitleIds()));
             }
-            if (movieFilterDTO.getDurationMinutesFrom() > 0) {
+            if (!isNull(movieFilterDTO.getDurationMinutesFrom())) {
                 predicates.add(builder.greaterThanOrEqualTo(root.get("durationMinutes"), movieFilterDTO.getDurationMinutesFrom()));
             }
-            if (movieFilterDTO.getDurationMinutesTo() > 0) {
+            if (!isNull(movieFilterDTO.getDurationMinutesTo())) {
                 predicates.add(builder.lessThanOrEqualTo(root.get("durationMinutes"), movieFilterDTO.getDurationMinutesTo()));
             }
-            if (movieFilterDTO.getBudgetDollarsFrom() > 0) {
+            if (!isNull(movieFilterDTO.getBudgetDollarsFrom())) {
                 predicates.add(builder.greaterThanOrEqualTo(root.get("budgetDollars"), movieFilterDTO.getBudgetDollarsFrom()));
             }
-            if (movieFilterDTO.getBudgetDollarsTo() > 0) {
+            if (!isNull(movieFilterDTO.getBudgetDollarsTo())) {
                 predicates.add(builder.lessThanOrEqualTo(root.get("budgetDollars"), movieFilterDTO.getBudgetDollarsTo()));
             }
-            if (movieFilterDTO.getBoxOfficeDollarsFrom() > 0) {
+            if (!isNull(movieFilterDTO.getBoxOfficeDollarsFrom())) {
                 predicates.add(builder.greaterThanOrEqualTo(root.get("boxOfficeDollars"), movieFilterDTO.getBoxOfficeDollarsFrom()));
             }
-            if (movieFilterDTO.getBoxOfficeDollarsTo() > 0) {
+            if (!isNull(movieFilterDTO.getBoxOfficeDollarsTo())) {
                 predicates.add(builder.lessThanOrEqualTo(root.get("boxOfficeDollars"), movieFilterDTO.getBoxOfficeDollarsTo()));
             }
             return builder.and(predicates.toArray(new Predicate[0]));
