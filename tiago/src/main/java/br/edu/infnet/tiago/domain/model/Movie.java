@@ -50,7 +50,7 @@ public class Movie {
     private int durationMinutes;
 
     @DecimalMin(value = "0.0", inclusive = false, message = "Budget must be greater than 0 dollars")
-    private Float budgetDollars;
+    private Double budgetDollars;
 
     @DecimalMin(value = "0.0", message = "Box office earnings must be 0 dollars or more")
     private Double boxOfficeDollars;

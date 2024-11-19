@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +17,8 @@ public class CountryFullDTO {
     private String name;
 
     private String code;
+
+    private List<MovieDTO> movies;
 
     private OffsetDateTime created;
 

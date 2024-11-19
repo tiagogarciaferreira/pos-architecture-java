@@ -20,7 +20,7 @@ public class MovieCreateDTO {
     private String title;
 
     @DecimalMin(value = "0.0", inclusive = false, message = "Budget must be greater than 0 dollars")
-    private Float budgetDollars;
+    private Double budgetDollars;
 
     @NotBlank(message = "Synopsis is required")
     @Size(min = 10, max = 1000, message = "Synopsis must be between 10 and 1000 characters")

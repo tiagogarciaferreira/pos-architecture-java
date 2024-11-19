@@ -109,7 +109,7 @@ CREATE TABLE tb_movies (
     poster VARCHAR(255),
     release_date DATE NOT NULL,
     duration_minutes INT CHECK (duration_minutes >= 0),
-    budget_dollars REAL CHECK (budget_dollars >= 0),
+    budget_dollars DOUBLE PRECISION CHECK (budget_dollars >= 0),
     box_office_dollars DOUBLE PRECISION DEFAULT 0 CHECK (box_office_dollars >= 0),
     synopsis TEXT NOT NULL CHECK (LENGTH(synopsis) >= 10 AND LENGTH(synopsis) <= 1000),
     director_id INT NOT NULL CHECK (director_id >= 1),
