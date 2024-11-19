@@ -8,49 +8,49 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 - Cadastre novos filmes.
 - Atualize informações de filmes já existentes.
 - Exclua registros de filmes desnecessários.
-- Pesquise filmes por diferentes critérios.
+- Pesquise filmes por diferentes critérios(Com paginação).
 - Busque filmes pelo ID.
 
 ### 🎭 **Atores**
 - Cadastre atores no sistema.
 - Atualize os dados dos atores registrados.
 - Exclua atores que não são mais relevantes.
-- Pesquise atores por diferentes critérios.
+- Pesquise atores por diferentes critérios(Com paginação).
 - Busque atores pelo ID.
 
 ### 🎥 **Gêneros**
 - Cadastre novos gêneros cinematográficos.
 - Atualize os gêneros existentes.
 - Exclua gêneros que não são mais necessários.
-- Pesquise gêneros disponíveis.
+- Pesquise gêneros disponíveis(Com paginação).
 - Busque gêneros pelo ID.
 
 ### 🌐 **Idiomas**
 - Cadastre idiomas disponíveis para filmes.
 - Atualize informações sobre os idiomas registrados.
 - Exclua idiomas que não são mais usados.
-- Pesquise idiomas cadastrados.
+- Pesquise idiomas cadastrados(Com paginação).
 - Busque idiomas pelo ID.
 
 ### 🗺️ **Países**
 - Cadastre novos países ao sistema.
 - Atualize as informações dos países cadastrados.
 - Remova países que não são mais necessários.
-- Pesquise países relacionados às produções.
+- Pesquise países relacionados às produções(Com paginação).
 - Busque países pelo ID.
 
 ### 🎬 **Diretores**
 - Cadastre diretores de filmes.
 - Atualize os dados dos diretores registrados.
 - Exclua registros de diretores.
-- Pesquise diretores cadastrados.
+- Pesquise diretores cadastrados(Com paginação).
 - Busque diretores pelo ID.
 
 ### 🏢 **Estúdios**
 - Cadastre estúdios cinematográficos.
 - Atualize as informações dos estúdios registrados.
 - Exclua estúdios do sistema.
-- Pesquise estúdios disponíveis.
+- Pesquise estúdios disponíveis(Com paginação).
 - Busque estúdios pelo ID.
 
 ## Tecnologias Utilizadas
