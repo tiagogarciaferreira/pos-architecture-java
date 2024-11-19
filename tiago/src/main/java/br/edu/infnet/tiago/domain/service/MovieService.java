@@ -4,6 +4,8 @@ package br.edu.infnet.tiago.domain.service;
 import br.edu.infnet.tiago.domain.model.Movie;
 import br.edu.infnet.tiago.domain.repository.MovieRepository;
 import br.edu.infnet.tiago.infrastructure.exception.custom.NotFoundException;
+import br.edu.infnet.tiago.infrastructure.external.omdb.OmdbApiService;
+import br.edu.infnet.tiago.infrastructure.external.omdb.OmdbMovie;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,8 +21,16 @@ public class MovieService {
 
     private final MovieRepository movieRepository;
 
+    private final OmdbApiService omdbApiService;
+
     @Transactional
     public Movie create(Movie movie) {
+        OmdbMovie omdbMovie = omdbApiService.findByImdbId(movie.getImdbId());
+        movie = movie.withPoster(omdbMovie.getPoster())
+                .withImdbRating(omdbMovie.getImdbRating())
+                .withReleaseDate(omdbMovie.getReleaseDate())
+                .withDurationMinutes(omdbMovie.getDurationMinutes())
+                .withBoxOfficeDollars(omdbMovie.getBoxOfficeDollars());
         return movieRepository.save(movie);
     }
 
@@ -37,8 +47,17 @@ public class MovieService {
 
     @Transactional
     public Movie update(Long movieId, Movie movie) {
-        var existingMovie = getById(movieId)
-                .withImdbId(movie.getImdbId())
+        var existingMovie = getById(movieId);
+
+        if (!existingMovie.getImdbId().equalsIgnoreCase(movie.getImdbId())) {
+            OmdbMovie omdbMovie = omdbApiService.findByImdbId(movie.getImdbId());
+            movie = movie.withPoster(omdbMovie.getPoster())
+                    .withImdbRating(omdbMovie.getImdbRating())
+                    .withReleaseDate(omdbMovie.getReleaseDate())
+                    .withDurationMinutes(omdbMovie.getDurationMinutes())
+                    .withBoxOfficeDollars(omdbMovie.getBoxOfficeDollars());
+        }
+        existingMovie = existingMovie.withImdbId(movie.getImdbId())
                 .withTitle(movie.getTitle())
                 .withSynopsis(movie.getSynopsis())
                 .withCountry(movie.getCountry())

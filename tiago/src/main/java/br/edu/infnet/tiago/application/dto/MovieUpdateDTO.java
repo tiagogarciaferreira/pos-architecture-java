@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
@@ -20,17 +19,8 @@ public class MovieUpdateDTO {
     @Size(min = 5, max = 100, message = "Title must be between 5 and 100 characters")
     private String title;
 
-    @NotNull(message = "Release date is required")
-    private LocalDate releaseDate;
-
-    @Min(value = 1, message = "Duration must be at least 1 minute")
-    private int durationMinutes;
-
     @DecimalMin(value = "0.0", inclusive = false, message = "Budget must be greater than 0 dollars")
     private Float budgetDollars;
-
-    @DecimalMin(value = "0.0", message = "Box office earnings must be 0 dollars or more")
-    private Double boxOfficeDollars;
 
     @NotBlank(message = "Synopsis is required")
     @Size(min = 10, max = 1000, message = "Synopsis must be between 10 and 1000 characters")
