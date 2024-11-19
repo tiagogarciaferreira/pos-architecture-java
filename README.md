@@ -183,6 +183,20 @@ Contém componentes compartilhados e reutilizáveis em várias partes do sistema
 - `PUT /api/v1/studios/{id}`: Atualizar informações de um estúdio.
 - `DELETE /api/v1/studios/{id}`: Deletar um estúdio.
 
+## Arquivos de Banco de Dados 📂
+
+### `schema.sql`
+- **Caminho**: `src/main/resources/sql/schema.sql`
+- Define a estrutura do banco de dados, como tabelas, colunas, chaves primárias e estrangeiras.
+
+### `data.sql`
+- **Caminho**: `src/main/resources/sql/data.sql`
+- Contém dados iniciais para popular as tabelas criadas no banco de dados.
+
+### Uso no Spring Boot
+Ambos os arquivos são carregados automaticamente pelo Spring Boot na inicialização, garantindo que o banco de dados esteja configurado corretamente.
+
+
 ## Requisitos
 
 - **JDK 17 ou superior** ☕
