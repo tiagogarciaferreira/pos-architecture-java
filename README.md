@@ -241,8 +241,8 @@ Aqui estão os usuários e credenciais de teste disponíveis para uso na API:
 - **👤 Usuário:** `api_admin`  
 - **🔑 Senha:** `NfH3Fzdy@avX#Y#Zj44S#LCA8zeaRcDqIhyjz5KhfTFb@hyB4X`  
 - **🛡️ Função:** `ADMIN`  
-- **📄 Descrição:** Usuário com permissões completas, incluindo gerenciamento administrativo(Leiture e escrita).
-- **🟠 Esse é o usuário padrão já configurado no Postamn**
+- **📄 Descrição:** Usuário com permissões completas, incluindo gerenciamento administrativo(Leitura e escrita).
+- **🟠 Esse é o usuário padrão já configurado no Postamn(Environment -> Local - Admin)**
 
 ---
 
@@ -251,6 +251,7 @@ Aqui estão os usuários e credenciais de teste disponíveis para uso na API:
 - **🔑 Senha:** `d#c4j8XbZ@I2hr9RwgsAtZgpwVxRSfqE8xUYaMLf2bfKQnXE#j`  
 - **🛡️ Função:** `USER`  
 - **📄 Descrição:** Usuário comum com permissões básicas de acesso à API(Leitura).
+- **🟠 Esse é o usuário secundário configurado no Postamn(Environment -> Local - User)**
 
 ## Após iniciar, acesse a API no endereço:
 [API - Endereço](https://localhost:8443/api)
