@@ -63,7 +63,7 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 - **Spring Security** 🔒
 - **Lombok** 📦
 - **PostgreSQL** 🗄️
-- **ModelMapper** 🔧
+- **MapStruct** 🔧
 - **Maven** 📦
 - **Jakarta Bean Validation** ✔️
 - **OMDb API** 🎬
