@@ -43,6 +43,12 @@ public class LanguageService {
 
     @Transactional
     public void delete(Long languageId) {
+        if (!exists(languageId)) throw new NotFoundException(format("Language '%s' not found", languageId));
         languageRepository.deleteById(languageId);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean exists(Long languageId) {
+        return languageRepository.existsById(languageId);
     }
 }

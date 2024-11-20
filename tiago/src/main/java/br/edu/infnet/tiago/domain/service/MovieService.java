@@ -79,6 +79,12 @@ public class MovieService {
 
     @Transactional
     public void delete(Long movieId) {
+        if (!exists(movieId)) throw new NotFoundException(format("Movie '%s' not found", movieId));
         movieRepository.deleteById(movieId);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean exists(Long movieId) {
+        return movieRepository.existsById(movieId);
     }
 }

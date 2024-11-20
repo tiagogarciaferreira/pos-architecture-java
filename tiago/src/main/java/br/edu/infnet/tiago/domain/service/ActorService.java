@@ -50,6 +50,12 @@ public class ActorService {
 
     @Transactional
     public void delete(Long actorId) {
+        if (!exists(actorId)) throw new NotFoundException(format("Actor '%s' not found", actorId));
         actorRepository.deleteById(actorId);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean exists(Long actorId) {
+        return actorRepository.existsById(actorId);
     }
 }

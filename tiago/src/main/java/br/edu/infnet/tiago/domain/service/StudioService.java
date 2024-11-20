@@ -43,6 +43,12 @@ public class StudioService {
 
     @Transactional
     public void delete(Long studioId) {
+        if (!exists(studioId)) throw new NotFoundException(format("Studio '%s' not found", studioId));
         studioRepository.deleteById(studioId);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean exists(Long studioId) {
+        return studioRepository.existsById(studioId);
     }
 }

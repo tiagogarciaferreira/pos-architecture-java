@@ -43,6 +43,12 @@ public class CountryService {
 
     @Transactional
     public void delete(Long countryId) {
+        if (!exists(countryId)) throw new NotFoundException(format("Country '%s' not found", countryId));
         countryRepository.deleteById(countryId);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean exists(Long countryId) {
+        return countryRepository.existsById(countryId);
     }
 }

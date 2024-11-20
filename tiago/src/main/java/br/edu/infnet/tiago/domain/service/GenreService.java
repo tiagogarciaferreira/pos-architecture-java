@@ -43,6 +43,12 @@ public class GenreService {
 
     @Transactional
     public void delete(Long genreId) {
+        if (!exists(genreId)) throw new NotFoundException(format("Genre '%s' not found", genreId));
         genreRepository.deleteById(genreId);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean exists(Long genreId) {
+        return genreRepository.existsById(genreId);
     }
 }

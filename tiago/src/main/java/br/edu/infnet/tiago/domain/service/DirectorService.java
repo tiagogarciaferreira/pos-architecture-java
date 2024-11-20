@@ -49,6 +49,12 @@ public class DirectorService {
 
     @Transactional
     public void delete(Long directorId) {
+        if (!exists(directorId)) throw new NotFoundException(format("Director '%s' not found", directorId));
         directorRepository.deleteById(directorId);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean exists(Long directorId) {
+        return directorRepository.existsById(directorId);
     }
 }
