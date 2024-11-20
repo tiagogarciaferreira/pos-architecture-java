@@ -28,7 +28,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"imdbId\": \"tt024278251\",\r\n  \"title\": \"string\",\r\n  \"releaseDate\": \"2024-11-13\",\r\n  \"durationMinutes\": 1,\r\n  \"budgetDollars\": 1,\r\n  \"boxOfficeDollars\": 0,\r\n  \"synopsis\": \"stringstri\",\r\n  \"genreId\": 1,\r\n  \"directorId\": 1,\r\n  \"studioId\": 1,\r\n  \"countryId\": 1,\r\n  \"actorIds\": [\r\n    0\r\n  ],\r\n  \"languageIds\": [\r\n    0\r\n  ],\r\n  \"subtitleIds\": [\r\n    0\r\n  ]\r\n}",
+					"raw": "{\r\n  \"imdb_id\": \"tt024278251\",\r\n  \"title\": \"string\",\r\n  \"budget_dollars\": 1,\r\n  \"synopsis\": \"stringstri\",\r\n  \"genre_ids\": [],\r\n  \"director_id\": 1,\r\n  \"studio_id\": 1,\r\n  \"country_id\": 1,\r\n  \"actor_ids\": [\r\n  ],\r\n  \"language_ids\": [\r\n  ],\r\n  \"subtitle_ids\": [\r\n    0\r\n  ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -73,7 +73,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"imdbId\": \"tt024278251\",\r\n  \"title\": \"string\",\r\n  \"releaseDate\": \"2024-11-13\",\r\n  \"durationMinutes\": 1,\r\n  \"budgetDollars\": 1,\r\n  \"boxOfficeDollars\": 0,\r\n  \"synopsis\": \"stringstri\",\r\n  \"genreId\": 1,\r\n  \"directorId\": 1,\r\n  \"studioId\": 1,\r\n  \"countryId\": 1,\r\n  \"actorIds\": [\r\n    0\r\n  ],\r\n  \"languageIds\": [\r\n    0\r\n  ],\r\n  \"subtitleIds\": [\r\n    0\r\n  ],\r\n  \"version\": 0\r\n}",
+					"raw": "{\r\n{\r\n  \"imdb_id\": \"tt024278251\",\r\n  \"title\": \"string\",\r\n  \"budget_dollars\": 1,\r\n  \"synopsis\": \"stringstri\",\r\n  \"genre_ids\": [],\r\n  \"director_id\": 1,\r\n  \"studio_id\": 1,\r\n  \"country_id\": 1,\r\n  \"actor_ids\": [\r\n  ],\r\n  \"language_ids\": [\r\n  ],\r\n  \"subtitle_ids\": [\r\n    0\r\n  ],\r\n  \"version\": 0\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

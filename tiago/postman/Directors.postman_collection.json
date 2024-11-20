@@ -28,7 +28,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"Name\",\r\n  \"dateOfBirth\": \"2024-11-13\",\r\n  \"countryId\": 1,\r\n  \"awards\": [\r\n    \"award\"\r\n  ]\r\n}",
+					"raw": "{\r\n  \"name\": \"Name\",\r\n  \"date_of_birth\": \"2024-11-13\",\r\n  \"country_id\": 1,\r\n  \"awards\": [\r\n    \"award\"\r\n  ],\r\n  \"roles\":[]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -73,7 +73,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"Name\",\r\n  \"dateOfBirth\": \"2024-11-13\",\r\n  \"countryId\": 1,\r\n  \"awards\": [\r\n    \"award\"\r\n  ],\r\n  \"version\": 0\r\n}",
+					"raw": "{\r\n  \"name\": \"Name\",\r\n  \"date_of_birth\": \"2024-11-13\",\r\n  \"country_id\": 1,\r\n  \"awards\": [\r\n    \"award\"\r\n  ],\r\n  \"roles\":[],\r\n  \"version\": 0\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

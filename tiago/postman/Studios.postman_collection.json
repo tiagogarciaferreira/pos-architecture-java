@@ -28,7 +28,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"Name\",\r\n  \"countryId\": 1\r\n}",
+					"raw": "{\r\n  \"name\": \"Name\",\r\n  \"country_id\": 8\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -73,7 +73,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"Name\",\r\n  \"countryId\": 1,\r\n  \"version\": 0\r\n}",
+					"raw": "{\r\n  \"name\": \"Name\",\r\n  \"country_id\": 1,\r\n  \"version\": 0\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
