@@ -21,6 +21,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.HandlerMethodValidationException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -81,6 +82,22 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         problem.setDetail(messageProvider.getErrorMessage(problem.getDetail(), ERROR_MALFORMED_REQUEST));
 
         log.error("HttpMessageNotReadableException - {}", ex.getMessage());
+        return handleExceptionInternal(ex, problem, headers, BAD_REQUEST, request);
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleHandlerMethodValidationException(HandlerMethodValidationException ex,
+                                                                            HttpHeaders headers, HttpStatusCode status,
+                                                                            WebRequest request) {
+        Problem problem = new ProblemBuilder()
+                .withMessage(messageProvider.getMessage(ERROR_INVALID_INPUT))
+                .withType(messageProvider.getMessage(TYPE_BAD_REQUEST))
+                .withStatus(BAD_REQUEST)
+                .withRequest(request)
+                .withValidationResults(ex.getAllValidationResults())
+                .build();
+
+        log.error("MethodValidationException - {}", ex.getMessage());
         return handleExceptionInternal(ex, problem, headers, BAD_REQUEST, request);
     }
 

@@ -15,7 +15,7 @@ public class MessageProvider {
     private final MessageSource messageSource;
 
     public String getErrorMessage(String message, String key) {
-        return containsPackage(message) ? getMessage(key) : message;
+        return containsPackage(message) ? getMessage(key) : message.replaceAll("\"", EMPTY);
     }
 
     public String getMessage(String key) {
