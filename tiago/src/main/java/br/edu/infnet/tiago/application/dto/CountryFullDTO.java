@@ -20,6 +20,12 @@ public class CountryFullDTO {
 
     private List<MovieDTO> movies;
 
+    private List<ActorDTO> actors;
+
+    private List<DirectorDTO> directors;
+
+    private List<StudioDTO> studios;
+
     private OffsetDateTime created;
 
     private OffsetDateTime modified;

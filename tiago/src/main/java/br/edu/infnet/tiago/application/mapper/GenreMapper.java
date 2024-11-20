@@ -5,37 +5,20 @@ import br.edu.infnet.tiago.application.dto.GenreDTO;
 import br.edu.infnet.tiago.application.dto.GenreFullDTO;
 import br.edu.infnet.tiago.application.dto.GenreUpdateDTO;
 import br.edu.infnet.tiago.domain.model.Genre;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
 
 import java.util.List;
 
-import static br.edu.infnet.tiago.shared.utils.ListUtils.defaultIfNull;
+@Mapper(componentModel = "spring")
+public interface GenreMapper {
 
-@Component
-@RequiredArgsConstructor
-public class GenreMapper {
+    GenreDTO toDTO(Genre genre);
 
-    private final MapperFactory mapperFactory;
+    GenreFullDTO toFullDTO(Genre genre);
 
-    public GenreDTO toDTO(Genre genre) {
-        return mapperFactory.mapToNewInstance(genre, GenreDTO.class);
-    }
+    List<GenreDTO> toDTO(List<Genre> genres);
 
-    public GenreFullDTO toFullDTO(Genre genre) {
-        return mapperFactory.mapToNewInstance(genre, GenreFullDTO.class);
-    }
+    Genre fromDTO(GenreCreateDTO genreCreateDTO);
 
-    public List<GenreDTO> toDTO(List<Genre> genres) {
-        return defaultIfNull(genres).stream().map(this::toDTO).toList();
-    }
-
-    public Genre fromDTO(GenreCreateDTO genreCreateDTO) {
-        return mapperFactory.mapToNewInstance(genreCreateDTO, Genre.class);
-    }
-
-    public Genre fromDTO(GenreUpdateDTO genreUpdateDTO) {
-        return mapperFactory.mapToNewInstance(genreUpdateDTO, Genre.class);
-    }
-
+    Genre fromDTO(GenreUpdateDTO genreUpdateDTO);
 }

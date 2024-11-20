@@ -25,6 +25,8 @@ public class MovieDTO {
 
     private boolean released;
 
+    private CountryDTO country;
+
     private int durationMinutes;
 
     private Float budgetDollars;

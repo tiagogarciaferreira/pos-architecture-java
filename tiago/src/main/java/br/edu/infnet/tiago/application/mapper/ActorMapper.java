@@ -5,36 +5,23 @@ import br.edu.infnet.tiago.application.dto.ActorDTO;
 import br.edu.infnet.tiago.application.dto.ActorFullDTO;
 import br.edu.infnet.tiago.application.dto.ActorUpdateDTO;
 import br.edu.infnet.tiago.domain.model.Actor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 
-import static br.edu.infnet.tiago.shared.utils.ListUtils.defaultIfNull;
+@Mapper(componentModel = "spring")
+public interface ActorMapper {
 
-@Component
-@RequiredArgsConstructor
-public class ActorMapper {
+    ActorDTO toDTO(Actor actor);
 
-    private final MapperFactory mapperFactory;
+    ActorFullDTO toFullDTO(Actor actor);
 
-    public ActorDTO toDTO(Actor actor) {
-        return mapperFactory.mapToNewInstance(actor, ActorDTO.class);
-    }
+    List<ActorDTO> toDTO(List<Actor> actors);
 
-    public ActorFullDTO toFullDTO(Actor actor) {
-        return mapperFactory.mapToNewInstance(actor, ActorFullDTO.class);
-    }
+    @Mapping(source = "countryId", target = "country.id")
+    Actor fromDTO(ActorCreateDTO actorCreateDTO);
 
-    public List<ActorDTO> toDTO(List<Actor> actors) {
-        return defaultIfNull(actors).stream().map(this::toDTO).toList();
-    }
-
-    public Actor fromDTO(ActorCreateDTO actorCreateDTO) {
-        return mapperFactory.mapToNewInstance(actorCreateDTO, Actor.class);
-    }
-
-    public Actor fromDTO(ActorUpdateDTO actorUpdateDTO) {
-        return mapperFactory.mapToNewInstance(actorUpdateDTO, Actor.class);
-    }
+    @Mapping(source = "countryId", target = "country.id")
+    Actor fromDTO(ActorUpdateDTO actorUpdateDTO);
 }

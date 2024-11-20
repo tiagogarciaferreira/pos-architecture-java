@@ -5,36 +5,20 @@ import br.edu.infnet.tiago.application.dto.LanguageDTO;
 import br.edu.infnet.tiago.application.dto.LanguageFullDTO;
 import br.edu.infnet.tiago.application.dto.LanguageUpdateDTO;
 import br.edu.infnet.tiago.domain.model.Language;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
 
 import java.util.List;
 
-import static br.edu.infnet.tiago.shared.utils.ListUtils.defaultIfNull;
+@Mapper(componentModel = "spring")
+public interface LanguageMapper {
 
-@Component
-@RequiredArgsConstructor
-public class LanguageMapper {
+    LanguageDTO toDTO(Language language);
 
-    private final MapperFactory mapperFactory;
+    LanguageFullDTO toFullDTO(Language language);
 
-    public LanguageDTO toDTO(Language language) {
-        return mapperFactory.mapToNewInstance(language, LanguageDTO.class);
-    }
+    List<LanguageDTO> toDTO(List<Language> languages);
 
-    public LanguageFullDTO toFullDTO(Language language) {
-        return mapperFactory.mapToNewInstance(language, LanguageFullDTO.class);
-    }
+    Language fromDTO(LanguageCreateDTO languageCreateDTO);
 
-    public List<LanguageDTO> toDTO(List<Language> languages) {
-        return defaultIfNull(languages).stream().map(this::toDTO).toList();
-    }
-
-    public Language fromDTO(LanguageCreateDTO languageCreateDTO) {
-        return mapperFactory.mapToNewInstance(languageCreateDTO, Language.class);
-    }
-
-    public Language fromDTO(LanguageUpdateDTO languageUpdateDTO) {
-        return mapperFactory.mapToNewInstance(languageUpdateDTO, Language.class);
-    }
+    Language fromDTO(LanguageUpdateDTO languageUpdateDTO);
 }

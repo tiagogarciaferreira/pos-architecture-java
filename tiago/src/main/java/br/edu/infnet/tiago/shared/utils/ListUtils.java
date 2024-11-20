@@ -1,6 +1,7 @@
 package br.edu.infnet.tiago.shared.utils;
 
 import java.util.List;
+import java.util.function.Function;
 
 import static java.util.Collections.emptyList;
 import static java.util.Objects.isNull;
@@ -21,6 +22,10 @@ public class ListUtils {
                 .filter(value -> value instanceof String ? !StringUtils.isNullOrEmpty((String) value) : !isNull(value))
                 .distinct()
                 .toList();
+    }
+
+    public static <T> List<T> modifyItems(List<T> list, Function<T, T> function) {
+        return defaultIfNull(list).stream().map(function).toList();
     }
 
     public static List<String> toLowerCase(List<String> list) {

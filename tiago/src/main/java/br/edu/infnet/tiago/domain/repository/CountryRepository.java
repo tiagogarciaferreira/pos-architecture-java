@@ -14,6 +14,6 @@ public interface CountryRepository extends JpaRepository<Country, Long>, JpaSpec
 
     @NonNull
     @Override
-    @EntityGraph(attributePaths = {"movies"})
+    @EntityGraph(attributePaths = {"movies", "actors", "directors", "studios"})
     Optional<Country> findById(@NonNull Long id);
 }

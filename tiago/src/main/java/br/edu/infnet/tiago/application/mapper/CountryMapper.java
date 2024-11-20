@@ -5,37 +5,40 @@ import br.edu.infnet.tiago.application.dto.CountryDTO;
 import br.edu.infnet.tiago.application.dto.CountryFullDTO;
 import br.edu.infnet.tiago.application.dto.CountryUpdateDTO;
 import br.edu.infnet.tiago.domain.model.Country;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.mapstruct.BeforeMapping;
+import org.mapstruct.Mapper;
 
 import java.util.List;
 
-import static br.edu.infnet.tiago.shared.utils.ListUtils.defaultIfNull;
+import static br.edu.infnet.tiago.shared.utils.ListUtils.modifyItems;
+import static java.util.Objects.isNull;
 
-@Component
-@RequiredArgsConstructor
-public class CountryMapper {
+@Mapper(componentModel = "spring")
+public interface CountryMapper {
 
-    private final MapperFactory mapperFactory;
+    CountryDTO toDTO(Country country);
 
-    public CountryDTO toDTO(Country country) {
-        return mapperFactory.mapToNewInstance(country, CountryDTO.class);
+    CountryFullDTO toFullDTO(Country country);
+
+    List<CountryDTO> toDTO(List<Country> countries);
+
+    Country fromDTO(CountryCreateDTO countryCreateDTO);
+
+    Country fromDTO(CountryUpdateDTO countryUpdateDTO);
+
+    @BeforeMapping
+    default void beforeMapping(Country country) {
+        if (!isNull(country)) {
+            country.setMovies(modifyItems(country.getMovies(), movie -> movie.withCountry(null)));
+            country.setActors(modifyItems(country.getActors(), actor -> {
+                actor.setCountry(null);
+                return actor;
+            }));
+            country.setDirectors(modifyItems(country.getDirectors(), director -> {
+                director.setCountry(null);
+                return director;
+            }));
+            country.setStudios(modifyItems(country.getStudios(), studio -> studio.withCountry(null)));
+        }
     }
-
-    public CountryFullDTO toFullDTO(Country country) {
-        return mapperFactory.mapToNewInstance(country, CountryFullDTO.class);
-    }
-
-    public List<CountryDTO> toDTO(List<Country> countries) {
-        return defaultIfNull(countries).stream().map(this::toDTO).toList();
-    }
-
-    public Country fromDTO(CountryCreateDTO countryCreateDTO) {
-        return mapperFactory.mapToNewInstance(countryCreateDTO, Country.class);
-    }
-
-    public Country fromDTO(CountryUpdateDTO countryUpdateDTO) {
-        return mapperFactory.mapToNewInstance(countryUpdateDTO, Country.class);
-    }
-
 }

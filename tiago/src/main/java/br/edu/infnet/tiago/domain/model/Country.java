@@ -35,8 +35,17 @@ public class Country {
     @Pattern(regexp = "^[A-Z]{3}$", message = "Country code must be uppercase letters, exactly 3 characters")
     private String code;
 
-    @ManyToMany(mappedBy = "country")
+    @OneToMany(mappedBy = "country")
     private List<Movie> movies;
+
+    @OneToMany(mappedBy = "country")
+    private List<Actor> actors;
+
+    @OneToMany(mappedBy = "country")
+    private List<Director> directors;
+
+    @OneToMany(mappedBy = "country")
+    private List<Studio> studios;
 
     @CreationTimestamp
     private OffsetDateTime created;
