@@ -192,7 +192,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/languages?ids=1,2&name=&page=0&size=10&sort=name,asc",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/languages?page=0&size=10&sort=name,asc",
 					"protocol": "{{api.http}}",
 					"host": [
 						"{{api.host}}"
@@ -207,12 +207,14 @@
 						{
 							"key": "ids",
 							"value": "1,2",
-							"description": "List of language IDs -> Contains"
+							"description": "List of language IDs -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "name",
 							"value": "",
-							"description": "Name of the language -> Start with"
+							"description": "Name of the language -> Start with",
+							"disabled": true
 						},
 						{
 							"key": "page",

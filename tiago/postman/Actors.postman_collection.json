@@ -192,7 +192,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/actors?ids=&countryIds&name=&dateOfBirthFrom&dateOfBirthTo&page=0&size=10&sort=name,asc",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/actors?page=0&size=1&sort=name,asc",
 					"protocol": "{{api.http}}",
 					"host": [
 						"{{api.host}}"
@@ -207,27 +207,32 @@
 						{
 							"key": "ids",
 							"value": "",
-							"description": "List of country IDs -> Contains"
+							"description": "List of country IDs -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "countryIds",
 							"value": null,
-							"description": "List of country IDs where the actor is from -> Contains"
+							"description": "List of country IDs where the actor is from -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "name",
 							"value": "",
-							"description": "Name of the country -> Start with"
+							"description": "Name of the country -> Start with",
+							"disabled": true
 						},
 						{
 							"key": "dateOfBirthFrom",
-							"value": null,
-							"description": "Actor's date of birth from (inclusive) -> GreaterThanOrEqual"
+							"value": "1914-04-02",
+							"description": "Actor's date of birth from (inclusive) -> GreaterThanOrEqual",
+							"disabled": true
 						},
 						{
 							"key": "dateOfBirthTo",
 							"value": null,
-							"description": "Actor's date of birth to (inclusive) -> LessThanOrEqual"
+							"description": "Actor's date of birth to (inclusive) -> LessThanOrEqual",
+							"disabled": true
 						},
 						{
 							"key": "page",
@@ -236,7 +241,7 @@
 						},
 						{
 							"key": "size",
-							"value": "10",
+							"value": "1",
 							"description": "Page size"
 						},
 						{

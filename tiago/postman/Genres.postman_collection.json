@@ -36,7 +36,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/v1/genres",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/genres",
 					"protocol": "{{api.http}}",
 					"host": [
 						"{{api.host}}"
@@ -45,7 +45,6 @@
 					"path": [
 						"api",
 						"{{api.version}}",
-						"v1",
 						"genres"
 					]
 				}
@@ -196,7 +195,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/genres?ids=1,2&name=&page=0&size=10&sort=name,asc",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/genres?page=0&size=10&sort=name,asc",
 					"protocol": "{{api.http}}",
 					"host": [
 						"{{api.host}}"
@@ -211,12 +210,14 @@
 						{
 							"key": "ids",
 							"value": "1,2",
-							"description": "List of genre IDs -> Contains"
+							"description": "List of genre IDs -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "name",
 							"value": "",
-							"description": "Name of the genre -> Start with"
+							"description": "Name of the genre -> Start with",
+							"disabled": true
 						},
 						{
 							"key": "page",

@@ -36,7 +36,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/studios/12345",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/studios",
 					"protocol": "{{api.http}}",
 					"host": [
 						"{{api.host}}"
@@ -45,8 +45,7 @@
 					"path": [
 						"api",
 						"{{api.version}}",
-						"studios",
-						"12345"
+						"studios"
 					]
 				}
 			},
@@ -193,7 +192,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/studios?page=0&size=10&sort=name,asc",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/studios?ids=1,2&page=0&size=10&sort=name,asc",
 					"protocol": "{{api.http}}",
 					"host": [
 						"{{api.host}}"
@@ -208,12 +207,11 @@
 						{
 							"key": "ids",
 							"value": "1,2",
-							"description": "List of studio IDs -> Contains",
-							"disabled": true
+							"description": "List of studio IDs -> Contains"
 						},
 						{
 							"key": "name",
-							"value": "",
+							"value": "Columbia",
 							"description": "Name of the studio -> Start with",
 							"disabled": true
 						},

@@ -73,7 +73,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"Name\",\r\n  \"code\": \"CODE\",\r\n  \"version\": 0\r\n}",
+					"raw": "{\r\n    \"name\": \"Afeganistão Update\",\r\n    \"code\": \"AAA\",\r\n    \"version\": 1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -81,7 +81,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/countries/12345",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/countries/1",
 					"protocol": "{{api.http}}",
 					"host": [
 						"{{api.host}}"
@@ -91,7 +91,7 @@
 						"api",
 						"{{api.version}}",
 						"countries",
-						"12345"
+						"1"
 					]
 				}
 			},
@@ -118,7 +118,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/countries/12345",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/countries/47",
 					"protocol": "{{api.http}}",
 					"host": [
 						"{{api.host}}"
@@ -128,7 +128,7 @@
 						"api",
 						"{{api.version}}",
 						"countries",
-						"12345"
+						"47"
 					]
 				}
 			},
@@ -155,7 +155,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/countries/12345",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/countries/18",
 					"protocol": "{{api.http}}",
 					"host": [
 						"{{api.host}}"
@@ -165,7 +165,7 @@
 						"api",
 						"{{api.version}}",
 						"countries",
-						"12345"
+						"18"
 					]
 				}
 			},
@@ -192,7 +192,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/countries?name=&page=0&size=10&sort=name,asc",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/countries?codes=BRA,USA&page=0&size=10&sort=name,asc",
 					"protocol": "{{api.http}}",
 					"host": [
 						"{{api.host}}"
@@ -212,14 +212,14 @@
 						},
 						{
 							"key": "codes",
-							"value": "BR,USA",
-							"description": "List of country CODEs -> Contains",
-							"disabled": true
+							"value": "BRA,USA",
+							"description": "List of country CODEs -> Contains"
 						},
 						{
 							"key": "name",
 							"value": "",
-							"description": "Name of the country -> Start with"
+							"description": "Name of the country -> Start with",
+							"disabled": true
 						},
 						{
 							"key": "page",

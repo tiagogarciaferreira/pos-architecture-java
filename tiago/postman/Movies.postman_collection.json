@@ -155,21 +155,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/v1/movies/12345{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}",
-					"protocol": "https",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/movies/12345",
+					"protocol": "{{api.http}}",
 					"host": [
-						"localhost"
+						"{{api.host}}"
 					],
-					"port": "8443",
+					"port": "{{api.port}}",
 					"path": [
 						"api",
-						"v1",
+						"{{api.version}}",
 						"movies",
-						"12345{{api.http}}:",
-						"",
-						"{{api.host}}:{{api.port}}",
-						"api",
-						"{{api.version}}"
+						"12345"
 					]
 				}
 			},

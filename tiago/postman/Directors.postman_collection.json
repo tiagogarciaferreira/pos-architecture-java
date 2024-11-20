@@ -192,7 +192,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/directors?ids=&countryIds&name=&dateOfBirthFrom&dateOfBirthTo&page=0&size=10&sort=name,asc",
+					"raw": "{{api.http}}://{{api.host}}:{{api.port}}/api/{{api.version}}/directors?page=0&size=10&sort=name,asc",
 					"protocol": "{{api.http}}",
 					"host": [
 						"{{api.host}}"
@@ -207,27 +207,32 @@
 						{
 							"key": "ids",
 							"value": "",
-							"description": "List of director IDs -> Contains"
+							"description": "List of director IDs -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "countryIds",
 							"value": null,
-							"description": "List of director IDs where the actor is from -> Contains"
+							"description": "List of director IDs where the actor is from -> Contains",
+							"disabled": true
 						},
 						{
 							"key": "name",
 							"value": "",
-							"description": "Name of the director -> Start with"
+							"description": "Name of the director -> Start with",
+							"disabled": true
 						},
 						{
 							"key": "dateOfBirthFrom",
 							"value": null,
-							"description": "Director's date of birth from (inclusive) -> GreaterThanOrEqual"
+							"description": "Director's date of birth from (inclusive) -> GreaterThanOrEqual",
+							"disabled": true
 						},
 						{
 							"key": "dateOfBirthTo",
 							"value": null,
-							"description": "Director's date of birth to (inclusive) -> LessThanOrEqual"
+							"description": "Director's date of birth to (inclusive) -> LessThanOrEqual",
+							"disabled": true
 						},
 						{
 							"key": "page",
