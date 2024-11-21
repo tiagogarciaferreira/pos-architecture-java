@@ -55,19 +55,22 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 
 ## Tecnologias Utilizadas
 
-- **Java 17** ☕
-- **IntelliJ IDEA** 💻
-- **Spring Boot 3.3.4** 🌱
-- **Spring Data JPA** 🔄
-- **Docker Compose** 🐳
-- **Spring Security** 🔒
-- **Lombok** 📦
-- **PostgreSQL** 🗄️
-- **MapStruct** 🔧
-- **Maven** 📦
-- **Jakarta Bean Validation** ✔️
-- **OMDb API** 🎬
-- **Spring Doc** 📜
+- ☕ **Java 17** 
+- 💻 **IntelliJ IDEA** 
+- 🌱 **Spring Boot** 
+- 🔄 **Spring Data JPA** 
+- 🐳 **Docker Compose** 
+- 🔒 **Spring Security** 🔒
+- 📦 **Lombok** 
+- 🗄️ **PostgreSQL** 
+- 🔧 **MapStruct** 🔧
+- 📦 **Maven** 
+- ✔️ **Jakarta Bean Validation** 
+- 🎬 **OMDb API** 
+- 📜 **Spring Doc**
+- 🗃️ **DTOs**
+- ⚠️ **Problem Details**
+- 🔌 **FeignClient** 
 
 ## Estrutura de Pacotes
 
@@ -267,13 +270,13 @@ Ambos os arquivos são carregados automaticamente pelo Spring Boot na inicializa
 - **Caminho**: `src/main/resources/sql/data.sql`
 - Contém dados iniciais para popular as tabelas criadas no banco de dados.
 
-## Requisitos 🔧
+## 🔧 Requisitos 
 
-- **JDK 17 ou superior** ☕
-- **Maven** 📦
-- **Docker Compose** 🐳
-- **Spring Boot 3.3.4 ou superior** 🌱
-- **Postman** 📥
+- ☕ **JDK 17 ou superior** 
+- 📦 **Maven** 
+- 🐳 **Docker Compose** 
+- 🌱 **Spring Boot 3.3.4 ou superior** 
+- 📥 **Postman** 
 
 ## ✨ Importando Coleções Postman 
 
@@ -285,11 +288,11 @@ As coleções exportadas do Postman estão armazenadas na pasta `pos-architectur
 
 ### Passo 2: Importando no Postman 
 
-1. Abra o **Postman** em sua máquina. 📥
-2. Clique em **Import** no canto superior esquerdo da interface do Postman. 📂
-3. Selecione a opção **Upload Files**. ⬆️
-4. Navegue até a pasta `pos-architecture-java/tiago/postman` e selecione o arquivo `.json` da coleção que deseja importar. 📂
-5. Clique em **Open** e a coleção será carregada no seu Postman. ✔️
+1. 📥 Abra o **Postman** em sua máquina. 
+2. 📂 Clique em **Import** no canto superior esquerdo da interface do Postman. 
+3. ⬆️ Selecione a opção **Upload Files**. 
+4. 📂 Navegue até a pasta `pos-architecture-java/tiago/postman` e selecione o arquivo `.json` da coleção que deseja importar. 
+5. ✔️ Clique em **Open** e a coleção será carregada no seu Postman. 
 
 ## 🚀 Como Executar 
 
