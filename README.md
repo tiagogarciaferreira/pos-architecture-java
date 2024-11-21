@@ -359,9 +359,9 @@ Aqui estão os usuários e credenciais de teste disponíveis para uso na API:
 
 ## 📝 Passos
 
-### Conectando DBeaver: 
+### 🔌 Conectando DBeaver: 
 ![Início](images/cloudbeaver-setup-1.png)
-### Login:
+### 🔓 Login:
 ![Início](images/cloudbeaver-login.png)
-### Conectando Postgres:
+### 💾 Conectando Postgres:
 ![Início](images/create-connection.png)
