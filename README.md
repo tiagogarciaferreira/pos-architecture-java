@@ -72,7 +72,7 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 - ⚠️ **Problem Details**
 - 🔌 **FeignClient** 
 
-## Estrutura de Pacotes
+## 📖 Estrutura de Pacotes
 
 A estrutura de pacotes deste projeto foi organizada seguindo alguns princípios de **Domain-Driven Design (DDD)**, com o objetivo de promover uma aplicação modular, escalável e de fácil manutenção. Abaixo, uma explicação sucinta sobre cada pacote e sua função no sistema:
 
@@ -340,10 +340,10 @@ Aqui estão os usuários e credenciais de teste disponíveis para uso na API:
 - **📄 Descrição:** Usuário comum com permissões básicas de acesso à API(Leitura).
 - **🟠 Esse é o usuário secundário configurado no Postamn(Environment -> Local - User)**
 
-## Após iniciar, acesse a API no endereço:
+## 🗺️ Após iniciar, acesse a API no endereço:
 [API - Endereço](https://localhost:8443/api)
 
-## Acesse a documentação interativa da API (Swagger) no seguinte endereço:
+## 🗺️ Acesse a documentação interativa da API (Swagger) no seguinte endereço:
 [API - Documentação interativa](https://localhost:8443/api/swagger-ui.html)
 
 ## 🧑‍💻 Acessar o DBeaver
