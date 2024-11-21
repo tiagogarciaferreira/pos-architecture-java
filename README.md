@@ -60,10 +60,10 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 - 🌱 **Spring Boot** 
 - 🔄 **Spring Data JPA** 
 - 🐳 **Docker Compose** 
-- 🔒 **Spring Security** 🔒
+- 🔒 **Spring Security**
 - 📦 **Lombok** 
 - 🗄️ **PostgreSQL** 
-- 🔧 **MapStruct** 🔧
+- 🔧 **MapStruct**
 - 📦 **Maven** 
 - ✔️ **Jakarta Bean Validation** 
 - 🎬 **OMDb API** 
