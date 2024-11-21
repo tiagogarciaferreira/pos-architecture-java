@@ -1,8 +1,8 @@
-# Catalogo de Filmes API
+# 🗂️ Catalogo de Filmes API
 
 Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destinada ao gerenciamento de um catálogo de filmes. A API permite realizar operações CRUD (Criar, Ler, Atualizar e Deletar) para filmes, atores, gêneros, idiomas, países, diretores e estúdios.
 
-## Funcionalidades
+## ⚙️ Funcionalidades
 
 ### 📽️ **Filmes**
 - Cadastre novos filmes.
