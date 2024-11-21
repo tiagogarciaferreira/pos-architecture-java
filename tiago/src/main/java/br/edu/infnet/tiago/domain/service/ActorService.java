@@ -22,7 +22,8 @@ public class ActorService {
 
     @Transactional
     public Actor create(Actor actor) {
-        return actorRepository.save(actor);
+        actor = actorRepository.save(actor);
+        return getById(actor.getId());
     }
 
     @Transactional(readOnly = true)
@@ -45,7 +46,8 @@ public class ActorService {
         existingActor.setAwards(ListUtils.getValidValues(actor.getAwards()));
         existingActor.setRoles(ListUtils.getValidValues(actor.getRoles()));
         existingActor.setVersion(actor.getVersion());
-        return actorRepository.save(existingActor);
+        existingActor = actorRepository.save(existingActor);
+        return getById(existingActor.getId());
     }
 
     @Transactional

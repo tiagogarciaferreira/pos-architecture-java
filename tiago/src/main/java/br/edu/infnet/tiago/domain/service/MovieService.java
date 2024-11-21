@@ -31,7 +31,8 @@ public class MovieService {
                 .withReleaseDate(omdbMovie.getReleaseDate())
                 .withDurationMinutes(omdbMovie.getDurationMinutes())
                 .withBoxOfficeDollars(omdbMovie.getBoxOfficeDollars());
-        return movieRepository.save(movie);
+        movie = movieRepository.save(movie);
+        return getById(movie.getId());
     }
 
     @Transactional(readOnly = true)
@@ -74,7 +75,8 @@ public class MovieService {
                 .withLanguages(movie.getLanguages())
                 .withSubtitles(movie.getSubtitles())
                 .withVersion(movie.getVersion());
-        return movieRepository.save(existingMovie);
+        existingMovie = movieRepository.save(existingMovie);
+        return getById(existingMovie.getId());
     }
 
     @Transactional

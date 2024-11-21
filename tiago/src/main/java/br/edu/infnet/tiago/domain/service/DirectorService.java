@@ -22,7 +22,8 @@ public class DirectorService {
 
     @Transactional
     public Director create(Director director) {
-        return directorRepository.save(director);
+        director = directorRepository.save(director);
+        return getById(director.getId());
     }
 
     @Transactional(readOnly = true)
@@ -44,7 +45,8 @@ public class DirectorService {
         existingDirector.setAwards(ListUtils.getValidValues(director.getAwards()));
         existingDirector.setDateOfBirth(director.getDateOfBirth());
         existingDirector.setVersion(director.getVersion());
-        return directorRepository.save(existingDirector);
+        existingDirector = directorRepository.save(existingDirector);
+        return getById(existingDirector.getId());
     }
 
     @Transactional

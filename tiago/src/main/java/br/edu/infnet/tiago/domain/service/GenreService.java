@@ -21,7 +21,8 @@ public class GenreService {
 
     @Transactional
     public Genre create(Genre genre) {
-        return genreRepository.save(genre);
+        genre = genreRepository.save(genre);
+        return getById(genre.getId());
     }
 
     @Transactional(readOnly = true)
@@ -38,7 +39,8 @@ public class GenreService {
     @Transactional
     public Genre update(Long genreId, Genre genre) {
         var existingGenre = getById(genreId).withName(genre.getName()).withVersion(genre.getVersion());
-        return genreRepository.save(existingGenre);
+        existingGenre = genreRepository.save(existingGenre);
+        return getById(existingGenre.getId());
     }
 
     @Transactional

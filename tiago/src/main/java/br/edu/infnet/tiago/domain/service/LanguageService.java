@@ -21,7 +21,8 @@ public class LanguageService {
 
     @Transactional
     public Language create(Language language) {
-        return languageRepository.save(language);
+        language = languageRepository.save(language);
+        return getById(language.getId());
     }
 
     @Transactional(readOnly = true)
@@ -38,7 +39,8 @@ public class LanguageService {
     @Transactional
     public Language update(Long languageId, Language language) {
         var existingLanguage = getById(languageId).withName(language.getName()).withVersion(language.getVersion());
-        return languageRepository.save(existingLanguage);
+        existingLanguage = languageRepository.save(existingLanguage);
+        return getById(existingLanguage.getId());
     }
 
     @Transactional

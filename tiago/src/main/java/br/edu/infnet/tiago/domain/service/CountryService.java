@@ -21,7 +21,8 @@ public class CountryService {
 
     @Transactional
     public Country create(Country country) {
-        return countryRepository.save(country);
+        country = countryRepository.save(country);
+        return getById(country.getId());
     }
 
     @Transactional(readOnly = true)
@@ -38,7 +39,8 @@ public class CountryService {
     @Transactional
     public Country update(Long countryId, Country country) {
         var existingCountry = getById(countryId).withName(country.getName()).withCode(country.getCode()).withVersion(country.getVersion());
-        return countryRepository.save(existingCountry);
+        existingCountry = countryRepository.save(existingCountry);
+        return getById(existingCountry.getId());
     }
 
     @Transactional
