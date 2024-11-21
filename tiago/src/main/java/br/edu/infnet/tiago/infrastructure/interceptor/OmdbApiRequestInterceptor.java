@@ -7,6 +7,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import static br.edu.infnet.tiago.infrastructure.constants.SecurityConstants.OMDB_API_KEY;
+import static br.edu.infnet.tiago.infrastructure.constants.SecurityConstants.OMDB_API_KEY_NAME;
 
 @RequiredArgsConstructor
 @Component
@@ -16,6 +17,6 @@ public class OmdbApiRequestInterceptor implements RequestInterceptor {
 
     @Override
     public void apply(RequestTemplate requestTemplate) {
-        requestTemplate.query("apikey", environment.getRequiredProperty(OMDB_API_KEY));
+        requestTemplate.query(OMDB_API_KEY_NAME, environment.getRequiredProperty(OMDB_API_KEY));
     }
 }

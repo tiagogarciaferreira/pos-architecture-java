@@ -183,6 +183,79 @@ Contém componentes compartilhados e reutilizáveis em várias partes do sistema
 - `PUT /api/v1/studios/{id}`: Atualizar informações de um estúdio.
 - `DELETE /api/v1/studios/{id}`: Deletar um estúdio.
 
+##  Tratamento de Exceptions na API 🚨
+
+A API utiliza o formato **Problem Details** para padronizar as respostas de erro, conforme a [RFC 7807](https://datatracker.ietf.org/doc/html/rfc7807). Esse formato facilita a identificação e tratamento dos problemas de forma estruturada e consistente.
+
+## 📝 Atributos do Problem Details
+
+- **type**: Identificador único para o tipo de problema, podendo ser uma URL ou um caminho relativo.  
+- **title**: Descrição curta e legível do problema.  
+- **status**: Código HTTP correspondente ao erro.  
+- **detail**: Explicação detalhada e específica sobre o problema.  
+- **instance**: Caminho ou recurso da API onde o erro ocorreu.  
+- **violations** (Opcional): Lista de violações específicas, contendo informações detalhadas sobre campos ou regras quebradas.  
+
+##  Exceptions Tratadas 💥
+
+### 1. `MethodArgumentNotValidException`
+- **Descrição**: Lançada quando a validação de um argumento anotado com `@Valid` falha. Isso ocorre quando os dados fornecidos não atendem às restrições de validação definidas nas classes de modelo.
+- **Status HTTP**: `400 BAD REQUEST`
+
+---
+
+### 2. `HttpMessageNotReadableException`
+- **Descrição**: Disparada quando o corpo da requisição não pode ser lido, geralmente devido a JSON malformado ou formato incompatível.
+- **Status HTTP**: `400 BAD REQUEST`
+
+---
+
+### 3. `PropertyBindingException`
+- **Descrição**: Ocorre quando há tentativa de vincular propriedades desconhecidas ou inválidas durante a desserialização do JSON para objetos Java.
+- **Status HTTP**: `400 BAD REQUEST`
+
+---
+
+### 4. `HandlerMethodValidationException`
+- **Descrição**: Disparada ao validar os argumentos de um método anotado com `@Validated`. Indica que uma validação de método falhou.
+- **Status HTTP**: `400 BAD REQUEST`
+
+---
+
+### 5. `NoHandlerFoundException`
+- **Descrição**: Lançada quando não existe um handler (controlador) correspondente para a requisição. O caminho ou método solicitado não foi encontrado na API.
+- **Status HTTP**: `404 NOT FOUND`
+
+---
+
+### 6. `HttpRequestMethodNotSupportedException`
+- **Descrição**: Disparada quando o método HTTP usado (como `POST`, `GET`, `PUT`, etc.) não é suportado pelo endpoint da API.
+- **Status HTTP**: `405 METHOD NOT ALLOWED`
+
+---
+
+### 7. `HttpMediaTypeNotSupportedException`
+- **Descrição**: Ocorre quando o `Content-Type` enviado pelo cliente não é suportado pela API. Geralmente ocorre quando o corpo da requisição é enviado em um formato inesperado.
+- **Status HTTP**: `415 UNSUPPORTED MEDIA TYPE`
+
+---
+
+### 8. `NotFoundException`
+- **Descrição**: Exceção personalizada para indicar que o recurso solicitado não foi encontrado. Pode ser usada para recursos como um objeto ou entidade inexistente no banco de dados.
+- **Status HTTP**: `404 NOT FOUND`
+
+---
+
+### 9. `ConflictException`
+- **Descrição**: Exceção personalizada que é lançada quando há um conflito, como duplicidade de dados, ao tentar criar ou atualizar um recurso.
+- **Status HTTP**: `409 CONFLICT`
+
+---
+
+### 10. `InternalServerErrorException`
+- **Descrição**: Exceção personalizada para erros inesperados no servidor, como falhas internas que não podem ser previstas ou controladas.
+- **Status HTTP**: `500 INTERNAL SERVER ERROR`
+
 ## Arquivos de Banco de Dados 📂
 
 ### `schema.sql`
