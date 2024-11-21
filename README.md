@@ -73,7 +73,7 @@ Este é um projeto de uma API REST desenvolvida em Java com Spring Boot, destina
 
 A estrutura de pacotes deste projeto foi organizada seguindo alguns princípios de **Domain-Driven Design (DDD)**, com o objetivo de promover uma aplicação modular, escalável e de fácil manutenção. Abaixo, uma explicação sucinta sobre cada pacote e sua função no sistema:
 
-## `application`🧑‍💻
+## 🧑‍💻 `application`
 
 A camada de aplicação orquestra o fluxo entre os outros pacotes e contém os casos de uso da aplicação.
 
@@ -84,7 +84,7 @@ A camada de aplicação orquestra o fluxo entre os outros pacotes e contém os c
 
 ---
 
-## `domain` 🏠
+## 🏠 `domain` 
 
 A camada de domínio é o coração do sistema, onde as regras de negócio e as entidades principais são modeladas.
 
@@ -95,7 +95,7 @@ A camada de domínio é o coração do sistema, onde as regras de negócio e as 
 
 ---
 
-## `infrastructure` 🏗️
+## 🏗️ `infrastructure` 
 
 Contém implementações e serviços de suporte que interagem com o mundo exterior ou com componentes transversais da aplicação.
 
@@ -108,7 +108,7 @@ Contém implementações e serviços de suporte que interagem com o mundo exteri
 
 ---
 
-## `interfaces` 🌐
+## 🌐 `interfaces` 
 
 Define como a aplicação se comunica com o mundo exterior, expondo suas APIs ou interfaces de comunicação.
 
@@ -117,7 +117,7 @@ Define como a aplicação se comunica com o mundo exterior, expondo suas APIs ou
 
 ---
 
-## `shared` 🔄
+##  🔄 `shared`
 
 Contém componentes compartilhados e reutilizáveis em várias partes do sistema.
 
@@ -127,7 +127,7 @@ Contém componentes compartilhados e reutilizáveis em várias partes do sistema
 
 ## Endpoints da API
 
-### Filmes🎬
+### 🎬 Filmes
 
 - `GET /api/v1/movies`: Pesquisar filmes.
 - `POST /api/v1/movies`: Criar um novo filme.
@@ -135,7 +135,7 @@ Contém componentes compartilhados e reutilizáveis em várias partes do sistema
 - `PUT /api/v1/movies/{id}`: Atualizar informações de um filme.
 - `DELETE /api/v1/movies/{id}`: Deletar um filme.
 
-### Atores 🎭
+### 🎭 Atores 
 
 - `GET /api/v1/actors`: Pesquisar atores.
 - `POST /api/v1/actors`: Criar um novo ator.
@@ -143,7 +143,7 @@ Contém componentes compartilhados e reutilizáveis em várias partes do sistema
 - `PUT /api/v1/actors/{id}`: Atualizar informações de um ator.
 - `DELETE /api/v1/actors/{id}`: Deletar um ator.
 
-### Gêneros 🎥
+### 🎥 Gêneros 
 
 - `GET /api/v1/genres`: Pesquisar gêneros.
 - `POST /api/v1/genres`: Criar um novo gênero.
@@ -151,7 +151,7 @@ Contém componentes compartilhados e reutilizáveis em várias partes do sistema
 - `PUT /api/v1/genres/{id}`: Atualizar informações de um gênero.
 - `DELETE /api/v1/genres/{id}`: Deletar um gênero.
 
-### Idiomas 🌐
+### 🌐 Idiomas 
 
 - `GET /api/v1/languages`: Pesquisar idiomas.
 - `POST /api/v1/languages`: Criar um novo idioma.
@@ -159,7 +159,7 @@ Contém componentes compartilhados e reutilizáveis em várias partes do sistema
 - `PUT /api/v1/languages/{id}`: Atualizar informações de um idioma.
 - `DELETE /api/v1/languages/{id}`: Deletar um idioma.
 
-### Países 🗺️
+### 🗺️ Países 
 
 - `GET /api/v1/countries`: Pesquisar países.
 - `POST /api/v1/countries`: Criar um novo país.
@@ -167,7 +167,7 @@ Contém componentes compartilhados e reutilizáveis em várias partes do sistema
 - `PUT /api/v1/countries/{id}`: Atualizar informações de um país.
 - `DELETE /api/v1/countries/{id}`: Deletar um país.
 
-### Diretores 🎬
+### 🎬 Diretores 
 
 - `GET /api/v1/directors`: Pesquisar diretores.
 - `POST /api/v1/directors`: Criar um novo diretor.
@@ -175,7 +175,7 @@ Contém componentes compartilhados e reutilizáveis em várias partes do sistema
 - `PUT /api/v1/directors/{id}`: Atualizar informações de um diretor.
 - `DELETE /api/v1/directors/{id}`: Deletar um diretor.
 
-### Estúdios 🏢
+### 🏢 Estúdios 
 
 - `GET /api/v1/studios`: Pesquisar estúdios.
 - `POST /api/v1/studios`: Criar um novo estúdio.
@@ -183,7 +183,7 @@ Contém componentes compartilhados e reutilizáveis em várias partes do sistema
 - `PUT /api/v1/studios/{id}`: Atualizar informações de um estúdio.
 - `DELETE /api/v1/studios/{id}`: Deletar um estúdio.
 
-##  Tratamento de Exceptions na API 🚨
+## 🚨 Tratamento de Exceptions na API 
 
 A API utiliza o formato **Problem Details** para padronizar as respostas de erro, conforme a [RFC 7807](https://datatracker.ietf.org/doc/html/rfc7807). Esse formato facilita a identificação e tratamento dos problemas de forma estruturada e consistente.
 
@@ -196,7 +196,7 @@ A API utiliza o formato **Problem Details** para padronizar as respostas de erro
 - **instance**: Caminho ou recurso da API onde o erro ocorreu.  
 - **violations** (Opcional): Lista de violações específicas, contendo informações detalhadas sobre campos ou regras quebradas.  
 
-##  Exceptions Tratadas 💥
+## 💥 Exceptions Tratadas 
 
 ### 1. `MethodArgumentNotValidException`
 - **Descrição**: Lançada quando a validação de um argumento anotado com `@Valid` falha. Isso ocorre quando os dados fornecidos não atendem às restrições de validação definidas nas classes de modelo.
@@ -256,7 +256,8 @@ A API utiliza o formato **Problem Details** para padronizar as respostas de erro
 - **Descrição**: Exceção personalizada para erros inesperados no servidor, como falhas internas que não podem ser previstas ou controladas.
 - **Status HTTP**: `500 INTERNAL SERVER ERROR`
 
-## Arquivos de Banco de Dados 📂
+## 📂 Arquivos de Banco de Dados 
+Ambos os arquivos são carregados automaticamente pelo Spring Boot na inicialização, garantindo que o banco de dados esteja configurado corretamente.
 
 ### `schema.sql`
 - **Caminho**: `src/main/resources/sql/schema.sql`
@@ -266,11 +267,7 @@ A API utiliza o formato **Problem Details** para padronizar as respostas de erro
 - **Caminho**: `src/main/resources/sql/data.sql`
 - Contém dados iniciais para popular as tabelas criadas no banco de dados.
 
-### Uso no Spring Boot
-Ambos os arquivos são carregados automaticamente pelo Spring Boot na inicialização, garantindo que o banco de dados esteja configurado corretamente.
-
-
-## Requisitos
+## Requisitos 🔧
 
 - **JDK 17 ou superior** ☕
 - **Maven** 📦
@@ -278,7 +275,7 @@ Ambos os arquivos são carregados automaticamente pelo Spring Boot na inicializa
 - **Spring Boot 3.3.4 ou superior** 🌱
 - **Postman** 📥
 
-## Importando Coleções Postman
+## ✨ Importando Coleções Postman 
 
 As coleções Postman exportadas para este projeto estão localizadas na pasta `pos-architecture-java/tiago/postman`. Siga os passos abaixo para importar essas coleções no Postman:
 
@@ -294,7 +291,7 @@ As coleções exportadas do Postman estão armazenadas na pasta `pos-architectur
 4. Navegue até a pasta `pos-architecture-java/tiago/postman` e selecione o arquivo `.json` da coleção que deseja importar. 📂
 5. Clique em **Open** e a coleção será carregada no seu Postman. ✔️
 
-## Como Executar 🚀
+## 🚀 Como Executar 
 
 Siga os passos abaixo para iniciar o projeto:
 
@@ -316,11 +313,11 @@ docker-compose down
 
 ```
 
-## 🔐 Autenticação da API
+## 🔐 Autenticação da API 
 
 A API utiliza **Autenticação Básica (Basic Authentication)** para garantir que apenas usuários autorizados possam acessar os recursos.
 
-## 🧑‍💻 Usuários para Teste
+## 🧑‍💻 Usuários para Teste 
 
 Aqui estão os usuários e credenciais de teste disponíveis para uso na API:
 
@@ -357,7 +354,7 @@ Aqui estão os usuários e credenciais de teste disponíveis para uso na API:
 - **👤 Postgres Usuário:** `movie_api_user`  
 - **🔑 Postgres Senha:** `wwZFGVt3neZ6J9hmR29ur8admVGv` 
 
-## 📝 Passos:
+## 📝 Passos
 
 ### Conectando DBeaver: 
 ![Início](images/cloudbeaver-setup-1.png)
