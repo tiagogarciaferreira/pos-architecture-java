@@ -30,5 +30,5 @@ public class CountryFullDTO {
 
     private OffsetDateTime modified;
 
-    private Integer version;
+    private int version;
 }

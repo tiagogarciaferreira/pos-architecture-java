@@ -31,5 +31,5 @@ public class DirectorFullDTO {
 
     private OffsetDateTime modified;
 
-    private Integer version;
+    private int version;
 }

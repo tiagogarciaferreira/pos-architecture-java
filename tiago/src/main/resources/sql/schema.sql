@@ -20,7 +20,7 @@ DROP TABLE IF EXISTS tb_countries;
 CREATE TABLE tb_genres (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE CHECK (LENGTH(name) >= 4 AND LENGTH(name) <= 50),
-    version INT NOT NULL CHECK (version >= 1),
+    version INT NOT NULL CHECK (version >= 0),
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
@@ -29,7 +29,7 @@ CREATE TABLE tb_countries (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE CHECK (LENGTH(name) >= 3 AND LENGTH(name) <= 50),
     code VARCHAR(3) NOT NULL UNIQUE CHECK (LENGTH(code) = 3),
-    version INT NOT NULL CHECK (version >= 1),
+    version INT NOT NULL CHECK (version >= 0),
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
@@ -37,7 +37,7 @@ CREATE TABLE tb_countries (
 CREATE TABLE tb_languages (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE CHECK (LENGTH(name) >= 3 AND LENGTH(name) <= 50),
-    version INT NOT NULL CHECK (version >= 1),
+    version INT NOT NULL CHECK (version >= 0),
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
@@ -47,7 +47,7 @@ CREATE TABLE tb_actors (
     name VARCHAR(255) NOT NULL UNIQUE CHECK (LENGTH(name) >= 3 AND LENGTH(name) <= 100),
     date_of_birth DATE NOT NULL,
     country_id INT NOT NULL CHECK (country_id >= 1),
-    version INT NOT NULL CHECK (version >= 1),
+    version INT NOT NULL CHECK (version >= 0),
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     FOREIGN KEY (country_id) REFERENCES tb_countries(id)
@@ -58,7 +58,7 @@ CREATE TABLE tb_directors (
     name VARCHAR(255) NOT NULL CHECK (LENGTH(name) >= 3 AND LENGTH(name) <= 100),
     date_of_birth DATE NOT NULL,
     country_id INT NOT NULL CHECK (country_id >= 1),
-    version INT NOT NULL CHECK (version >= 1),
+    version INT NOT NULL CHECK (version >= 0),
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     FOREIGN KEY (country_id) REFERENCES tb_countries(id)
@@ -68,7 +68,7 @@ CREATE TABLE tb_studios (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL CHECK (LENGTH(name) >= 3 AND LENGTH(name) <= 50),
     country_id INT NOT NULL CHECK (country_id >= 1),
-    version INT NOT NULL CHECK (version >= 1),
+    version INT NOT NULL CHECK (version >= 0),
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     FOREIGN KEY (country_id) REFERENCES tb_countries(id)
@@ -115,7 +115,7 @@ CREATE TABLE tb_movies (
     director_id INT NOT NULL CHECK (director_id >= 1),
     studio_id INT NOT NULL CHECK (studio_id >= 1),
     country_id INT NOT NULL CHECK (country_id >= 1),
-    version INT NOT NULL CHECK (version >= 1),
+    version INT NOT NULL CHECK (version >= 0),
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     FOREIGN KEY (director_id) REFERENCES tb_directors(id) ON DELETE RESTRICT,
@@ -163,7 +163,7 @@ CREATE TABLE tb_users (
     active BOOLEAN NOT NULL,
     date_of_birth DATE NOT NULL,
     country_id INT NOT NULL CHECK (country_id >= 1),
-    version INT NOT NULL CHECK (version >= 1),
+    version INT NOT NULL CHECK (version >= 0),
     created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
     FOREIGN KEY (country_id) REFERENCES tb_countries(id)

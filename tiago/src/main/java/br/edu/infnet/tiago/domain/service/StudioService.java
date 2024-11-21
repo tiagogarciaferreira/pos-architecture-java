@@ -2,6 +2,7 @@ package br.edu.infnet.tiago.domain.service;
 
 
 import br.edu.infnet.tiago.domain.model.Studio;
+import br.edu.infnet.tiago.domain.repository.CountryRepository;
 import br.edu.infnet.tiago.domain.repository.StudioRepository;
 import br.edu.infnet.tiago.infrastructure.exception.custom.NotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +20,12 @@ public class StudioService {
 
     private final StudioRepository studioRepository;
 
+    private final CountryRepository countryRepository;
+
     @Transactional
     public Studio create(Studio studio) {
-        return studioRepository.save(studio);
+        studio = studioRepository.save(studio);
+        return getById(studio.getId());
     }
 
     @Transactional(readOnly = true)

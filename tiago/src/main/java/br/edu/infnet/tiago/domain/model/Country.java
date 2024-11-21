@@ -55,6 +55,6 @@ public class Country {
 
     @Version
     @NotNull(message = "Version cannot be null")
-    @Min(value = 0, message = "Version must be zero or greater")
-    private Integer version;
+    @Min(value = 0, message = "Version must be greater than or equal to zero")
+    private int version;
 }

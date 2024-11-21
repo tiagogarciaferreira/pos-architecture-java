@@ -24,5 +24,5 @@ public class StudioFullDTO {
 
     private OffsetDateTime modified;
 
-    private Integer version;
+    private int version;
 }
