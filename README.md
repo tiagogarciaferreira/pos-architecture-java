@@ -363,5 +363,5 @@ Aqui estão os usuários e credenciais de teste disponíveis para uso na API:
 ![Início](images/cloudbeaver-setup-1.png)
 ### 🔓 Login:
 ![Início](images/cloudbeaver-login.png)
-### 💾 Conectando Postgres:
+### 🔌 Conectando Postgres:
 ![Início](images/create-connection.png)
